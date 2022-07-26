@@ -9,7 +9,7 @@ interface SearchProps {
 }
 
 const SearchContainer = styled(View)`
-  padding: ${spacing.md};
+  padding: ${spacing.lg};
 `;
 
 export const Search: React.FC<SearchProps> = ({ value }) => {

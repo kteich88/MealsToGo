@@ -1,30 +1,33 @@
 import React from "react";
-import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
-import Search from "./src/components/Search/Search";
-import Restaurant from "./src/components/Cards/Restaurant/Restaurant";
+import { ActivityIndicator } from "react-native";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { ThemeProvider } from "styled-components/native";
+import { RestaurantsScreen } from "./src/features/restaurants/restaurants.screen";
+import { theme } from "./src/infrastructure/theme";
 
-export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Search value={""} />
-      <Restaurant
-        name={"Good Eats"}
-        icons={[]}
-        photos={[
-          "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-        ]}
-        address={""}
-        isOpenNow={false}
-        rating={0}
-        isClosedTemporarily={false}
-      />
-    </SafeAreaView>
+import {
+  useFonts,
+  Poppins_400Regular,
+  Spectral_400Regular,
+  Assistant_400Regular,
+} from "@expo-google-fonts/dev";
+
+export const App = () => {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Spectral_400Regular,
+    Assistant_400Regular,
+  });
+  return fontsLoaded ? (
+    <>
+      <ThemeProvider theme={theme}>
+        <RestaurantsScreen />
+      </ThemeProvider>
+      <ExpoStatusBar style="auto" />
+    </>
+  ) : (
+    <ActivityIndicator size="large" color="#03F7EB" />
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-});
+export default App;

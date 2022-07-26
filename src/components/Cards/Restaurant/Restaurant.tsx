@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
+import { Rating } from "react-native-ratings";
 import { Card } from "react-native-paper";
 import { spacing } from "../../../infrastructure/theme/spacing";
 import { colors } from "../../../infrastructure/theme/colors";
+import { theme } from "../../../infrastructure/theme";
 
 interface RestaurantProps {
   name: string;
@@ -18,31 +20,58 @@ const RestaurantCard = styled(Card)`
   background-color: white;
 `;
 
-const RestaurantCardCover = styled(Card.Cover)`
+const CoverImage = styled(Card.Cover)`
   padding: ${spacing.lg};
   background-color: ${colors.bg.primary};
 `;
 
+const Info = styled.View`
+  padding: ${spacing.lg};
+`;
+
 const Title = styled.Text`
-  padding: ${spacing.md};
+  font-family: ${theme.fonts.heading}
+  font-size: ${theme.fontSizes.title}
+  color: ${colors.text.primary};
+`;
+
+const RatingsContainer = styled.View`
+  padding: ${spacing.xxs} ${spacing.lg};
+  align-items: space-between;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Address = styled.Text`
+  font-family: ${theme.fonts.body}
+  font-size: ${theme.fontSizes.body}
   color: ${colors.text.primary};
 `;
 
 export const Restaurant: React.FC<RestaurantProps> = ({
-  name = "Good Eats",
+  name,
   // icon,
-  photos = [
-    "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-  ],
-  // address = "123 Street Road, City, ST 12345",
-  // isOpenNow = true,
-  // rating = 4,
+  photos,
+  address,
+  // isOpenNow,
+  rating,
   // isClosedTemporarily,
 }) => {
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
-      <Title>{name}</Title>
+      <CoverImage key={name} source={{ uri: photos[0] }} />
+      <RatingsContainer>
+        <Title>{name}</Title>
+        <Rating
+          startingValue={rating}
+          ratingCount={5}
+          imageSize={30}
+          readonly={true}
+        />
+      </RatingsContainer>
+      <Info>
+        <Address>{address}</Address>
+      </Info>
     </RestaurantCard>
   );
 };

@@ -12,6 +12,7 @@
     "strict": true,
     "target": "esnext"
   },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "assets/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",

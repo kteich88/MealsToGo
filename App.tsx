@@ -4,7 +4,6 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { RestaurantsScreen } from "./src/features/restaurants/restaurants.screen";
 import { theme } from "./src/infrastructure/theme";
-
 import {
   useFonts,
   Poppins_400Regular,

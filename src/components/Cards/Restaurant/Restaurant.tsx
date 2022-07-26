@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components/native";
 import { Rating } from "react-native-ratings";
 import { Card } from "react-native-paper";
-import { spacing } from "../../../infrastructure/theme/spacing";
+import { lineHeights, spacing } from "../../../infrastructure/theme/spacing";
 import { colors } from "../../../infrastructure/theme/colors";
 import { theme } from "../../../infrastructure/theme";
+import Status from "../../Status/Status";
 
 interface RestaurantProps {
   name: string;
-  icons: string[];
   photos: string[];
   address: string;
   isOpenNow: boolean;
   rating: number;
   isClosedTemporarily: boolean;
+  closingTime: string;
+  openingTime: string;
 }
 
 const RestaurantCard = styled(Card)`
@@ -27,6 +29,7 @@ const CoverImage = styled(Card.Cover)`
 
 const Info = styled.View`
   padding: ${spacing.lg};
+  lineheights: ${lineHeights.copy};
 `;
 
 const Title = styled.Text`
@@ -50,18 +53,22 @@ const Address = styled.Text`
 
 export const Restaurant: React.FC<RestaurantProps> = ({
   name,
-  // icon,
   photos,
   address,
-  // isOpenNow,
+  isOpenNow,
   rating,
   // isClosedTemporarily,
+  closingTime,
+  openingTime,
 }) => {
+  let status;
+  isOpenNow ? (status = "open") : (status = "closed");
   return (
     <RestaurantCard elevation={5}>
       <CoverImage key={name} source={{ uri: photos[0] }} />
       <RatingsContainer>
         <Title>{name}</Title>
+
         <Rating
           startingValue={rating}
           ratingCount={5}
@@ -70,6 +77,11 @@ export const Restaurant: React.FC<RestaurantProps> = ({
         />
       </RatingsContainer>
       <Info>
+        <Status
+          status={status}
+          closingTime={closingTime}
+          openingTime={openingTime}
+        />
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>

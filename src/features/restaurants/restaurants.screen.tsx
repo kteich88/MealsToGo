@@ -7,7 +7,7 @@ import Restaurant from "../../components/Cards/Restaurant/Restaurant";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  margin-top: ${StatusBar.currentHeight}px;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
 const SearchContainer = styled.View`
@@ -27,7 +27,6 @@ export const RestaurantsScreen = () => (
     <RestaurantListContainer>
       <Restaurant
         name={"Good Eats"}
-        icons={[]}
         photos={[
           "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
         ]}
@@ -35,6 +34,8 @@ export const RestaurantsScreen = () => (
         isOpenNow={true}
         rating={4}
         isClosedTemporarily={false}
+        closingTime={"10:00 PM"}
+        openingTime={"8:00 AM"}
       />
     </RestaurantListContainer>
   </SafeArea>

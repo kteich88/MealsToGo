@@ -1,14 +1,23 @@
 import React from "react";
-import { Searchbar } from "react-native-paper";
-import { StyleSheet, View, StatusBar, SafeAreaView } from "react-native";
+import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import Search from "./src/components/Search/Search";
+import Restaurant from "./src/components/Cards/Restaurant/Restaurant";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.search}>
-        <Searchbar value={""} />
-      </View>
-      <View style={styles.list} />
+      <Search value={""} />
+      <Restaurant
+        name={"Good Eats"}
+        icons={[]}
+        photos={[
+          "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+        ]}
+        address={""}
+        isOpenNow={false}
+        rating={0}
+        isClosedTemporarily={false}
+      />
     </SafeAreaView>
   );
 }
@@ -17,13 +26,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
-  },
-  search: {
-    padding: 16,
-  },
-  list: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "blue",
   },
 });

@@ -1,11 +1,8 @@
 import React from "react";
 import Search from "../../components/Search/Search";
 import List from "../../components/List/List";
-import {
-  RestaurantListContainer,
-  SafeArea,
-  SearchContainer,
-} from "./restaurants.styles";
+import { RestaurantListContainer, SearchContainer } from "./restaurants.styles";
+import { SafeArea } from "../../utils/SafeArea";
 
 export const RestaurantsScreen = () => (
   <SafeArea>

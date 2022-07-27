@@ -25,16 +25,19 @@ export const Restaurant: React.FC<RestaurantProps> = ({
   address,
   isOpenNow,
   rating,
-  // isClosedTemporarily,
+  isClosedTemporarily,
 }) => {
   let status;
-  isOpenNow ? (status = "open") : (status = "closed");
+  isClosedTemporarily
+    ? (status = "closedTemporarily")
+    : isOpenNow
+    ? (status = "open")
+    : (status = "closed");
   return (
     <RestaurantCard elevation={5}>
       <CoverImage key={name} source={{ uri: photos[0] }} />
       <RatingsContainer>
         <Title>{name}</Title>
-
         <Rating
           startingValue={rating}
           ratingCount={5}

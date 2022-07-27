@@ -26,4 +26,4 @@ export const colors = {
     error: "#AB2346",
     success: "#70AE6E",
   },
-};
+} as const;

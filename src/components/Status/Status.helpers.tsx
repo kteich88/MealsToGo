@@ -1,43 +1,33 @@
 import React from "react";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { colors } from "../../infrastructure/theme/colors";
-import { fontSizes } from "../../infrastructure/theme/fonts";
+import { colors } from "../../infrastructure/theme";
 import { ClosedTemporarily, Open, Closed } from "./Status.styles";
+import { ClosedIcon, ClockIcon } from "../../utils/Icons";
 
 export const renderHoursOfOperation = (status: string) => {
   switch (status) {
-    case "isClosedTemporarily":
+    case "closedTemporarily":
       return (
         <>
-          <Icon
-            name="close-octagon"
-            size={parseInt(fontSizes.body, 10)}
-            color={colors.ui.error}
-          />
-          <ClosedTemporarily>{"Temporarily closed"}</ClosedTemporarily>
+          <ClosedIcon />
+          <ClosedTemporarily>{"  Temporarily closed"}</ClosedTemporarily>
         </>
       );
+    case "open":
+      return (
+        <>
+          {ClockIcon(colors.ui.success)}
+          <Open> {"Open Now"}</Open>
+        </>
+      );
+
     case "closed":
       return (
         <>
-          <Icon
-            name="clock-outline"
-            size={parseInt(fontSizes.body, 10)}
-            color={colors.ui.error}
-          />
+          {ClockIcon(colors.ui.error)}
           <Closed> {"Closed"}</Closed>
         </>
       );
     default:
-      return (
-        <>
-          <Icon
-            name="clock-outline"
-            size={parseInt(fontSizes.body, 10)}
-            color={colors.ui.success}
-          />
-          <Open> {"Open Now"}</Open>
-        </>
-      );
+      return null;
   }
 };

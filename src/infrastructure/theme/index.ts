@@ -1,3 +1,8 @@
+export * from "./colors";
+export * from "./spacing";
+export * from "./sizes";
+export * from "./fonts";
+
 import { colors } from "./colors";
 import { spacing, lineHeights } from "./spacing";
 import { sizes } from "./sizes";

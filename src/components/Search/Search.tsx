@@ -1,16 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { Searchbar } from "react-native-paper";
-import { View } from "react-native";
-import { spacing } from "../../infrastructure/theme/spacing";
-
+import { SearchContainer } from "./Search.styles";
 interface SearchProps {
   value: string;
 }
-
-const SearchContainer = styled(View)`
-  padding: ${spacing.lg};
-`;
 
 export const Search: React.FC<SearchProps> = ({ value }) => {
   return (

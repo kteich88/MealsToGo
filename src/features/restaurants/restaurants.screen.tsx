@@ -1,23 +1,11 @@
 import React from "react";
-import styled from "styled-components/native";
-import { StatusBar, SafeAreaView } from "react-native";
-import { spacing } from "../../infrastructure/theme/spacing";
 import Search from "../../components/Search/Search";
 import Restaurant from "../../components/Cards/Restaurant/Restaurant";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
-
-const SearchContainer = styled.View`
-  padding: ${spacing.lg};
-`;
-
-const RestaurantListContainer = styled.View`
-  flex: 1;
-  padding: ${spacing.lg};
-`;
+import {
+  RestaurantListContainer,
+  SafeArea,
+  SearchContainer,
+} from "./restaurants.styles";
 
 export const RestaurantsScreen = () => (
   <SafeArea>
@@ -33,9 +21,7 @@ export const RestaurantsScreen = () => (
         address={"123 Street Road, City, ST 12345"}
         isOpenNow={true}
         rating={4}
-        isClosedTemporarily={false}
-        closingTime={"10:00 PM"}
-        openingTime={"8:00 AM"}
+        isClosedTemporarily={true}
       />
     </RestaurantListContainer>
   </SafeArea>

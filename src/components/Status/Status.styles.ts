@@ -11,6 +11,6 @@ export const Open = styled.Text`
 `;
 
 export const Closed = styled.Text`
-  color: ${colors.ui.primary};
+  color: ${colors.ui.error};
 `;
 export const ClosedTemporarily = styled.Text``;

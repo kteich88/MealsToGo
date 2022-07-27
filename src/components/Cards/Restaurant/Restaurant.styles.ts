@@ -6,6 +6,7 @@ import { theme } from "../../../infrastructure/theme";
 
 export const RestaurantCard = styled(Card)`
   background-color: white;
+  margin: ${spacing.xxs} ${spacing.sm} ${spacing.xl} ${spacing.sm};
 `;
 
 export const CoverImage = styled(Card.Cover)`

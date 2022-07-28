@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 import { lineHeights, spacing } from "../../../infrastructure/theme/spacing";
 import { colors } from "../../../infrastructure/theme/colors";
-import { theme } from "../../../infrastructure/theme";
+import { theme } from "../../../infrastructure/theme/helpers";
 
 export const RestaurantCard = styled(Card)`
   background-color: white;

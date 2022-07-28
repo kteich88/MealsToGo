@@ -10,6 +10,7 @@ import {
   Assistant_400Regular,
 } from "@expo-google-fonts/dev";
 import Navigation from "./src/components/Navigation/Navigation";
+import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
 
 export const App = () => {
   const [fontsLoaded] = useFonts({
@@ -20,7 +21,9 @@ export const App = () => {
   return fontsLoaded ? (
     <>
       <ThemeProvider theme={theme}>
-        <Navigation />
+        <RestaurantsContextProvider>
+          <Navigation />
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

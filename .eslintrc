@@ -1,6 +1,19 @@
 {
-  "extends": "@react-native-community",
+  "extends": ["@react-native-community", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
-    "quotes": [2, "double", { "avoidEscape": true }]
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "prettier/prettier": "error",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "always-multiline",
+        "singleline": "always",
+        "imports": "always",
+        "exports": "always",
+        "functions": "never"
+      }
+    ]
   }
 }

@@ -9,8 +9,15 @@ import {
 import { SafeArea } from "../../utils/SafeArea";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 
-export const RestaurantsScreen = () => {
+interface RestaurantsScreenProps {
+  navigation: any;
+}
+
+export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
+  navigation,
+}) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  console.log(navigation);
   return (
     <SafeArea>
       {isLoading ? (
@@ -18,10 +25,11 @@ export const RestaurantsScreen = () => {
       ) : (
         <>
           <SearchContainer>
-            <Search value={""} />
+            <Search />
           </SearchContainer>
+
           <RestaurantListContainer>
-            <List data={restaurants} />
+            <List data={restaurants} navigation={navigation} />
           </RestaurantListContainer>
         </>
       )}

@@ -3,8 +3,9 @@ import { LocationData } from "../../types/location.types";
 import { locations } from "./locations.mock";
 
 export const locationRequest = (searchTerm: string) => {
+  const location = searchTerm.trim();
   const promise: Promise<LocationData> = new Promise((resolve, reject) => {
-    const mock = locations[searchTerm];
+    const mock = locations[location];
     if (!mock) {
       reject(
         "not all those who wander are lost, but your data will not be found here",

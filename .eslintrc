@@ -3,6 +3,7 @@
   "plugins": ["prettier"],
   "rules": {
     "quotes": [2, "double", { "avoidEscape": true }],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react-hooks/exhaustive-deps": "off"
   }
 }

@@ -8,7 +8,7 @@ import {
   Spectral_400Regular,
   Assistant_400Regular,
 } from "@expo-google-fonts/dev";
-import Navigation from "./src/components/Navigation/Navigation";
+import Navigation from "./src/infrastructure/navigation/index.navigator";
 import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
 import { theme } from "./src/infrastructure/theme/helpers";
 import { LocationContextProvider } from "./src/contexts/location.context";

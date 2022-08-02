@@ -36,8 +36,12 @@ export const Restaurant: React.FC<RestaurantProps> = ({
   return (
     <RestaurantCard elevation={5}>
       <CoverImage key={name} source={{ uri: photos[0] }} />
-      <RatingsContainer>
+      <Info>
         <Title>{name}</Title>
+      </Info>
+      <RatingsContainer>
+        <Status status={status} />
+
         <Rating
           startingValue={rating}
           ratingCount={5}
@@ -46,7 +50,6 @@ export const Restaurant: React.FC<RestaurantProps> = ({
         />
       </RatingsContainer>
       <Info>
-        <Status status={status} />
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>

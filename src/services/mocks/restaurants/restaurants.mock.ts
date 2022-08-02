@@ -1,26 +1,10 @@
-import antwerp from "./restaurants/antwerp.json";
-import chicago from "./restaurants/chicago.json";
-import toronto from "./restaurants/toronto.json";
-import san_francisco from "./restaurants/san_francisco.json";
-import { RestaurantDataType } from "../types/restaurant.types";
-import Restaurant from "../../components/Cards/Restaurant/Restaurant";
+import antwerp from "./antwerp.json";
+import chicago from "./chicago.json";
+import toronto from "./toronto.json";
+import san_francisco from "./san_francisco.json";
+import { RestaurantData } from "../../types/restaurant.types";
 
-// export const getRestaurantMockData = (location: string): RestaurantDataType => {
-//   switch (location) {
-//     case "51.219448,4.402464":
-//       return antwerp;
-//     case "43.653225,-79.383186":
-//       return toronto;
-//     case "41.878113,-87.629799":
-//       return chicago;
-//     case "37.7749295,-122.4194155":
-//       return san_francisco;
-//     default:
-//       return {};
-//   }
-// };
-
-export const mocks: Record<string, RestaurantDataType> = {
+export const restaurantMocks: Record<string, RestaurantData> = {
   "51.219448,4.402464": antwerp,
   "43.653225,-79.383186": toronto,
   "41.878113,-87.629799": chicago,

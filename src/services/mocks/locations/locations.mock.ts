@@ -1,4 +1,6 @@
-export const locations = {
+import { LocationData } from "../../types/location.types";
+
+export const locations: Record<string, LocationData> = {
   antwerp: {
     results: [
       {

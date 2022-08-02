@@ -2,7 +2,6 @@ import React from "react";
 import { ActivityIndicator } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
-import { theme } from "./src/infrastructure/theme";
 import {
   useFonts,
   Poppins_400Regular,
@@ -11,6 +10,8 @@ import {
 } from "@expo-google-fonts/dev";
 import Navigation from "./src/components/Navigation/Navigation";
 import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
+import { theme } from "./src/infrastructure/theme/helpers";
+import { LocationContextProvider } from "./src/contexts/location.context";
 
 export const App = () => {
   const [fontsLoaded] = useFonts({
@@ -21,9 +22,11 @@ export const App = () => {
   return fontsLoaded ? (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <Navigation />
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <Navigation />
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

@@ -23,6 +23,7 @@ export const Title = styled.Text`
   font-family: ${theme.fonts.heading}
   font-size: ${theme.fontSizes.title}
   color: ${colors.text.primary};
+
 `;
 
 export const RatingsContainer = styled.View`
@@ -30,6 +31,7 @@ export const RatingsContainer = styled.View`
   align-items: space-between;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 export const Address = styled.Text`

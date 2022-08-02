@@ -1,3 +1,9 @@
+import { GeometryData } from "./location.types";
+
+interface OpeningHours {
+  open_now: boolean;
+}
+
 interface RestaurantDataResultsPhotos {
   height: number;
   html_attributions: string[];
@@ -5,25 +11,12 @@ interface RestaurantDataResultsPhotos {
   width: number;
 }
 
-interface RestaurantDataResultsLocation {
-  lat: number;
-  lng: number;
-}
-
 export interface RestaurantDataResults {
   business_status?: string;
-  geometry: {
-    location: RestaurantDataResultsLocation;
-    viewport: {
-      northeast: RestaurantDataResultsLocation;
-      southwest: RestaurantDataResultsLocation;
-    };
-  };
+  geometry: GeometryData;
   icon?: string;
   name: string;
-  opening_hours?: {
-    open_now: boolean;
-  };
+  opening_hours?: OpeningHours;
   photos: RestaurantDataResultsPhotos[];
   place_id: string;
   rating?: number;
@@ -32,7 +25,7 @@ export interface RestaurantDataResults {
   vicinity: string;
 }
 
-export interface RestaurantDataType {
+export interface RestaurantData {
   html_attributions: never[];
   next_page_token: string;
   results: RestaurantDataResults[];

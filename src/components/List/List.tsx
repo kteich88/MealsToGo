@@ -6,11 +6,11 @@ interface ListProps {
   data: any;
 }
 
-export const List: React.FC<ListProps> = (data, item) => {
+export const List: React.FC<ListProps> = ({ data }) => {
   return (
     <FlatList
       data={data}
-      renderItem={() => (
+      renderItem={({ item }) => (
         <Restaurant
           name={item.name}
           photos={item.photos}
@@ -20,7 +20,7 @@ export const List: React.FC<ListProps> = (data, item) => {
           isClosedTemporarily={item.isClosedTemporarily}
         />
       )}
-      keyExtractor={() => item.name}
+      // keyExtractor={({ item }) => item.name}
     />
   );
 };

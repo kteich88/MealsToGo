@@ -1,21 +1,30 @@
 import React, { useContext } from "react";
 import Search from "../../components/Search/Search";
 import List from "../../components/List/List";
-import { RestaurantListContainer, SearchContainer } from "./restaurants.styles";
+import {
+  RestaurantListContainer,
+  SearchContainer,
+  Loading,
+} from "./restaurants.styles";
 import { SafeArea } from "../../utils/SafeArea";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 
 export const RestaurantsScreen = () => {
-  const { restaurants } = useContext(RestaurantsContext);
-  console.log("BRUH", restaurants);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
   return (
     <SafeArea>
-      <SearchContainer>
-        <Search value={""} />
-      </SearchContainer>
-      <RestaurantListContainer>
-        <List data={restaurants} />
-      </RestaurantListContainer>
+      {isLoading ? (
+        <Loading size="large" color="#03F7EB" />
+      ) : (
+        <>
+          <SearchContainer>
+            <Search value={""} />
+          </SearchContainer>
+          <RestaurantListContainer>
+            <List data={restaurants} />
+          </RestaurantListContainer>
+        </>
+      )}
     </SafeArea>
   );
 };

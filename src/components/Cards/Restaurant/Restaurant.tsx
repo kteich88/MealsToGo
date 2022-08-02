@@ -36,20 +36,19 @@ export const Restaurant: React.FC<RestaurantProps> = ({
   return (
     <RestaurantCard elevation={5}>
       <CoverImage key={name} source={{ uri: photos[0] }} />
-      <Info>
-        <Title>{name}</Title>
-      </Info>
       <RatingsContainer>
         <Status status={status} />
-
-        <Rating
-          startingValue={rating}
-          ratingCount={5}
-          imageSize={30}
-          readonly={true}
-        />
+        {!isClosedTemporarily && (
+          <Rating
+            startingValue={rating}
+            ratingCount={5}
+            imageSize={30}
+            readonly={true}
+          />
+        )}
       </RatingsContainer>
       <Info>
+        <Title>{name}</Title>
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>

@@ -1,8 +1,8 @@
 import camelize from "camelize-ts";
-import { Geometry, LocationData } from "../../types/location.types";
+import { LocationData } from "../../types/location.types";
 import { locations } from "./locations.mock";
 
-export const locationRequest = (searchTerm: string = "antwerp") => {
+export const locationRequest = (searchTerm: string) => {
   const promise: Promise<LocationData> = new Promise((resolve, reject) => {
     const mock = locations[searchTerm];
     if (!mock) {

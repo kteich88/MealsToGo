@@ -8,9 +8,13 @@ export const StatusContainer = styled.Text`
 
 export const Open = styled.Text`
   color: ${colors.ui.success};
+  font-weight: bold;
 `;
 
 export const Closed = styled.Text`
   color: ${colors.ui.error};
+  font-weight: bold;
 `;
-export const ClosedTemporarily = styled.Text``;
+export const ClosedTemporarily = styled.Text`
+  font-weight: bold;
+`;

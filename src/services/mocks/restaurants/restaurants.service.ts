@@ -2,9 +2,7 @@ import camelize from "camelize-ts";
 import { RestaurantData } from "../../types/restaurant.types";
 import { restaurantMocks, mockImages } from "../restaurants/restaurants.mock";
 
-export const restaurantsRequest = (
-  location: string = "37.7749295,-122.4194155",
-) => {
+export const restaurantsRequest = (location: string) => {
   const promise: Promise<RestaurantData> = new Promise((resolve, reject) => {
     const mock = restaurantMocks[location];
     if (!mock) {
@@ -23,18 +21,10 @@ export const restaurantsTransform = async (promise: RestaurantData) => {
     });
     return {
       ...restaurant,
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
     };
   });
   return camelize(mappedResults);
 };
-
-restaurantsRequest()
-  .then(restaurantsTransform)
-  .then((transformedResponse) => {
-    console.log(transformedResponse);
-  })
-  .catch((error) => {
-    console.error(error);
-  });

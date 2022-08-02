@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import {
   locationRequest,
   locationTransform,
@@ -10,7 +10,7 @@ interface LocationContext {
   keyword: string;
   isLoading: boolean;
   error: string | null;
-  search: () => void;
+  search: (searchKeyword: string) => void;
 }
 
 export const LocationContext = createContext<LocationContext>(
@@ -23,10 +23,13 @@ export const LocationContextProvider: React.FC = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const onSearch = () => {
+  const onSearch = (searchKeyword: string) => {
     setIsLoading(true);
-    setKeyword(keyword);
-    locationRequest(keyword.toLowerCase())
+    if (!searchKeyword.length) {
+      return;
+    }
+    setKeyword(searchKeyword);
+    locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
@@ -38,18 +41,14 @@ export const LocationContextProvider: React.FC = ({ children }) => {
       });
   };
 
-  // useEffect(() => {
-  //   onSearch();
-  // }, []);
-
   return (
     <LocationContext.Provider
       value={{
         isLoading,
         error,
         location,
-        search: onSearch,
         keyword,
+        search: (searchKeyword) => onSearch(searchKeyword),
       }}
     >
       {children}

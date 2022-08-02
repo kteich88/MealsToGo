@@ -32,16 +32,15 @@ export const RestaurantsContextProvider: React.FC = ({ children }) => {
           setIsLoading(false);
           setRestaurants(results);
         })
-        .catch((error) => {
+        .catch((err) => {
           setIsLoading(false);
-          setError(error);
+          setError(err);
         });
     }, 2000);
   };
   useEffect(() => {
     if (location) {
-      const locationString = `${location.lat},${location.lng}`;
-      retrieveRestaurants(locationString);
+      retrieveRestaurants(location);
     }
   }, [location]);
 

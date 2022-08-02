@@ -3,10 +3,9 @@ import {
   locationRequest,
   locationTransform,
 } from "../services/mocks/locations/locations.service";
-import { Location } from "../services/types/location.types";
 
 interface LocationContext {
-  location: Location | null;
+  location: string | null;
   keyword: string;
   isLoading: boolean;
   error: string | null;
@@ -19,7 +18,7 @@ export const LocationContext = createContext<LocationContext>(
 
 export const LocationContextProvider: React.FC = ({ children }) => {
   const [keyword, setKeyword] = useState<string>("");
-  const [location, setLocation] = useState<Location | null>(null);
+  const [location, setLocation] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,9 +34,9 @@ export const LocationContextProvider: React.FC = ({ children }) => {
         setIsLoading(false);
         setLocation(result);
       })
-      .catch((error) => {
+      .catch((err) => {
         setIsLoading(false);
-        setError(error);
+        setError(err);
       });
   };
 

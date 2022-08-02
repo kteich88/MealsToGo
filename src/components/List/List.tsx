@@ -9,10 +9,14 @@ interface ListProps {
 
 export const List: React.FC<ListProps> = ({ data, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Restaurant Detail")}>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
+    <FlatList
+      data={data}
+      renderItem={({ item }) => (
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Restaurant Detail", { restaurant: item })
+          }
+        >
           <Restaurant
             name={item.name}
             photos={item.photos}
@@ -21,9 +25,9 @@ export const List: React.FC<ListProps> = ({ data, navigation }) => {
             rating={4}
             isClosedTemporarily={item.isClosedTemporarily}
           />
-        )}
-      />
-    </TouchableOpacity>
+        </TouchableOpacity>
+      )}
+    />
   );
 };
 

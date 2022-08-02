@@ -17,7 +17,6 @@ export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
   navigation,
 }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
-  console.log(navigation);
   return (
     <SafeArea>
       {isLoading ? (

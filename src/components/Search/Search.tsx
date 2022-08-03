@@ -1,17 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import { LocationContext } from "../../contexts/location.context";
 import { SearchContainer } from "./Search.styles";
 
-export const Search: React.FC = () => {
+interface SearchProps {
+  placeholder: string;
+  icon?: string;
+}
+
+export const Search: React.FC<SearchProps> = ({ placeholder, icon }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState<string>(keyword);
+
+  useEffect(() => {
+    setSearchKeyword(keyword);
+  }, [keyword]);
 
   return (
     <SearchContainer>
       <Searchbar
         value={searchKeyword}
-        placeholder={"Search for location..."}
+        icon={icon}
+        placeholder={placeholder}
         onSubmitEditing={() => {
           search(searchKeyword);
         }}

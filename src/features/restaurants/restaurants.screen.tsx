@@ -24,7 +24,7 @@ export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
       ) : (
         <>
           <SearchContainer>
-            <Search />
+            <Search placeholder={"Search for location..."} />
           </SearchContainer>
 
           <RestaurantListContainer>

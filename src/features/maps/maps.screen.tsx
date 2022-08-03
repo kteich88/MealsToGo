@@ -1,9 +1,13 @@
 import React from "react";
-import { Text } from "react-native";
+import Search from "../../components/Search/Search";
 import { SafeArea } from "../../utils/SafeArea";
+import { Map, SearchContainer } from "./maps.styles";
 
 export const MapsScreen = () => (
   <SafeArea>
-    <Text>Maps</Text>
+    <SearchContainer>
+      <Search placeholder={"Search for location..."} icon="map-marker" />
+    </SearchContainer>
+    <Map />
   </SafeArea>
 );

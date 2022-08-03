@@ -1,3 +1,4 @@
+import { Camelize } from "camelize-ts";
 import { GeometryData } from "./location.types";
 
 interface OpeningHours {
@@ -24,6 +25,11 @@ export interface RestaurantDataResults {
   user_ratings_total?: number;
   vicinity: string;
 }
+
+export type Restaurants =
+  | RestaurantDataResults[]
+  | Camelize<RestaurantDataResults[]>
+  | undefined[];
 
 export interface RestaurantData {
   html_attributions: never[];

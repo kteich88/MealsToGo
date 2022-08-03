@@ -1,11 +1,12 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   locationRequest,
   locationTransform,
 } from "../services/mocks/locations/locations.service";
+import { TransformedLocation } from "../services/types/location.types";
 
 interface LocationContext {
-  location: string | null;
+  location: TransformedLocation | null;
   keyword: string;
   isLoading: boolean;
   error: string | null;
@@ -18,19 +19,23 @@ export const LocationContext = createContext<LocationContext>(
 
 export const LocationContextProvider: React.FC = ({ children }) => {
   const [keyword, setKeyword] = useState<string>("");
-  const [location, setLocation] = useState<string | null>(null);
+  const [location, setLocation] = useState<TransformedLocation | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const onSearch = (searchKeyword: string) => {
     setIsLoading(true);
-    if (!searchKeyword.length) {
+    setKeyword(searchKeyword);
+  };
+
+  useEffect(() => {
+    if (!keyword.length) {
       return;
     }
-    setKeyword(searchKeyword);
-    locationRequest(searchKeyword.toLowerCase())
+    locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
+        setError(null);
         setIsLoading(false);
         setLocation(result);
       })
@@ -38,7 +43,7 @@ export const LocationContextProvider: React.FC = ({ children }) => {
         setIsLoading(false);
         setError(err);
       });
-  };
+  }, [keyword]);
 
   return (
     <LocationContext.Provider

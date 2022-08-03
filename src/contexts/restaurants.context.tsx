@@ -1,13 +1,13 @@
-import { Camelize } from "camelize-ts";
 import React, { useState, createContext, useEffect, useContext } from "react";
 import {
   restaurantsRequest,
   restaurantsTransform,
 } from "../services/mocks/restaurants/restaurants.service";
+import { Restaurants } from "../services/types/restaurant.types";
 import { LocationContext } from "./location.context";
 
 interface RestaurantsContext {
-  restaurants: string | Camelize<any>;
+  restaurants: Restaurants;
   isLoading: boolean;
   error: string | null;
 }
@@ -17,7 +17,7 @@ export const RestaurantsContext = createContext<RestaurantsContext>(
 );
 
 export const RestaurantsContextProvider: React.FC = ({ children }) => {
-  const [restaurants, setRestaurants] = useState<string | Camelize<any>>([]);
+  const [restaurants, setRestaurants] = useState<Restaurants>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const { location } = useContext(LocationContext);
@@ -40,7 +40,8 @@ export const RestaurantsContextProvider: React.FC = ({ children }) => {
   };
   useEffect(() => {
     if (location) {
-      retrieveRestaurants(location);
+      const locationString = `${location.lat},${location.lng}`;
+      retrieveRestaurants(locationString);
     }
   }, [location]);
 

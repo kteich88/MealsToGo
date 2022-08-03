@@ -1,3 +1,5 @@
+import { Camelize } from "camelize-ts";
+
 interface Viewport {
   northeast: Location;
   southwest: Location;
@@ -6,6 +8,12 @@ interface Viewport {
 export interface Location {
   lat: number;
   lng: number;
+}
+
+export interface TransformedLocation {
+  lat: number;
+  lng: number;
+  viewport: Camelize<Viewport>;
 }
 
 export interface Geometry {

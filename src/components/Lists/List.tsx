@@ -14,7 +14,7 @@ export const List: React.FC<ListProps> = ({ data, navigation }) => {
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Restaurant Detail", { restaurant: item })
+            navigation.navigate("Restaurant Details", { restaurant: item })
           }
         >
           <Restaurant

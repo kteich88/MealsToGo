@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Search from "../../components/Search/Search";
-import List from "../../components/List/List";
+import List from "../../components/Lists/List";
 import {
   RestaurantListContainer,
   SearchContainer,

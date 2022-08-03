@@ -14,7 +14,7 @@ const TAB_ICON = {
   Settings: SettingsIcon,
 };
 
-const createScreenOptions = ({ route }) => {
+const screenOptions = ({ route }) => {
   return {
     tabBarIcon: TAB_ICON[route.name],
     headerShown: false,
@@ -24,7 +24,7 @@ const createScreenOptions = ({ route }) => {
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={createScreenOptions}>
+      <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
         <Tab.Screen name="Maps" component={MapsScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />

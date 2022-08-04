@@ -12,19 +12,19 @@ export const Title = styled.Text`
   margin-bottom: ${sizes.md}px;
 `;
 
-export const FavoriteButton = styled(TouchableOpacity)`
+export const Favorite = styled(TouchableOpacity)`
   position: absolute;
   top: ${sizes.xl}px;
   right: ${sizes.xl}px;
   z-index: 9;
 `;
 
-export const Favorites = styled.View`
+export const FavoritesContainer = styled.View`
   padding: ${sizes.md}px;
   margin: 0 ${sizes.lg}px ${sizes.lg}px ${sizes.lg}px;
 `;
 
-export const FavoriteBar = styled(TouchableOpacity)`
+export const FavoritesCardContainer = styled(TouchableOpacity)`
   margin-right: ${sizes.lg}px;
 `;
 

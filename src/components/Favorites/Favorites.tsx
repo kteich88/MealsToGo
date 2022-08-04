@@ -1,22 +1,27 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import CompactCard from "../Cards/Card";
-import { FavoriteBar, Favorites, Title } from "./Favorite.styles";
+import {
+  FavoritesContainer,
+  FavoritesCardContainer,
+  Title,
+} from "./Favorite.styles";
 
-export const FavoritesBar = ({ favorites, onNavigate }) => {
+const Favorites = ({ favorites, navigation }) => {
   if (!favorites.length) {
     return null;
   }
   return (
-    <Favorites>
+    <FavoritesContainer>
       <Title>Favorites</Title>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favorites.map((restaurant) => {
           return (
-            <FavoriteBar
+            <FavoritesCardContainer
+              key={restaurant.placeId}
               onPress={() =>
-                onNavigate("Restaurant Details", {
+                navigation.navigate("Restaurant Details", {
                   restaurant,
                 })
               }
@@ -26,10 +31,12 @@ export const FavoritesBar = ({ favorites, onNavigate }) => {
                 name={restaurant.name}
                 photo={restaurant.photo}
               />
-            </FavoriteBar>
+            </FavoritesCardContainer>
           );
         })}
       </ScrollView>
-    </Favorites>
+    </FavoritesContainer>
   );
 };
+
+export default Favorites;

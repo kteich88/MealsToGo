@@ -9,7 +9,7 @@ import {
 import { SafeArea } from "../../utils/SafeArea";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
-import { FavoritesBar } from "../../components/Favorites/FavoritesBar";
+import Favorites from "../../components/Favorites/Favorites";
 
 interface RestaurantsScreenProps {
   navigation;
@@ -31,7 +31,7 @@ export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
             <Search placeholder={"Search for location..."} />
           </SearchContainer>
 
-          <FavoritesBar favorites={favorites} onNavigate={navigation} />
+          <Favorites favorites={favorites} navigation={navigation} />
 
           <RestaurantListContainer>
             <List data={restaurants} navigation={navigation} />

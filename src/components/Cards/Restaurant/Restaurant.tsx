@@ -1,9 +1,6 @@
 import React from "react";
 import { View } from "react-native";
 import { Rating } from "react-native-ratings";
-import Status from "../../Status/Status";
-import Favorite from "../../Favorites/Favorite";
-
 import {
   Address,
   CoverImage,
@@ -13,6 +10,8 @@ import {
   Title,
 } from "./Restaurant.styles";
 import { TransformedRestaurantDataResults } from "../../../services/types/restaurant.types";
+import FavoriteButton from "../../Favorites/FavoriteButton";
+import Status from "../../Status/Status";
 
 interface RestaurantProps {
   restaurant: TransformedRestaurantDataResults;
@@ -30,7 +29,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
   return (
     <RestaurantCard elevation={5}>
       <View>
-        <Favorite restaurant={restaurant} />
+        <FavoriteButton restaurant={restaurant} />
         <CoverImage key={name} source={{ uri: photo }} />
       </View>
       <RatingsContainer>

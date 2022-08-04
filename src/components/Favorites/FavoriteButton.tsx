@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { FavoritesContext } from "../../contexts/favorites.context";
 import { colors, sizes } from "../../infrastructure/theme";
-import { FavoriteButton } from "./Favorite.styles";
+import { Favorite } from "./Favorite.styles";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 
 interface FavoriteProps {
   restaurant: TransformedRestaurantDataResults;
 }
 
-const Favorite: React.FC<FavoriteProps> = ({ restaurant }) => {
+const FavoriteButton: React.FC<FavoriteProps> = ({ restaurant }) => {
   const { favorites, addToFavorites, removeFromFavorites } =
     useContext(FavoritesContext);
 
@@ -18,7 +18,7 @@ const Favorite: React.FC<FavoriteProps> = ({ restaurant }) => {
   );
 
   return (
-    <FavoriteButton
+    <Favorite
       onPress={() => {
         isFavorite
           ? removeFromFavorites(restaurant)
@@ -30,8 +30,8 @@ const Favorite: React.FC<FavoriteProps> = ({ restaurant }) => {
         size={sizes.xl}
         color={isFavorite ? colors.ui.error : colors.ui.quaternary}
       />
-    </FavoriteButton>
+    </Favorite>
   );
 };
 
-export default Favorite;
+export default FavoriteButton;

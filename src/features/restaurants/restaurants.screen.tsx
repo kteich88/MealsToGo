@@ -8,15 +8,19 @@ import {
 } from "./restaurants.styles";
 import { SafeArea } from "../../utils/SafeArea";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
+import { FavoritesContext } from "../../contexts/favorites.context";
+import { FavoritesBar } from "../../components/Favorites/FavoritesBar";
 
 interface RestaurantsScreenProps {
-  navigation: any;
+  navigation;
 }
 
 export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
   navigation,
 }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
+
   return (
     <SafeArea>
       {isLoading ? (
@@ -26,6 +30,8 @@ export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({
           <SearchContainer>
             <Search placeholder={"Search for location..."} />
           </SearchContainer>
+
+          <FavoritesBar favorites={favorites} onNavigate={navigation} />
 
           <RestaurantListContainer>
             <List data={restaurants} navigation={navigation} />

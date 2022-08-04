@@ -7,8 +7,8 @@ import { RestaurantsContext } from "../../contexts/restaurants.context";
 import MapView, { Callout, Marker } from "react-native-maps";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import CompactCard from "../../components/Cards/Card";
+import { TouchableOpacity } from "react-native";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const MapsScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
@@ -34,7 +34,6 @@ export const MapsScreen = ({ navigation }) => {
           longitudeDelta: 0.02,
         }}
       >
-        {/* TODO: Need to figure out why the callout onPress is broken. */}
         {(restaurants as TransformedRestaurantDataResults[]).map(
           (restaurant: TransformedRestaurantDataResults) => {
             return (
@@ -46,16 +45,20 @@ export const MapsScreen = ({ navigation }) => {
                     longitude: restaurant.geometry.location.lng,
                   }}
                 >
-                  <Callout
-                  // onPress={navigation.navigate("Restaurant Details", {
-                  //   restaurant: restaurant,
-                  // })}
-                  >
-                    <CompactCard
-                      key={restaurant.name}
-                      name={restaurant.name}
-                      photo={restaurant.photo}
-                    />
+                  <Callout>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate("Restaurant Details", {
+                          restaurant,
+                        })
+                      }
+                    >
+                      <CompactCard
+                        key={restaurant.name}
+                        name={restaurant.name}
+                        photo={restaurant.photo}
+                      />
+                    </TouchableOpacity>
                   </Callout>
                 </Marker>
               </MapView>

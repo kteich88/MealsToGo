@@ -1,39 +1,35 @@
 import React from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
-import CompactCard from "../../components/Cards/Card";
+import { ScrollView } from "react-native";
+import CompactCard from "../Cards/Card";
+import { FavoriteBar, Favorites, Title } from "./Favorite.styles";
 
-const FavoritesWrapper = styled.View`
-  padding: 10px;
-`;
 export const FavoritesBar = ({ favorites, onNavigate }) => {
   if (!favorites.length) {
     return null;
   }
   return (
-    <FavoritesWrapper>
-      <Spacer variant="left.large">
-        <Text variant="caption">Favorites</Text>
-      </Spacer>
+    <Favorites>
+      <Title>Favorites</Title>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favorites.map((restaurant) => {
-          const key = restaurant.name;
           return (
-            <Spacer key={key} position="left" size="medium">
-              <TouchableOpacity
-                onPress={() =>
-                  onNavigate("Restaurant Details", {
-                    restaurant,
-                  })
-                }
-              >
-                <CompactCard restaurant={restaurant} />
-              </TouchableOpacity>
-            </Spacer>
+            <FavoriteBar
+              onPress={() =>
+                onNavigate("Restaurant Details", {
+                  restaurant,
+                })
+              }
+            >
+              <CompactCard
+                key={restaurant.name}
+                name={restaurant.name}
+                photo={restaurant.photo}
+              />
+            </FavoriteBar>
           );
         })}
       </ScrollView>
-    </FavoritesWrapper>
+    </Favorites>
   );
 };

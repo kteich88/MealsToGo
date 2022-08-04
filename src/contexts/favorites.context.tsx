@@ -1,9 +1,10 @@
 import React, { createContext, useState } from "react";
+import { TransformedRestaurantDataResults } from "../services/types/restaurant.types";
 
 interface FavoritesContext {
-  favorites: string[];
-  addToFavorites: (restaurant: string) => void;
-  removeFromFavorites: (restaurant: string) => void;
+  favorites: TransformedRestaurantDataResults[];
+  addToFavorites: (restaurant: TransformedRestaurantDataResults) => void;
+  removeFromFavorites: (restaurant: TransformedRestaurantDataResults) => void;
 }
 
 export const FavoritesContext = createContext<FavoritesContext>(
@@ -11,14 +12,18 @@ export const FavoritesContext = createContext<FavoritesContext>(
 );
 
 export const FavoritesContextProvider: React.FC = ({ children }) => {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<
+    TransformedRestaurantDataResults[]
+  >([]);
 
-  const addToFavorites = (restaurant: string) => {
+  const addToFavorites = (restaurant: TransformedRestaurantDataResults) => {
     setFavorites([...favorites, restaurant]);
   };
 
-  const removeFromFavorites = (restaurant: string) => {
-    setFavorites(favorites.filter((item) => item !== restaurant));
+  const removeFromFavorites = (
+    restaurant: TransformedRestaurantDataResults,
+  ) => {
+    setFavorites(favorites.filter((item) => item.name !== restaurant.name));
   };
 
   return (

@@ -1,5 +1,9 @@
-import camelize from "camelize-ts";
-import { LocationData } from "../../types/location.types";
+import camelize, { Camelize } from "camelize-ts";
+import {
+  Geometry,
+  LocationData,
+  TransformedLocation,
+} from "../../types/location.types";
 import { locations } from "./locations.mock";
 
 export const locationRequest = (searchTerm: string) => {
@@ -16,10 +20,18 @@ export const locationRequest = (searchTerm: string) => {
   return promise;
 };
 
-export const locationTransform = (result: LocationData) => {
-  const formattedResponse = camelize(result);
-  const { geometry } = formattedResponse.results[0];
+export const transformLocationData = (
+  promise: LocationData,
+): TransformedLocation => {
+  const results: Geometry[] = promise.results;
+  const transformedLocationData: Camelize<Geometry>[] = results.map(
+    (geometry) => {
+      return camelize(geometry);
+    },
+  );
+  const { geometry } = transformedLocationData[0];
+  const { viewport } = geometry;
   const { lat, lng } = geometry.location;
 
-  return { lat, lng, viewport: geometry.viewport };
+  return { lat, lng, viewport };
 };

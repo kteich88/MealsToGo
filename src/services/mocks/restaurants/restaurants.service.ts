@@ -24,7 +24,6 @@ export const transformRestaurantData = async (promise: RestaurantData) => {
   const transformedRestaurantData: TransformedRestaurantDataResults[] =
     results.map((restaurant: RestaurantDataResults) => {
       const camelizedRestaurants = camelize(restaurant);
-      console.log("CAMEL", camelizedRestaurants);
       const photo =
         mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
 
@@ -39,6 +38,5 @@ export const transformRestaurantData = async (promise: RestaurantData) => {
       };
     });
 
-  console.log(transformedRestaurantData);
   return transformedRestaurantData;
 };

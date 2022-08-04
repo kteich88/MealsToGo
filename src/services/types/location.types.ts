@@ -1,3 +1,5 @@
+import { Camelize } from "camelize-ts";
+
 interface Viewport {
   northeast: Location;
   southwest: Location;
@@ -11,11 +13,7 @@ export interface Location {
 export interface TransformedLocation {
   lat: number;
   lng: number;
-  viewport: Viewport;
-}
-
-export interface Geometry {
-  geometry: GeometryData;
+  viewport: Camelize<Viewport>;
 }
 
 export interface GeometryData {
@@ -23,7 +21,11 @@ export interface GeometryData {
   viewport: Viewport;
 }
 
+export interface Geometry {
+  geometry: GeometryData;
+}
+
 export interface LocationData {
-  results: [Geometry];
+  results: Geometry[];
   status?: string;
 }

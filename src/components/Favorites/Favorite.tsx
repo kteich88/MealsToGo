@@ -13,7 +13,9 @@ const Favorite: React.FC<FavoriteProps> = ({ restaurant }) => {
   const { favorites, addToFavorites, removeFromFavorites } =
     useContext(FavoritesContext);
 
-  const isFavorite = favorites.find((favorite) => favorite === restaurant);
+  const isFavorite = favorites.find(
+    (favorite) => favorite.name === restaurant.name,
+  );
 
   return (
     <FavoriteButton

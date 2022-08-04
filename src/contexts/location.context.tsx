@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
   locationRequest,
-  locationTransform,
+  transformLocationData,
 } from "../services/mocks/locations/locations.service";
 import { TransformedLocation } from "../services/types/location.types";
 
@@ -18,7 +18,7 @@ export const LocationContext = createContext<LocationContext>(
 );
 
 export const LocationContextProvider: React.FC = ({ children }) => {
-  const [keyword, setKeyword] = useState<string>("");
+  const [keyword, setKeyword] = useState<string>("San Francisco");
   const [location, setLocation] = useState<TransformedLocation>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +33,7 @@ export const LocationContextProvider: React.FC = ({ children }) => {
       return;
     }
     locationRequest(keyword.toLowerCase())
-      .then(locationTransform)
+      .then(transformLocationData)
       .then((result) => {
         setError(null);
         setIsLoading(false);

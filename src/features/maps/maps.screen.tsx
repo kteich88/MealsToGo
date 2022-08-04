@@ -5,15 +5,14 @@ import { Map, SearchContainer } from "./maps.styles";
 import { LocationContext } from "../../contexts/location.context";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 import MapView, { Callout, Marker } from "react-native-maps";
-import { RestaurantDataResults } from "../../services/types/restaurant.types";
+import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import CompactCard from "../../components/Cards/Card";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const MapsScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
-
   const [latDelta, setLatDelta] = useState<number>(0);
-
   const { lat, lng, viewport } = location;
 
   useEffect(() => {
@@ -35,8 +34,9 @@ export const MapsScreen = ({ navigation }) => {
           longitudeDelta: 0.02,
         }}
       >
-        {(restaurants as RestaurantDataResults[]).map(
-          (restaurant: RestaurantDataResults) => {
+        {/* TODO: Need to figure out why the callout onPress is broken. */}
+        {(restaurants as TransformedRestaurantDataResults[]).map(
+          (restaurant: TransformedRestaurantDataResults) => {
             return (
               <MapView>
                 <Marker
@@ -47,14 +47,14 @@ export const MapsScreen = ({ navigation }) => {
                   }}
                 >
                   <Callout
-                    onPress={navigation.navigate("Restaurant Details", {
-                      restaurant,
-                    })}
+                  // onPress={navigation.navigate("Restaurant Details", {
+                  //   restaurant: restaurant,
+                  // })}
                   >
                     <CompactCard
                       key={restaurant.name}
                       name={restaurant.name}
-                      photos={restaurant.photos}
+                      photo={restaurant.photo}
                     />
                   </Callout>
                 </Marker>

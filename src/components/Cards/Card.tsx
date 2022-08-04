@@ -1,19 +1,15 @@
 import React from "react";
-import { RestaurantDataResultsPhotos } from "../../services/types/restaurant.types";
 import { Card, Image, Title } from "./Card.styles";
-import { Camelize } from "camelize-ts";
 
 interface CompactCard {
   name: string;
-  photos:
-    | RestaurantDataResultsPhotos[]
-    | Camelize<RestaurantDataResultsPhotos[]>;
+  photo: string;
 }
 
-const CompactCard: React.FC<CompactCard> = ({ name, photos }) => {
+const CompactCard: React.FC<CompactCard> = ({ name, photo }) => {
   return (
     <Card>
-      <Image key={name} source={{ uri: photos[0] }} />
+      <Image key={name} source={{ uri: photo }} />
       <Title>{name}</Title>
     </Card>
   );

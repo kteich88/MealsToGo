@@ -13,13 +13,13 @@ import {
 interface RestaurantProps {
   name: string;
   photos: string[];
-  address: string;
-  isOpenNow: boolean;
-  rating: number;
-  isClosedTemporarily: boolean;
+  address?: string;
+  isOpenNow?: boolean;
+  rating?: number;
+  isClosedTemporarily?: boolean;
 }
 
-export const Restaurant: React.FC<RestaurantProps> = ({
+const Restaurant: React.FC<RestaurantProps> = ({
   name,
   photos,
   address,

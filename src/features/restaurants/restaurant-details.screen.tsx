@@ -18,6 +18,7 @@ export const RestaurantDetailsScreen: React.FC<
   return (
     <SafeArea>
       <Restaurant
+        key={restaurant.name}
         name={restaurant.name}
         photos={restaurant.photos}
         address={restaurant.address}

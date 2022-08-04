@@ -4,4 +4,5 @@ export const sizes = {
   xl: 32,
   xxl: 64,
   xxxl: 128,
+  xxxxl: 256,
 };

@@ -8,13 +8,18 @@ import { RestaurantDetailsScreen } from "../../features/restaurants/restaurant-d
 
 const RestaurantStack = createStackNavigator();
 
+const screenOptions = () => {
+  return {
+    ...TransitionPresets.ModalPresentationIOS,
+    headerShown: false,
+  };
+};
+
 export const RestaurantsNavigator = () => {
   return (
-    <RestaurantStack.Navigator
-      screenOptions={{ ...TransitionPresets.ModalPresentationIOS }}
-    >
+    <RestaurantStack.Navigator screenOptions={screenOptions}>
       <RestaurantStack.Screen
-        name="Restaurants"
+        name="Restaurants Screen"
         component={RestaurantsScreen}
       />
       <RestaurantStack.Screen

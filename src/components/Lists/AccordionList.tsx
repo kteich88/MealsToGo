@@ -10,7 +10,7 @@ interface AccordionListProps {
   };
 }
 
-export const AccordionList: React.FC<AccordionListProps> = ({ menu }) => {
+const AccordionList: React.FC<AccordionListProps> = ({ menu }) => {
   const [expanded, setExpanded] = useState(false);
   const handlePress = () => setExpanded(!expanded);
 
@@ -18,6 +18,7 @@ export const AccordionList: React.FC<AccordionListProps> = ({ menu }) => {
     <>
       <ScrollView>
         <List.Accordion
+          key={menu.meal}
           title={menu.meal}
           // eslint-disable-next-line react/no-unstable-nested-components
           left={(props) => <List.Icon {...props} icon={menu.icon} />}

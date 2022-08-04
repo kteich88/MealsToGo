@@ -8,7 +8,7 @@ interface SearchProps {
   icon?: string;
 }
 
-export const Search: React.FC<SearchProps> = ({ placeholder, icon }) => {
+const Search: React.FC<SearchProps> = ({ placeholder, icon }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState<string>(keyword);
 

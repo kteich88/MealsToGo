@@ -5,7 +5,7 @@ import { colors } from "../../../infrastructure/theme/colors";
 import { theme } from "../../../infrastructure/theme/helpers";
 
 export const RestaurantCard = styled(Card)`
-  background-color: white;
+  background-color: ${colors.bg.primary};
   margin: ${spacing.xxs} ${spacing.sm} ${spacing.xl} ${spacing.sm};
 `;
 
@@ -24,7 +24,6 @@ export const Title = styled.Text`
   font-size: ${theme.fontSizes.title}
   font-weight: bold
   color: ${colors.text.primary};
-
 `;
 
 export const RatingsContainer = styled.View`

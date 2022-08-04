@@ -6,7 +6,7 @@ import {
 import { TransformedLocation } from "../services/types/location.types";
 
 interface LocationContext {
-  location: TransformedLocation | null;
+  location: TransformedLocation;
   keyword: string;
   isLoading: boolean;
   error: string | null;
@@ -19,7 +19,7 @@ export const LocationContext = createContext<LocationContext>(
 
 export const LocationContextProvider: React.FC = ({ children }) => {
   const [keyword, setKeyword] = useState<string>("");
-  const [location, setLocation] = useState<TransformedLocation | null>(null);
+  const [location, setLocation] = useState<TransformedLocation>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 

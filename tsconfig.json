@@ -10,7 +10,8 @@
     "lib": ["es2017"],
     "moduleResolution": "node",
     "noEmit": true,
-    "target": "esnext"
+    "target": "esnext",
+    "strictFunctionTypes": false
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "assets/*"],
   "exclude": [

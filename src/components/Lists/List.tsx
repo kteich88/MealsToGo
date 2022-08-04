@@ -7,7 +7,7 @@ interface ListProps {
   navigation: any;
 }
 
-export const List: React.FC<ListProps> = ({ data, navigation }) => {
+const List: React.FC<ListProps> = ({ data, navigation }) => {
   return (
     <FlatList
       data={data}
@@ -18,6 +18,7 @@ export const List: React.FC<ListProps> = ({ data, navigation }) => {
           }
         >
           <Restaurant
+            key={item.name}
             name={item.name}
             photos={item.photos}
             address={item.address}
@@ -27,6 +28,7 @@ export const List: React.FC<ListProps> = ({ data, navigation }) => {
           />
         </TouchableOpacity>
       )}
+      keyExtractor={(item) => item.name}
     />
   );
 };

@@ -5,7 +5,7 @@ interface OpeningHours {
   open_now: boolean;
 }
 
-interface RestaurantDataResultsPhotos {
+export interface RestaurantDataResultsPhotos {
   height: number;
   html_attributions: string[];
   photo_reference: string;
@@ -14,12 +14,14 @@ interface RestaurantDataResultsPhotos {
 
 export interface RestaurantDataResults {
   business_status?: string;
-  geometry: GeometryData;
+  geometry: GeometryData | Camelize<GeometryData>;
   icon?: string;
   name: string;
-  opening_hours?: OpeningHours;
-  photos: RestaurantDataResultsPhotos[];
-  place_id: string;
+  opening_hours?: OpeningHours | Camelize<OpeningHours>;
+  photos:
+    | RestaurantDataResultsPhotos[]
+    | Camelize<RestaurantDataResultsPhotos[]>;
+  place_id?: string;
   rating?: number;
   reference: string;
   user_ratings_total?: number;
@@ -28,12 +30,12 @@ export interface RestaurantDataResults {
 
 export type Restaurants =
   | RestaurantDataResults[]
-  | Camelize<RestaurantDataResults[]>
-  | undefined[];
+  | undefined[]
+  | Camelize<RestaurantDataResults[]>;
 
 export interface RestaurantData {
   html_attributions: never[];
   next_page_token: string;
-  results: RestaurantDataResults[];
+  results: RestaurantDataResults[] | Camelize<RestaurantDataResults[]>;
   status: string;
 }

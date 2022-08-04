@@ -6,7 +6,7 @@ interface StatusProps {
   status: string;
 }
 
-export const Status: React.FC<StatusProps> = ({ status }) => {
+const Status: React.FC<StatusProps> = ({ status }) => {
   return <StatusContainer>{renderHoursOfOperation(status)}</StatusContainer>;
 };
 

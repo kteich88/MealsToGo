@@ -10,8 +10,10 @@ import {
 } from "@expo-google-fonts/dev";
 import Navigation from "./src/infrastructure/navigation/index.navigator";
 import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
-import { theme } from "./src/infrastructure/theme/helpers";
 import { LocationContextProvider } from "./src/contexts/location.context";
+import { FavoritesContextProvider } from "./src/contexts/favorites.context";
+
+import { theme } from "./src/infrastructure/theme/helpers";
 
 export const App = () => {
   const [fontsLoaded] = useFonts({
@@ -22,11 +24,13 @@ export const App = () => {
   return fontsLoaded ? (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavoritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavoritesContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

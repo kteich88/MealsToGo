@@ -1,10 +1,11 @@
 import React from "react";
 import Restaurant from "../Cards/Restaurant/Restaurant";
 import { FlatList, TouchableOpacity } from "react-native";
+import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 
 interface ListProps {
-  data: any;
-  navigation: any;
+  data: TransformedRestaurantDataResults[];
+  navigation;
 }
 
 const List: React.FC<ListProps> = ({ data, navigation }) => {
@@ -17,15 +18,7 @@ const List: React.FC<ListProps> = ({ data, navigation }) => {
             navigation.navigate("Restaurant Details", { restaurant: item })
           }
         >
-          <Restaurant
-            key={item.name}
-            name={item.name}
-            photos={item.photos}
-            address={item.address}
-            isOpenNow={item.isOpenNow}
-            rating={4}
-            isClosedTemporarily={item.isClosedTemporarily}
-          />
+          <Restaurant restaurant={item} />
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.name}

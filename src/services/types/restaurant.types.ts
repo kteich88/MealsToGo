@@ -14,13 +14,11 @@ export interface RestaurantDataResultsPhotos {
 
 export interface RestaurantDataResults {
   business_status?: string;
-  geometry: GeometryData | Camelize<GeometryData>;
+  geometry: GeometryData;
   icon?: string;
   name: string;
-  opening_hours?: OpeningHours | Camelize<OpeningHours>;
-  photos:
-    | RestaurantDataResultsPhotos[]
-    | Camelize<RestaurantDataResultsPhotos[]>;
+  opening_hours?: OpeningHours;
+  photos: RestaurantDataResultsPhotos[];
   place_id?: string;
   rating?: number;
   reference: string;
@@ -28,14 +26,16 @@ export interface RestaurantDataResults {
   vicinity: string;
 }
 
-export type Restaurants =
-  | RestaurantDataResults[]
-  | undefined[]
-  | Camelize<RestaurantDataResults[]>;
-
+export interface TransformedRestaurantDataResults
+  extends Camelize<RestaurantDataResults> {
+  address: string;
+  isClosedTemporarily: boolean;
+  isOpenNow: boolean;
+  photo: string;
+}
 export interface RestaurantData {
   html_attributions: never[];
   next_page_token: string;
-  results: RestaurantDataResults[] | Camelize<RestaurantDataResults[]>;
+  results: RestaurantDataResults[];
   status: string;
 }

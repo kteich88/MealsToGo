@@ -26,7 +26,7 @@ const AccordionList: React.FC<AccordionListProps> = ({ menu }) => {
           onPress={handlePress}
         >
           {menu.items.map((item) => (
-            <List.Item title={item} />
+            <List.Item key={item} title={item} />
           ))}
         </List.Accordion>
       </ScrollView>

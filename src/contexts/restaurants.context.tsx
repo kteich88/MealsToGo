@@ -1,13 +1,13 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import {
   restaurantsRequest,
-  restaurantsTransform,
+  transformRestaurantData,
 } from "../services/mocks/restaurants/restaurants.service";
-import { Restaurants } from "../services/types/restaurant.types";
+import { TransformedRestaurantDataResults } from "../services/types/restaurant.types";
 import { LocationContext } from "./location.context";
 
 interface RestaurantsContext {
-  restaurants: Restaurants;
+  restaurants: TransformedRestaurantDataResults[];
   isLoading: boolean;
   error: string | null;
 }
@@ -17,7 +17,9 @@ export const RestaurantsContext = createContext<RestaurantsContext>(
 );
 
 export const RestaurantsContextProvider: React.FC = ({ children }) => {
-  const [restaurants, setRestaurants] = useState<Restaurants>([]);
+  const [restaurants, setRestaurants] = useState<
+    TransformedRestaurantDataResults[]
+  >([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const { location } = useContext(LocationContext);
@@ -27,7 +29,7 @@ export const RestaurantsContextProvider: React.FC = ({ children }) => {
     setRestaurants([]);
     setTimeout(() => {
       restaurantsRequest(restaurantLocation)
-        .then(restaurantsTransform)
+        .then(transformRestaurantData)
         .then((results) => {
           setIsLoading(false);
           setRestaurants(results);

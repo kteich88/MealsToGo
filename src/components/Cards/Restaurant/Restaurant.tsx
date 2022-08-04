@@ -1,6 +1,9 @@
 import React from "react";
+import { View } from "react-native";
 import { Rating } from "react-native-ratings";
 import Status from "../../Status/Status";
+import Favorite from "../../Favorites/Favorite";
+
 import {
   Address,
   CoverImage,
@@ -9,24 +12,15 @@ import {
   RestaurantCard,
   Title,
 } from "./Restaurant.styles";
+import { TransformedRestaurantDataResults } from "../../../services/types/restaurant.types";
 
 interface RestaurantProps {
-  name: string;
-  photos: string[];
-  address?: string;
-  isOpenNow?: boolean;
-  rating?: number;
-  isClosedTemporarily?: boolean;
+  restaurant: TransformedRestaurantDataResults;
 }
 
-const Restaurant: React.FC<RestaurantProps> = ({
-  name,
-  photos,
-  address,
-  isOpenNow,
-  rating,
-  isClosedTemporarily,
-}) => {
+const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
+  const { name, photo, address, isOpenNow, rating, isClosedTemporarily } =
+    restaurant;
   let status;
   isClosedTemporarily
     ? (status = "closedTemporarily")
@@ -35,7 +29,10 @@ const Restaurant: React.FC<RestaurantProps> = ({
     : (status = "closed");
   return (
     <RestaurantCard elevation={5}>
-      <CoverImage key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favorite restaurant={restaurant} />
+        <CoverImage key={name} source={{ uri: photo }} />
+      </View>
       <RatingsContainer>
         <Status status={status} />
         {!isClosedTemporarily && (

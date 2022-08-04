@@ -17,15 +17,7 @@ export const RestaurantDetailsScreen: React.FC<
   const { restaurant } = route.params;
   return (
     <SafeArea>
-      <Restaurant
-        key={restaurant.name}
-        name={restaurant.name}
-        photos={restaurant.photos}
-        address={restaurant.address}
-        isOpenNow={restaurant.isOpenNow}
-        rating={restaurant.rating}
-        isClosedTemporarily={restaurant.isClosedTemporarily}
-      />
+      <Restaurant restaurant={restaurant} />
       <AccordionList menu={breakfast} />
       <AccordionList menu={lunch} />
       <AccordionList menu={dinner} />

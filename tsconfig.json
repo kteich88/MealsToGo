@@ -13,7 +13,7 @@
     "target": "esnext",
     "strictFunctionTypes": false
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "assets/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "assets/*", "env.d.ts"],
   "exclude": [
     "node_modules",
     "babel.config.js",

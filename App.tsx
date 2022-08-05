@@ -8,12 +8,18 @@ import {
   Spectral_400Regular,
   Assistant_400Regular,
 } from "@expo-google-fonts/dev";
-import Navigation from "./src/infrastructure/navigation/index.navigator";
+import AppNavigator from "./src/infrastructure/navigation/app.navigator";
 import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
 import { LocationContextProvider } from "./src/contexts/location.context";
 import { FavoritesContextProvider } from "./src/contexts/favorites.context";
-
+import { AuthenticationContextProvider } from "./src/contexts/authentication.context";
 import { theme } from "./src/infrastructure/theme/helpers";
+import firebase from "firebase/compat/app";
+import { firebaseConfig } from "./src/utils/firebase.config";
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export const App = () => {
   const [fontsLoaded] = useFonts({
@@ -24,13 +30,15 @@ export const App = () => {
   return fontsLoaded ? (
     <>
       <ThemeProvider theme={theme}>
-        <FavoritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavoritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavoritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <AppNavigator />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavoritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

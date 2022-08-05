@@ -1,14 +1,11 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 import CompactCard from "../Cards/Card";
-import {
-  FavoritesContainer,
-  FavoritesCardContainer,
-  Title,
-} from "./Favorite.styles";
+import { FavoritesContainer, Title } from "./Favorite.styles";
 
 const Favorites = ({ favorites, navigation }) => {
-  if (!favorites.length) {
+  const isFavorite = favorites.length >= 1;
+  if (!isFavorite) {
     return null;
   }
   return (
@@ -18,7 +15,7 @@ const Favorites = ({ favorites, navigation }) => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favorites.map((restaurant) => {
           return (
-            <FavoritesCardContainer
+            <TouchableOpacity
               key={restaurant.placeId}
               onPress={() =>
                 navigation.navigate("Restaurant Details", {
@@ -30,8 +27,9 @@ const Favorites = ({ favorites, navigation }) => {
                 key={restaurant.name}
                 name={restaurant.name}
                 photo={restaurant.photo}
+                isFavorite={isFavorite}
               />
-            </FavoritesCardContainer>
+            </TouchableOpacity>
           );
         })}
       </ScrollView>

@@ -45,7 +45,11 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const onRegister = (email, password, repeatedPassword) => {
+  const onRegister = (
+    email: string,
+    password: string,
+    repeatedPassword: string,
+  ) => {
     setIsLoading(true);
     if (password !== repeatedPassword) {
       setError("Error: Passwords do not match");
@@ -60,7 +64,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.toString());
+        setError(errorHandler(err.message));
       });
   };
 
@@ -71,6 +75,10 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then(() => {
         setUser(null);
         setError(null);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(errorHandler(err.message));
       });
   };
 

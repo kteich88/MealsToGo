@@ -40,7 +40,7 @@ export const BackButton = styled(Button).attrs({
   font-weight: ${theme.fontWeights.bold};
 `;
 
-export const LoginAuthButton = styled(Button).attrs({
+export const AuthenticationButton = styled(Button).attrs({
   color: `${colors.brand.primary}`,
 })`
   padding: ${spacing.md};

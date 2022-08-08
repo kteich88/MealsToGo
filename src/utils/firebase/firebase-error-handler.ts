@@ -24,8 +24,7 @@ const determineErrorCodeMessage = (error: string, code: string): string => {
           "The credential used to initialize the Admin SDK has insufficient permission to access the requested Authentication resource. Refer to Set up a Firebase project for documentation on how to generate a credential with appropriate permissions and use it to authenticate the Admin SDKs.";
         break;
       case "auth/internal-error":
-        message =
-          "The Authentication server encountered an unexpected error while trying to process the request. The error message should contain the response from the Authentication server containing additional information. If the error persists, please report the problem to our Bug Report support channel.";
+        message = "Internal server error. Please try again.";
         break;
       case "auth/invalid-argument":
         message =
@@ -195,8 +194,7 @@ const determineErrorCodeMessage = (error: string, code: string): string => {
           "The domain of the continue URL is not whitelisted. Whitelist the domain in the Firebase Console.";
         break;
       case "auth/user-not-found":
-        message =
-          "There is no existing user record corresponding to the provided identifier.";
+        message = "User does not exist. Please register user account.";
         break;
       default:
         message = "This is not the error you are looking for.";

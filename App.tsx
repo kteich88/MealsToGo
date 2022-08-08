@@ -43,7 +43,7 @@ export const App = () => {
       <ExpoStatusBar style="auto" />
     </>
   ) : (
-    <ActivityIndicator size="large" color="#03F7EB" />
+    <ActivityIndicator animating={true} size="large" color="#03F7EB" />
   );
 };
 

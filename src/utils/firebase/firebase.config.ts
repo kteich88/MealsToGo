@@ -6,7 +6,7 @@ import {
   MESSAGING_SENDER_ID,
   APP_ID,
 } from "@env";
-import { getEnvironmentVariable } from "./helpers";
+import { getEnvironmentVariable } from "../helpers";
 
 export const firebaseConfig = {
   apiKey: getEnvironmentVariable(API_KEY),

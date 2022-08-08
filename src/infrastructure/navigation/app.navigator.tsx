@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SettingsScreen } from "../../features/settings/settings.screen";
 import { MapsScreen } from "../../features/maps/maps.screen";
-import { MapsIcon, RestaurantsIcon, SettingsIcon } from "../../utils/Icons";
+import { MapsIcon, RestaurantsIcon, SettingsIcon } from "../../utils/icons";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthenticationContext } from "../../contexts/authentication.context";

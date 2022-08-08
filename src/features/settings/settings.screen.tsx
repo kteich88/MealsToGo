@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
-import { SafeArea } from "../../utils/SafeArea";
+import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
 
 export const SettingsScreen = () => (
   <SafeArea>

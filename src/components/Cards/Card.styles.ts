@@ -19,9 +19,9 @@ export const Card = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: ${theme.fonts.monospace}
-  font-weight: bold;
-  font-size: ${theme.fontSizes.caption}
+  font-family: ${theme.fonts.monospace};
+  font-weight: ${theme.fontWeights.bold};
+  font-size: ${theme.fontSizes.caption};
   color: ${colors.text.primary};
   flex-wrap: wrap;
   flex: 1;

@@ -5,7 +5,7 @@ export const colors = {
     muted: "#BED6C1",
   },
   ui: {
-    primary: "#483C46",
+    primary: "#48355A",
     secondary: "#BEEE62",
     tertiary: "#F4743B",
     quaternary: "#D5DCF9",

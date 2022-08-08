@@ -15,7 +15,7 @@ import { FavoritesContextProvider } from "./src/contexts/favorites.context";
 import { AuthenticationContextProvider } from "./src/contexts/authentication.context";
 import { theme } from "./src/infrastructure/theme/helpers";
 import firebase from "firebase/compat/app";
-import { firebaseConfig } from "./src/utils/firebase.config";
+import { firebaseConfig } from "./src/utils/firebase/firebase.config";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

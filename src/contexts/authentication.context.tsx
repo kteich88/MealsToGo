@@ -3,7 +3,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { loginRequest } from "../services/authentication/authentication.service";
 import { User } from "../services/types/authentication.types";
-
+import { errorHandler } from "../utils/firebase/firebase-error-handler";
 interface AuthenticationContext {
   isAuthenticated: boolean;
   user: User | null;
@@ -41,7 +41,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err);
+        setError(errorHandler(err.message));
       });
   };
 
@@ -60,7 +60,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err);
+        setError(err.toString());
       });
   };
 

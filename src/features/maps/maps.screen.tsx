@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
-import { SafeArea } from "../../utils/SafeArea";
+import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
 import { Map, SearchContainer } from "./maps.styles";
 import { LocationContext } from "../../contexts/location.context";
 import { RestaurantsContext } from "../../contexts/restaurants.context";

@@ -6,7 +6,7 @@ import {
   SearchContainer,
   Loading,
 } from "./restaurants.styles";
-import { SafeArea } from "../../utils/SafeArea";
+import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
 import Favorites from "../../components/Favorites/Favorites";

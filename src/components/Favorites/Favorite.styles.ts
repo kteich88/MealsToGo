@@ -5,7 +5,7 @@ import { theme } from "../../infrastructure/theme/helpers";
 
 export const Title = styled.Text`
   font-family: ${theme.fonts.heading}
-  font-weight: bold;
+  font-weight: ${theme.fontWeights.bold};
   font-size: ${theme.fontSizes.body}
   color: ${colors.text.primary};
   margin-left: ${sizes.md}px;

@@ -20,9 +20,9 @@ export const Info = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: ${theme.fonts.heading}
-  font-size: ${theme.fontSizes.title}
-  font-weight: bold
+  font-family: ${theme.fonts.heading};
+  font-size: ${theme.fontSizes.title};
+  font-weight: ${theme.fontWeights.bold};
   color: ${colors.text.primary};
 `;
 

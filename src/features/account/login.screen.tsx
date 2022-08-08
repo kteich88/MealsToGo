@@ -1,19 +1,22 @@
 import React, { useContext, useState } from "react";
-import { Text } from "react-native";
 import {
-  LoginBackgroundImage,
+  BackgroundImage,
   AuthContainer,
   AuthInput,
   LoginAuthButton,
+  BackButton,
+  ImageOverlay,
+  ErrorMessage,
 } from "./index.styles";
 import { AuthenticationContext } from "../../contexts/authentication.context";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, error } = useContext(AuthenticationContext);
   return (
-    <LoginBackgroundImage>
+    <BackgroundImage>
+      <ImageOverlay />
       <AuthContainer>
         <AuthInput
           label="E-mail"
@@ -31,7 +34,7 @@ export const LoginScreen = () => {
           autoCapitalize="none"
           onChangeText={(p) => setPassword(p)}
         />
-        {error && <Text>{error}</Text>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <LoginAuthButton
           icon="login"
           mode="contained"
@@ -40,6 +43,9 @@ export const LoginScreen = () => {
           Login
         </LoginAuthButton>
       </AuthContainer>
-    </LoginBackgroundImage>
+      <BackButton mode="contained" onPress={() => navigation.goBack()}>
+        Back
+      </BackButton>
+    </BackgroundImage>
   );
 };

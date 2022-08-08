@@ -1,9 +1,15 @@
 import React from "react";
-import { BackgroundImage, AuthContainer, AuthButton } from "./index.styles";
+import {
+  BackgroundImage,
+  AuthContainer,
+  AuthButton,
+  Title,
+} from "./index.styles";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <BackgroundImage>
+      <Title>Good Eats</Title>
       <AuthContainer>
         <AuthButton
           icon="login"

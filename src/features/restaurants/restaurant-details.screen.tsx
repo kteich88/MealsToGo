@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeArea } from "../../utils/SafeArea";
+import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
 import Restaurant from "../../components/Cards/Restaurant/Restaurant";
 import AccordionList from "../../components/Lists/AccordionList";
 import breakfast from "../../services/mocks/menus/breakfast.json";

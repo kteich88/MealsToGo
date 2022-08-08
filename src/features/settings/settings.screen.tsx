@@ -1,9 +1,29 @@
-import React from "react";
-import { Text } from "react-native";
-import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
+import React, { useContext } from "react";
+import { AuthenticationContext } from "../../contexts/authentication.context";
+import {
+  LogOutButton,
+  SettingsContainer,
+  Title,
+  BackgroundImage,
+  ImageOverlay,
+} from "./settings.styles";
+import { SettingsIcon } from "../../utils/icons/settings.icon";
 
-export const SettingsScreen = () => (
-  <SafeArea>
-    <Text>Settings</Text>
-  </SafeArea>
-);
+export const SettingsScreen = () => {
+  const { onLogout } = useContext(AuthenticationContext);
+  return (
+    <BackgroundImage>
+      <ImageOverlay />
+
+      <SettingsContainer>
+        <Title>
+          Settings <SettingsIcon />
+        </Title>
+
+        <LogOutButton icon="logout" mode="contained" onPress={() => onLogout()}>
+          Log Out
+        </LogOutButton>
+      </SettingsContainer>
+    </BackgroundImage>
+  );
+};

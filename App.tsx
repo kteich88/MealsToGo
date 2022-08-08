@@ -9,9 +9,7 @@ import {
   Assistant_400Regular,
 } from "@expo-google-fonts/dev";
 import AppNavigator from "./src/infrastructure/navigation/app.navigator";
-import { RestaurantsContextProvider } from "./src/contexts/restaurants.context";
-import { LocationContextProvider } from "./src/contexts/location.context";
-import { FavoritesContextProvider } from "./src/contexts/favorites.context";
+
 import { AuthenticationContextProvider } from "./src/contexts/authentication.context";
 import { theme } from "./src/infrastructure/theme/helpers";
 import firebase from "firebase/compat/app";
@@ -31,13 +29,7 @@ export const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavoritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <AppNavigator />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavoritesContextProvider>
+          <AppNavigator />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

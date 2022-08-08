@@ -1,12 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { loginRequest } from "../services/authentication/authentication.service";
-import { User } from "../services/types/authentication.types";
 import { errorHandler } from "../utils/firebase/firebase-error-handler";
 interface AuthenticationContext {
   isAuthenticated: boolean;
-  user: User | null;
+  user: firebase.User;
   isLoading: boolean;
   error: string | null;
   onLogin: (email: string, password: string) => void;
@@ -20,23 +19,25 @@ export const AuthenticationContext = createContext<AuthenticationContext>(
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<firebase.User>();
   const [error, setError] = useState<string | null>(null);
 
-  firebase.auth().onAuthStateChanged((authenticatedUser) => {
-    if (authenticatedUser) {
-      setUser(authenticatedUser);
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-    }
-  });
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((authenticatedUser) => {
+      if (authenticatedUser) {
+        setUser(authenticatedUser);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
+    });
+  }, []);
 
   const onLogin = (email: string, password: string) => {
     setIsLoading(true);
     loginRequest(email, password)
       .then((loginUser) => {
-        setUser(loginUser);
+        setUser(loginUser.user);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -59,7 +60,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((createUser) => {
-        setUser(createUser);
+        setUser(createUser.user);
         setIsLoading(false);
       })
       .catch((err) => {

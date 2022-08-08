@@ -37,7 +37,7 @@ export const MapsScreen = ({ navigation }) => {
         {(restaurants as TransformedRestaurantDataResults[]).map(
           (restaurant: TransformedRestaurantDataResults) => {
             return (
-              <MapView>
+              <MapView key={restaurant.name}>
                 <Marker
                   key={restaurant.name}
                   coordinate={{

@@ -7,6 +7,9 @@ import { RestaurantsNavigator } from "./restaurants.navigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthenticationContext } from "../../contexts/authentication.context";
 import { AccountNavigator } from "./account.navigator";
+import { RestaurantsContextProvider } from "../../contexts/restaurants.context";
+import { LocationContextProvider } from "../../contexts/location.context";
+import { FavoritesContextProvider } from "../../contexts/favorites.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,11 +32,20 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       {isAuthenticated ? (
-        <Tab.Navigator screenOptions={screenOptions}>
-          <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-          <Tab.Screen name="Maps" component={MapsScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
+        <FavoritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Tab.Navigator screenOptions={screenOptions}>
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantsNavigator}
+                />
+                <Tab.Screen name="Maps" component={MapsScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+              </Tab.Navigator>
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavoritesContextProvider>
       ) : (
         <AccountNavigator />
       )}

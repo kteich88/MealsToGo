@@ -9,8 +9,15 @@ import {
 } from "./index.styles";
 import { AuthenticationContext } from "../../contexts/authentication.context";
 import { ActivityIndicator } from "react-native-paper";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export const RegisterScreen = ({ navigation }) => {
+interface RegisterScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
+
+export const RegisterScreen: React.FC<RegisterScreenProps> = ({
+  navigation,
+}) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [authenticatePassword, setAuthenticatePassword] = useState<string>("");

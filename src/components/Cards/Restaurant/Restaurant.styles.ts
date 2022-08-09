@@ -6,7 +6,7 @@ import { theme } from "../../../infrastructure/theme/helpers";
 
 export const RestaurantCard = styled(Card)`
   background-color: ${colors.bg.primary};
-  margin: ${spacing.xxs} ${spacing.sm} ${spacing.xl} ${spacing.sm};
+  margin: ${spacing.xs} ${spacing.sm} ${spacing.xl} ${spacing.sm};
 `;
 
 export const CoverImage = styled(Card.Cover)`
@@ -27,7 +27,7 @@ export const Title = styled.Text`
 `;
 
 export const RatingsContainer = styled.View`
-  padding: ${spacing.xxs} ${spacing.lg};
+  padding: ${spacing.xs} ${spacing.lg};
   align-items: space-between;
   flex-direction: row;
   justify-content: space-between;

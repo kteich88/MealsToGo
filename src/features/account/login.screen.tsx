@@ -10,8 +10,13 @@ import {
 } from "./index.styles";
 import { AuthenticationContext } from "../../contexts/authentication.context";
 import { ActivityIndicator } from "react-native-paper";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export const LoginScreen = ({ navigation }) => {
+interface LoginScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
+
+export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, isLoading, error } = useContext(AuthenticationContext);

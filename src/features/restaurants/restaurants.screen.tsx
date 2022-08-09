@@ -9,10 +9,11 @@ import {
 import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
 import { RestaurantsContext } from "../../contexts/restaurants.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Favorites from "../../components/Favorites/Favorites";
 
 interface RestaurantsScreenProps {
-  navigation;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({

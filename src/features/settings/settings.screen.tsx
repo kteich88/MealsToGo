@@ -1,29 +1,54 @@
 import React, { useContext } from "react";
 import { AuthenticationContext } from "../../contexts/authentication.context";
+import { List, Avatar } from "react-native-paper";
+import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import {
-  LogOutButton,
+  AvatarContainer,
+  SettingsItem,
+  Email,
   SettingsContainer,
-  Title,
-  BackgroundImage,
-  ImageOverlay,
 } from "./settings.styles";
-import { SettingsIcon } from "../../utils/icons/settings.icon";
+import { sizes } from "../../infrastructure/theme";
 
-export const SettingsScreen = () => {
-  const { onLogout } = useContext(AuthenticationContext);
+interface SettingsScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
+
+export const SettingsScreen: React.FC<SettingsScreenProps> = ({
+  navigation,
+}) => {
+  const { onLogout, user } = useContext(AuthenticationContext);
+
   return (
-    <BackgroundImage>
-      <ImageOverlay />
+    <SafeArea>
+      <AvatarContainer>
+        {/* <Avatar.Image size={24} source={require(user.photoURL)} /> */}
+        <Avatar.Image
+          size={sizes.xxxl}
+          source={require("../../../assets/pusheen-rice.gif")}
+        />
+
+        <Email>{user.email}</Email>
+      </AvatarContainer>
 
       <SettingsContainer>
-        <Title>
-          Settings <SettingsIcon />
-        </Title>
-
-        <LogOutButton icon="logout" mode="contained" onPress={() => onLogout()}>
-          Log Out
-        </LogOutButton>
+        <List.Section>
+          <SettingsItem
+            title="Favourites"
+            description="View your favourites"
+            left={(props) => (
+              <List.Icon {...props} color="black" icon="heart" />
+            )}
+            onPress={() => navigation.navigate("Favourites")}
+          />
+          <SettingsItem
+            title="Logout"
+            left={(props) => <List.Icon {...props} color="black" icon="door" />}
+            onPress={onLogout}
+          />
+        </List.Section>
       </SettingsContainer>
-    </BackgroundImage>
+    </SafeArea>
   );
 };

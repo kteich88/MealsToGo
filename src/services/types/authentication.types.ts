@@ -11,7 +11,9 @@ interface UserInfo {
   providerId: string;
   uid: string;
 }
-
+/**
+ * Firebase.User Type extends UserInfo
+ */
 export interface User {
   emailVerified: boolean;
   isAnonymous: boolean;

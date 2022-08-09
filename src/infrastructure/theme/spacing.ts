@@ -4,10 +4,12 @@ export const lineHeights = {
 };
 
 export const spacing = {
-  xxs: "0px",
+  xs: "0px",
   sm: "4px",
   md: "8px",
   lg: "16px",
   xl: "32px",
   xxl: "64px",
+  xxxl: "128px",
+  xxxxl: "256px",
 };

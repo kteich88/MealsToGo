@@ -8,7 +8,7 @@ export const SearchContainer = styled.View`
 
 export const RestaurantListContainer = styled.View`
   flex: 1;
-  padding: ${spacing.xxs} ${spacing.lg};
+  padding: ${spacing.xs} ${spacing.lg};
   margin-bottom: ${spacing.lg};
 `;
 

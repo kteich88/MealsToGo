@@ -9,7 +9,13 @@ import { TransformedRestaurantDataResults } from "../../services/types/restauran
 import CompactCard from "../../components/Cards/Card";
 import { TouchableOpacity } from "react-native";
 
-export const MapsScreen = ({ navigation }) => {
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+interface MapsScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
+
+export const MapsScreen: React.FC<MapsScreenProps> = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants } = useContext(RestaurantsContext);
   const [latDelta, setLatDelta] = useState<number>(0);

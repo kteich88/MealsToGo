@@ -7,8 +7,13 @@ import {
   AnimationWrapper,
 } from "./index.styles";
 import LottieView from "lottie-react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export const AccountScreen = ({ navigation }) => {
+interface AccountScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
+
+export const AccountScreen: React.FC<AccountScreenProps> = ({ navigation }) => {
   return (
     <BackgroundImage>
       <AnimationWrapper>

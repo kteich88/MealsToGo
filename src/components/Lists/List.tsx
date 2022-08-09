@@ -2,10 +2,11 @@ import React from "react";
 import Restaurant from "../Cards/Restaurant/Restaurant";
 import { FlatList, TouchableOpacity } from "react-native";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface ListProps {
   data: TransformedRestaurantDataResults[];
-  navigation;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 const List: React.FC<ListProps> = ({ data, navigation }) => {

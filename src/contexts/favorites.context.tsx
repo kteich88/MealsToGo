@@ -54,13 +54,13 @@ export const FavoritesContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      loadFavorites(user.providerData[0].uid);
+      loadFavorites(user.uid);
     }
   }, [user]);
 
   useEffect(() => {
     if (user && favorites.length) {
-      saveFavorites(favorites, user.providerData[0].uid);
+      saveFavorites(favorites, user.uid);
     }
   }, [favorites, user]);
 

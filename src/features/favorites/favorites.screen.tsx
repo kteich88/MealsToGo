@@ -5,8 +5,10 @@ import {
   BackgroundImage,
   FavoritesContainer,
   FavoritesItem,
+  Title,
+  ImageOverlay,
 } from "./favorites.styles";
-import { List, Text } from "react-native-paper";
+import { List } from "react-native-paper";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import { colors } from "../../infrastructure/theme";
 
@@ -40,7 +42,8 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
     )
   ) : (
     <BackgroundImage>
-      <Text>{`You have ${favorites.length} favorites.`}</Text>
+      <ImageOverlay />
+      <Title>{`You have ${favorites.length} favorites. But you can has this cupcake!`}</Title>
     </BackgroundImage>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { SettingsScreen } from "../../features/settings/settings.screen";
-import { MapsScreen } from "../../features/maps/maps.screen";
-import { MapsIcon, RestaurantsIcon, SettingsIcon } from "../../utils/icons";
-import { RestaurantsNavigator } from "./restaurants.navigator";
 import { NavigationContainer } from "@react-navigation/native";
-import { AuthenticationContext } from "../../contexts/authentication.context";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MapsIcon, RestaurantsIcon, SettingsIcon } from "../../utils/icons";
+import { MapsScreen } from "../../features/maps/maps.screen";
+import { RestaurantsNavigator } from "./restaurants.navigator";
+import { SettingsNavigator } from "./settings.navigator";
 import { AccountNavigator } from "./account.navigator";
+import { AuthenticationContext } from "../../contexts/authentication.context";
 import { RestaurantsContextProvider } from "../../contexts/restaurants.context";
 import { LocationContextProvider } from "../../contexts/location.context";
 import { FavoritesContextProvider } from "../../contexts/favorites.context";
@@ -41,7 +41,7 @@ const AppNavigator = () => {
                   component={RestaurantsNavigator}
                 />
                 <Tab.Screen name="Maps" component={MapsScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Settings" component={SettingsNavigator} />
               </Tab.Navigator>
             </RestaurantsContextProvider>
           </LocationContextProvider>

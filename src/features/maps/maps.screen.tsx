@@ -8,7 +8,6 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import CompactCard from "../../components/Cards/Card";
 import { TouchableOpacity } from "react-native";
-
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface MapsScreenProps {

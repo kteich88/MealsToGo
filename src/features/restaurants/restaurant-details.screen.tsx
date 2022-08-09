@@ -6,6 +6,7 @@ import breakfast from "../../services/mocks/menus/breakfast.json";
 import lunch from "../../services/mocks/menus/lunch.json";
 import dinner from "../../services/mocks/menus/dinner.json";
 import drinks from "../../services/mocks/menus/drinks.json";
+import { Divider } from "react-native-paper";
 
 interface RestaurantDetailsScreenProps {
   route: any;
@@ -19,8 +20,11 @@ export const RestaurantDetailsScreen: React.FC<
     <SafeArea>
       <Restaurant restaurant={restaurant} />
       <AccordionList menu={breakfast} />
+      <Divider />
       <AccordionList menu={lunch} />
+      <Divider />
       <AccordionList menu={dinner} />
+      <Divider />
       <AccordionList menu={drinks} />
     </SafeArea>
   );

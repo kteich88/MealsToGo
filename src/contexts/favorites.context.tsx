@@ -27,7 +27,7 @@ export const FavoritesContextProvider: React.FC = ({ children }) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favorites-${userId}`, jsonValue);
     } catch (e) {
-      console.log("error storing", e);
+      console.log("Error Storing:", e);
     }
   };
 

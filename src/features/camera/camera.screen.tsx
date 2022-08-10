@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { ProfileCamera } from "./camera.styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthenticationContext } from "../../contexts/authentication.context";
+import Camera from "expo-camera";
 
 export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);

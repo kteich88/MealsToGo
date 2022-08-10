@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { FavoritesContext } from "../../contexts/favorites.context";
 import {
   BackgroundImage,
@@ -12,23 +11,18 @@ import { List } from "react-native-paper";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import { colors } from "../../infrastructure/theme";
 
-interface FavoritesScreenProps {
-  navigation: NativeStackNavigationProp<any>;
-}
-
-export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
-  navigation,
-}) => {
+export const FavoritesScreen = ({ navigation }) => {
   const { favorites } = useContext(FavoritesContext);
 
   return favorites.length ? (
     (favorites as TransformedRestaurantDataResults[]).map(
       (favorite: TransformedRestaurantDataResults) => {
         return (
-          <FavoritesContainer>
+          <FavoritesContainer key={favorite.name}>
             <FavoritesItem
               title={favorite.name}
               description={favorite.address}
+              // eslint-disable-next-line react/no-unstable-nested-components
               left={() => <List.Icon color={colors.ui.error} icon="heart" />}
               onPress={() =>
                 navigation.navigate("Restaurant Details", {

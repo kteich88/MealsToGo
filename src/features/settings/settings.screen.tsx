@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TouchableOpacity } from "react-native";
@@ -24,11 +25,17 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [photo, setPhoto] = useState(null);
-  const photoUri = AsyncStorage.getItem(`${user.uid}-photo`);
 
-  useEffect(() => {
+  const getProfilePicture = async (currentUser) => {
+    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
     setPhoto(photoUri);
-  }, [photoUri]);
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [user]),
+  );
 
   return (
     <SafeArea>

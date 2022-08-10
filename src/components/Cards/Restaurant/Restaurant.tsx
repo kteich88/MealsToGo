@@ -20,6 +20,8 @@ interface RestaurantProps {
 const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
   const { name, photo, address, isOpenNow, rating, isClosedTemporarily } =
     restaurant;
+
+  console.log(restaurant);
   let status;
   isClosedTemporarily
     ? (status = "closedTemporarily")

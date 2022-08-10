@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/stack";
 import { SettingsScreen } from "../../features/settings/settings.screen";
 import { FavoritesScreen } from "../../features/favorites/favorites.screen";
-import { CameraScreen } from "../../features/camera/camera.screen";
+import CameraScreen from "../../features/camera/camera.screen";
 
 const SettingsStack = createStackNavigator();
 

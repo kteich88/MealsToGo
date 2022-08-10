@@ -67,6 +67,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         setIsLoading(false);
         setError(errorHandler(err.message));
       });
+    setError(null);
   };
 
   const onLogout = () => {

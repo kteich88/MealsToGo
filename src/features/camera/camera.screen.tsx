@@ -1,42 +1,44 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { ProfileCamera } from "./camera.styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthenticationContext } from "../../contexts/authentication.context";
-import Camera from "expo-camera";
+import React, { useRef, useState, useEffect } from "react";
+import { Camera, CameraType } from "expo-camera";
+import { Text } from "react-native";
+import { CameraButton, CameraContainer, ProfileCamera } from "./camera.styles";
 
-export const CameraScreen = ({ navigation }) => {
-  const [hasPermission, setHasPermission] = useState(null);
-  const { user } = useContext(AuthenticationContext);
-  const cameraRef = useRef();
+const CameraScreen = () => {
+  const [hasPermission, setHasPermission] = useState(false);
+  const cameraRef = useRef<Camera | null>();
 
   const snap = async () => {
-    if (cameraRef) {
+    if (cameraRef && cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync();
-      AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
-      navigation.goBack();
+      return photo;
     }
   };
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === "granted");
+      const { granted } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(granted);
     })();
   }, []);
 
-  if (hasPermission === null) {
-    return <View />;
-  }
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+
   return (
-    <TouchableOpacity onPress={snap}>
+    <CameraContainer>
       <ProfileCamera
         ref={(camera) => (cameraRef.current = camera)}
-        type={Camera.Constants.Type.front}
+        ratio={"16:9"}
+        type={CameraType.front}
+        onCameraReady={() => {
+          console.log("Camera Ready");
+        }}
       />
-    </TouchableOpacity>
+
+      <CameraButton onPress={() => snap()}>Snap!</CameraButton>
+    </CameraContainer>
   );
 };
+
+export default CameraScreen;

@@ -16,7 +16,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "assets/*",
+    "assets/**/*",
     "src/utils/firebase/env.d.ts"
   ],
   "exclude": [

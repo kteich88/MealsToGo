@@ -7,7 +7,7 @@ export interface Icon {
   style?: StyleProp<ViewStyle>;
 }
 
-export interface GroceryList {
+export interface GroceryListItem {
   id: string;
   title: string;
   description?: string;
@@ -15,5 +15,5 @@ export interface GroceryList {
 }
 
 export interface GroceryResults {
-  results: GroceryList[];
+  results: GroceryListItem[];
 }

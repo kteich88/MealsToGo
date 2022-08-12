@@ -1,5 +1,4 @@
 import React from "react";
-import LottieView from "lottie-react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   useFonts,
@@ -10,6 +9,7 @@ import {
 import { ThemeProvider } from "styled-components/native";
 import AppNavigator from "./src/infrastructure/navigation/app.navigator";
 import { theme } from "./src/infrastructure/theme/helpers";
+import { LoadingScreen } from "./src/features/loading/loading.screen";
 
 export const App = () => {
   const [fontsLoaded] = useFonts({
@@ -25,13 +25,7 @@ export const App = () => {
       <ExpoStatusBar style="auto" />
     </>
   ) : (
-    <LottieView
-      key="animation"
-      autoPlay
-      loop
-      resizeMode="cover"
-      source={require("./assets/lottie/groceries.json")}
-    />
+    <LoadingScreen />
   );
 };
 

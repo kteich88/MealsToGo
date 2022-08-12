@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "react-native-paper";
-import { Icon } from "../../utils/types/groceries.types";
+import { Icon } from "../../utils/types/grocery.types";
 
 interface ListIconProps {
   iconProps: Icon;

@@ -1,9 +1,9 @@
 import React, { useState, createContext } from "react";
 import { groceryListRequest } from "../services/mocks/groceries/groceries.service";
-import { GroceryList } from "../utils/types/groceries.types";
+import { GroceryListItem } from "../utils/types/grocery.types";
 
 interface GroceriesContext {
-  groceries: GroceryList[];
+  groceries: GroceryListItem[];
   isLoading: boolean;
   error: string | null;
 }
@@ -13,7 +13,7 @@ export const GroceriesContext = createContext<GroceriesContext>(
 );
 
 export const GroceriesContextProvider: React.FC = ({ children }) => {
-  const [groceries, setGroceries] = useState<GroceryList[]>([]);
+  const [groceries, setGroceries] = useState<GroceryListItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
 

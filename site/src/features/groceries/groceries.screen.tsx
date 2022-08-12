@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "react-native-paper";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Grocery } from "../../utils/types/groceries.types";
+import { Grocery } from "../../utils/types/grocery.types";
 import { GroceriesContainer, GroceryItem } from "./groceries.styles";
 import ListIcon from "../../components/Lists/ListIcon";
 import { SearchContainer } from "../../components/Search/Search.styles";

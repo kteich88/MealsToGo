@@ -1,5 +1,5 @@
 import camelize from "camelize-ts";
-import { GroceryList } from "../../../utils/types/groceries.types";
+import { GroceryListItem } from "../../../utils/types/grocery.types";
 import {
   RestaurantData,
   RestaurantDataResults,

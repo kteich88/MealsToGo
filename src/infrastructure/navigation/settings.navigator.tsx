@@ -3,10 +3,10 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/stack";
-import { SettingsScreen } from "../../features/settings/settings.screen";
-import { FavoritesScreen } from "../../features/favorites/favorites.screen";
-import CameraScreen from "../../features/camera/camera.screen";
-import { GroceriesScreen } from "../../features/groceries/groceries.screen";
+import { SettingsScreen } from "../../screens/settings/settings.screen";
+import { FavoritesScreen } from "../../screens/favorites/favorites.screen";
+import CameraScreen from "../../screens/camera/camera.screen";
+import { GroceriesScreen } from "../../screens/groceries/groceries.screen";
 
 const SettingsStack = createStackNavigator();
 

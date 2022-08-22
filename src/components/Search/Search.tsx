@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
-import { LocationContext } from "../../contexts/location.context";
+import { RecipesContext } from "contexts/recipes.context";
 import { SearchContainer } from "./Search.styles";
 
 interface SearchProps {
@@ -9,7 +9,7 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ placeholder, icon }) => {
-  const { keyword, search } = useContext(LocationContext);
+  const { keyword, search } = useContext(RecipesContext);
   const [searchKeyword, setSearchKeyword] = useState<string>(keyword);
 
   useEffect(() => {

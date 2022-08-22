@@ -1,19 +1,10 @@
 import React, { useContext, useState } from "react";
-import {
-  BackgroundImage,
-  AuthContainer,
-  AuthInput,
-  AuthenticationButton,
-  BackButton,
-  ImageOverlay,
-  ErrorMessage,
-} from "./index.styles";
-import { AuthenticationContext } from "../../contexts/authentication.context";
-import { ActivityIndicator } from "react-native-paper";
+import { ImageBackground, Text, TextInput, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AuthenticationContext } from "contexts/authentication.context";
 import LoadingScreen from "screens/loading/loading.screen";
-import { ImageBackground, TextInput, View } from "react-native";
-import { styles } from "./index.screen";
+import { styles } from "./index.styles";
+import Button from "components/Button/Button";
 
 interface LoginScreenProps {
   navigation: NativeStackNavigationProp<any>;
@@ -26,15 +17,15 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require("assets/good-eats.jpeg")}
+      source={require("assets/backgrounds/good-eats.jpeg")}
     >
       <View style={styles.overlay} />
       {isLoading ? (
-        <LoadingScreen imageSrc={""} />
+        <LoadingScreen />
       ) : (
         <>
-          <View style={styles.container}>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+          <View style={styles.buttonContainer}>
+            {error && <Text>{error}</Text>}
 
             <TextInput
               value={email}
@@ -50,17 +41,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
               autoCapitalize="none"
               onChangeText={(p) => setPassword(p)}
             />
-            <AuthenticationButton
-              icon="login"
-              mode="contained"
-              onPress={() => onLogin(email, password)}
-            >
-              Login
-            </AuthenticationButton>
+            <Button text="Login" onPress={() => onLogin(email, password)} />
           </View>
-          <BackButton mode="contained" onPress={() => navigation.goBack()}>
-            Back
-          </BackButton>
+          <Button text="Back" onPress={() => navigation.goBack()} />
         </>
       )}
     </ImageBackground>

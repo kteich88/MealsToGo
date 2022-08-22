@@ -8,7 +8,7 @@ import {
 } from "@expo-google-fonts/dev";
 import { ThemeProvider } from "styled-components/native";
 import AppNavigator from "./src/infrastructure/navigation/app.navigator";
-import { theme } from "theme/helpers";
+import { theme } from "./src/infrastructure/theme/helpers";
 import LoadingScreen from "screens/loading/loading.screen";
 
 export const App = () => {

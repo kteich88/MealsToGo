@@ -4,12 +4,19 @@ export const lineHeights = {
 };
 
 export const spacing = {
-  xs: "0px",
-  sm: "4px",
-  md: "8px",
-  lg: "16px",
-  xl: "32px",
-  xxl: "64px",
-  xxxl: "128px",
-  xxxxl: "256px",
+  zero: 0,
+  four: 4,
+  eight: 8,
+  twelve: 12,
+  sixteen: 16,
+  twenty: 20,
+  twentyOne: 21,
+  twentyFive: 25,
+  thirty: 30,
+  thirtyTwo: 32,
+  sixtyFour: 64,
+  oneTwentyEight: 128,
+  twoFiftySix: 256,
+  twoSeventy: 270,
+  threeHundred: 300,
 };

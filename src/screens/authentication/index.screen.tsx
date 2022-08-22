@@ -1,76 +1,57 @@
-import { Button, TextInput } from "react-native-paper";
-import { Text } from "react-native";
-import styled from "styled-components/native";
-import { colors, spacing } from "../../infrastructure/theme";
-import { theme } from "../../infrastructure/theme/helpers";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { styles } from "./index.styles";
+import { ImageBackground, Text, View } from "react-native";
+import Button from "components/Button/Button";
+import LottieView from "lottie-react-native";
+import { theme } from "infrastructure/theme/helpers";
+import Icon from "components/Icon/Icon";
 
-export const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  overlay: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.35)",
-  },
-  container: {
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
-    padding: spacing.md,
-    marginTop: spacing.md,
-  },
-});
+interface AuthenticationScreenProps {
+  navigation: NativeStackNavigationProp<any>;
+}
 
-export const AuthContainer = styled.View``;
+const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({
+  navigation,
+}) => {
+  return (
+    <>
+      <ImageBackground
+        style={styles.backgroundImage}
+        resizeMode="cover"
+        source={require("assets/backgrounds/good-eats.jpeg")}
+      >
+        <View style={styles.animationWrapper}>
+          <LottieView
+            key="animation"
+            autoPlay
+            loop
+            resizeMode="cover"
+            source={require("assets/lottie/watermelon.json")}
+          />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.title}>Good Eats</Text>
+          <Button
+            text="Login"
+            onPress={() => navigation.navigate("Login")}
+            isDisabled={false}
+          >
+            <Icon icon={"MaterialIcons"} name={"login"} />
+          </Button>
+          <Button
+            text="Register"
+            onPress={() => navigation.navigate("Login")}
+            isDisabled={false}
+            customStyles={{
+              backgroundColor: theme.colors.brand.secondary,
+            }}
+            children={<Icon icon={"Fontisto"} name={"locked"} />}
+          />
+        </View>
+      </ImageBackground>
+    </>
+  );
+};
 
-export const AuthButton = styled(Button).attrs({
-  color: `${colors.brand.secondary}`,
-})`
-  padding: ${spacing.md};
-  margin: ${spacing.lg};
-`;
-
-export const BackButton = styled(Button).attrs({
-  color: `${colors.ui.primary}`,
-})`
-  padding: ${spacing.md};
-  margin: ${spacing.lg};
-  font-weight: ${theme.fontWeights.bold};
-`;
-
-export const AuthenticationButton = styled(Button).attrs({
-  color: `${colors.brand.primary}`,
-})`
-  padding: ${spacing.md};
-  margin: ${spacing.lg};
-`;
-
-export const AuthInput = styled(TextInput)`
-  width: 250px;
-  margin: ${spacing.lg};
-`;
-
-export const Title = styled(Text)`
-  font-size: 30px;
-  font-family: ${theme.fonts.body};
-`;
-
-export const ErrorMessage = styled(Text)`
-  color: ${colors.text.error};
-  font-family: ${theme.fonts.body};
-  width: 250px;
-  padding: ${spacing.sm};
-  margin: ${spacing.md};
-  flex-wrap: wrap;
-`;
-
-export const AnimationWrapper = styled.View`
-  width: 100%;
-  height: 40%;
-  position: absolute;
-  top: 30px;
-  padding: ${spacing.md};
-`;
+export default AuthenticationScreen;

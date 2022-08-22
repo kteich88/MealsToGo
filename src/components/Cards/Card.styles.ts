@@ -3,14 +3,14 @@ import { colors, spacing } from "../../infrastructure/theme";
 import { theme } from "../../infrastructure/theme/helpers";
 
 export const Image = styled.Image`
-  border-radius: ${spacing.md};
+  border-radius: ${spacing.eight};
   width: 90px;
   height: ${spacing.xxl};
-  margin-bottom: ${spacing.md};
+  margin-bottom: ${spacing.eight};
 `;
 
 export const Card = styled.View`
-  padding: ${spacing.md};
+  padding: ${spacing.eight};
   width: 110px;
   height: ${spacing.xxxl};
   max-width: ${spacing.xxxl};
@@ -28,7 +28,7 @@ export const Title = styled.Text`
 `;
 
 export const FavoritesCard = styled.View`
-  padding: ${spacing.md};
+  padding: ${spacing.eight};
   width: 110px;
   height: ${spacing.xxxl};
   max-width: ${spacing.xxxl};
@@ -39,7 +39,7 @@ export const FavoritesCardImage = styled.Image`
   border-radius: ${spacing.lg};
   width: 90px;
   height: 90px;
-  margin-bottom: ${spacing.md};
+  margin-bottom: ${spacing.eight};
 `;
 
 export const TitleContainer = styled.Text`

@@ -1,5 +1,4 @@
 import React from "react";
-import { OpaqueColorValue } from "react-native";
 import {
   AntDesign,
   Entypo,
@@ -16,6 +15,8 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import { theme } from "infrastructure/theme/helpers";
+import { OpaqueColorValue } from "react-native";
 
 interface IconProps {
   icon: string;
@@ -57,7 +58,12 @@ export const renderIcon = ({ icon, name, color, size }: IconProps) => {
   }
 };
 
-const Icon: React.FC<IconProps> = ({ icon, name, color, size }) => {
+const Icon: React.FC<IconProps> = ({
+  icon,
+  name,
+  color = theme.colors.bg.primary,
+  size = theme.spacing.sixteen,
+}) => {
   return renderIcon({ icon, name, color, size });
 };
 

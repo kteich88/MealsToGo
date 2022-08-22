@@ -5,6 +5,8 @@ import { Recipe } from "../utils/types/recipe.types";
 
 interface RecipesContext {
   recipes: Recipe[];
+  keyword: string;
+  search: (searchKeyword: string) => void;
   addRecipe: (recipe: Recipe) => void;
   loadRecipes: (recipe: Recipe) => void;
   editRecipe: (recipe: Recipe) => void;

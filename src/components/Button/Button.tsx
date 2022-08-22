@@ -1,46 +1,33 @@
-import React from "react";
-import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { ReactNode } from "react";
+import { Text, TouchableOpacity } from "react-native";
+import { styles } from "./Button.styles";
 
 interface ButtonProps {
   text: string;
-  buttonColor: string;
-  textColor: string;
+  onPress: () => void;
+  isDisabled: boolean;
+  children?: ReactNode;
+  customStyles?: any;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, buttonColor, textColor }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  onPress,
+  isDisabled = false,
+  children,
+  customStyles,
+}) => {
   return (
-    <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]}>
-      <View style={styles.buttonContainer}>
-        <Text style={[styles.text, { color: textColor }]}>{text}</Text>
-      </View>
+    <TouchableOpacity
+      disabled={isDisabled}
+      // style={[styles.button, { backgroundColor: buttonColor }]}
+      style={[styles.button, customStyles]}
+      onPress={onPress}
+    >
+      {children}
+      <Text style={[styles.text, customStyles]}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
 export default Button;
-
-const styles = StyleSheet.create({
-  button: {
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "green",
-    flexDirection: "row",
-  },
-  buttonContainer: {
-    flex: 1,
-  },
-  text: {
-    fontFamily: "",
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: "bold",
-    letterSpacing: 0.25,
-    textAlign: "center",
-    color: "white",
-  },
-});

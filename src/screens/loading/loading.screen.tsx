@@ -1,14 +1,9 @@
 import React from "react";
 import { View } from "react-native";
-import { styles } from "./loading.styles";
 import LottieView from "lottie-react-native";
+import { styles } from "./loading.styles";
 
-interface LoadingScreenProps {
-  imageSrc: string;
-}
-
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ imageSrc }) => {
-  const source = require(imageSrc);
+const LoadingScreen: React.FC = () => {
   return (
     <View style={styles.animationWrapper}>
       <LottieView
@@ -16,7 +11,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ imageSrc }) => {
         autoPlay
         loop
         resizeMode="center"
-        source={source}
+        source={require("assets/lottie/groceries.json")}
       />
     </View>
   );

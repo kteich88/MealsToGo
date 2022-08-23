@@ -1,16 +1,20 @@
 import React from "react";
 import { List } from "react-native-paper";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Grocery } from "../../utils/types/grocery.types";
-import { GroceriesContainer, GroceryItem } from "./groceries.styles";
-import ListIcon from "../../components/Lists/ListIcon";
+import { GroceriesContainer, GroceryItem, Loading } from "./groceries.styles";
+import ListIcon from "../../components/Lists/ListItem";
 import { SearchContainer } from "../../components/Search/Search.styles";
 import Search from "../../components/Search/Search";
 import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationParams,
+} from "react-navigation";
 
 interface GroceriesScreenProps {
   groceries: Grocery[];
-  navigation: NativeStackNavigationProp<any>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
 export const GroceriesScreen: React.FC<GroceriesScreenProps> = ({

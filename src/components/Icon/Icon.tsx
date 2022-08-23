@@ -18,15 +18,15 @@ import {
 import { theme } from "infrastructure/theme";
 import { OpaqueColorValue } from "react-native";
 
-interface IconProps {
-  icon: string;
+export interface IconProps {
+  type: string;
   name: any;
   color?: string | OpaqueColorValue | undefined;
   size?: number | undefined;
 }
 
-export const renderIcon = ({ icon, name, color, size }: IconProps) => {
-  switch (icon) {
+export const renderIcon = ({ type, name, color, size }: IconProps) => {
+  switch (type) {
     case "AntDesign":
       return <AntDesign name={name} size={size} color={color} />;
     case "Entypo":
@@ -59,12 +59,12 @@ export const renderIcon = ({ icon, name, color, size }: IconProps) => {
 };
 
 const Icon: React.FC<IconProps> = ({
-  icon,
+  type,
   name,
   color = theme.colors.bg.primary,
   size = theme.spacing.sixteen,
 }) => {
-  return renderIcon({ icon, name, color, size });
+  return renderIcon({ type, name, color, size });
 };
 
 export default Icon;

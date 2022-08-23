@@ -22,17 +22,20 @@ export const SettingsNavigator = () => {
         options={{
           header: () => null,
         }}
-        name="Setting Screen"
+        name="Settings Screen"
         component={SettingsScreen}
       />
-      <SettingsStack.Screen name="Camera" component={CameraScreen} />
+      <SettingsStack.Screen name="Camera Screen" component={CameraScreen} />
       {/* Favorite Recipes */}
-      {/* <SettingsStack.Screen name="Favorites" component={FavoritesScreen} /> */}
+      {/* <SettingsStack.Screen name="Favorites Screen" component={FavoritesScreen} /> */}
       {/* Grocery List */}
-      <SettingsStack.Screen name="Grocery List" component={GroceriesScreen} />
+      {/* <SettingsStack.Screen
+        name="Grocery List Screen"
+        component={GroceriesScreen}
+      /> */}
       {/* Meal Planning */}
       {/* <SettingsStack.Screen
-        name="Meal Planning"
+        name="Meal Planning Screen"
         component={MealPlanningScreen}
       /> */}
     </SettingsStack.Navigator>

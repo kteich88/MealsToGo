@@ -1,5 +1,9 @@
 import React from "react";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from "react-navigation";
 import { styles } from "./index.styles";
 import { ImageBackground, Text, View } from "react-native";
 import Button from "components/Button/Button";
@@ -8,7 +12,7 @@ import { theme } from "infrastructure/theme";
 import Icon from "components/Icon/Icon";
 
 interface AuthenticationScreenProps {
-  navigation: NativeStackNavigationProp<any>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
 const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({

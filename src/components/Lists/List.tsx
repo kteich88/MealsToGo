@@ -1,25 +1,30 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Restaurant from "../Cards/Restaurant/Restaurant";
 import { FlatList, TouchableOpacity } from "react-native";
 import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from "react-navigation";
 
 interface ListProps {
   data: TransformedRestaurantDataResults[];
-  navigation: NativeStackNavigationProp<any>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+  children?: ReactNode;
 }
 
-const List: React.FC<ListProps> = ({ data, navigation }) => {
+const List: React.FC<ListProps> = ({ data, navigation, children }) => {
   return (
     <FlatList
       data={data}
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Restaurant Details", { restaurant: item })
+            navigation.navigate("Recipe Details", { recipe: item })
           }
         >
-          <Restaurant restaurant={item} />
+          {children}
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.name}

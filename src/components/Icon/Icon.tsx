@@ -15,7 +15,7 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { theme } from "infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 import { OpaqueColorValue } from "react-native";
 
 interface IconProps {

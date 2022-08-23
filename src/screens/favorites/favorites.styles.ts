@@ -1,20 +1,19 @@
 import { ImageBackground } from "react-native";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
-import { colors, spacing } from "../../infrastructure/theme";
-import { theme } from "../../infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 
 export const FavoritesContainer = styled(List.Section)`
-  margin: ${spacing.xs};
+  margin: ${theme.spacing.zero};
 `;
 
 export const FavoritesItem = styled(List.Item)`
-  padding: ${spacing.lg};
-  margin: ${spacing.xs};
+  padding: ${theme.spacing.sixteen};
+  margin: ${theme.spacing.zero};
 `;
 
 export const BackgroundImage = styled(ImageBackground).attrs({
-  source: require("../../../assets/backgrounds/pusheen-favorites.png"),
+  source: require("assets/backgrounds/pusheen-favorites.png"),
 })`
   flex: 1;
   align-items: center;
@@ -28,12 +27,12 @@ export const ImageOverlay = styled.View`
 `;
 
 export const Title = styled.Text`
-  margin-top: ${spacing.xxxl};
-  padding: ${spacing.xxl}
+  margin-top: ${theme.spacing.oneTwentyEight}};
+  padding: ${theme.spacing.sixtyFour}
   font-family: ${theme.fonts.monospace};
   font-weight: ${theme.fontWeights.bold};
   font-size: ${theme.fontSizes.title};
-  color: ${colors.text.primary};
+  color: ${theme.colors.text.primary};
   flex-wrap: wrap;
   flex: 1;
 `;

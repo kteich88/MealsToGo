@@ -1,52 +1,51 @@
 import styled from "styled-components/native";
-import { colors, spacing } from "../../infrastructure/theme";
-import { theme } from "../../infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 
 export const Image = styled.Image`
-  border-radius: ${spacing.eight};
+  border-radius: ${theme.spacing.eight};
   width: 90px;
-  height: ${spacing.xxl};
-  margin-bottom: ${spacing.eight};
+  height: ${theme.spacing.sixtyFour};
+  margin-bottom: ${theme.spacing.eight};
 `;
 
 export const Card = styled.View`
-  padding: ${spacing.eight};
+  padding: ${theme.spacing.eight};
   width: 110px;
-  height: ${spacing.xxxl};
-  max-width: ${spacing.xxxl};
+  height: ${theme.spacing.oneTwentyEight};
+  max-width: ${theme.spacing.oneTwentyEight};
   align-items: center;
-  background-color: ${colors.bg.primary};
+  background-color: ${theme.colors.bg.primary};
 `;
 
 export const Title = styled.Text`
   font-family: ${theme.fonts.monospace};
   font-weight: ${theme.fontWeights.bold};
   font-size: ${theme.fontSizes.caption};
-  color: ${colors.text.primary};
+  color: ${theme.colors.text.primary};
   flex-wrap: wrap;
   flex: 1;
 `;
 
 export const FavoritesCard = styled.View`
-  padding: ${spacing.eight};
+  padding: ${theme.spacing.eight};
   width: 110px;
-  height: ${spacing.xxxl};
-  max-width: ${spacing.xxxl};
+  height: ${theme.spacing.oneTwentyEight};
+  max-width: ${theme.spacing.oneTwentyEight};
   align-items: center;
 `;
 
 export const FavoritesCardImage = styled.Image`
-  border-radius: ${spacing.lg};
+  border-radius: ${theme.spacing.sixteen};
   width: 90px;
   height: 90px;
-  margin-bottom: ${spacing.eight};
+  margin-bottom: ${theme.spacing.eight};
 `;
 
 export const TitleContainer = styled.Text`
   width: 90px;
   position: absolute;
   top: 33%;
-  background-color: ${colors.bg.primary};
+  background-color: ${theme.colors.bg.primary};
   opacity: 0.9;
   text-align: center;
   flex-direction: row;

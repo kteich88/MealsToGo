@@ -1,6 +1,5 @@
-import { spacing } from "infrastructure/theme";
-import { theme } from "infrastructure/theme/helpers";
 import { StyleSheet } from "react-native";
+import { theme } from "infrastructure/theme";
 
 export const styles = StyleSheet.create({
   backgroundImage: {
@@ -18,23 +17,30 @@ export const styles = StyleSheet.create({
     height: "40%",
     position: "absolute",
     top: "10%",
-    padding: spacing.eight,
+    padding: theme.spacing.eight,
   },
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: "rgba(255, 255, 255, 0.60)",
     marginTop: theme.spacing.eight,
     padding: theme.spacing.sixteen,
     justifyContent: "center",
     alignItems: "center",
-    top: "40%",
+    top: "35%",
     width: "65%",
   },
-  buttonContainer: {
-    padding: spacing.eight,
-    marginTop: spacing.eight,
+  textInput: {
+    borderBottomWidth: 1,
+    borderColor: "grey",
+    marginBottom: 20,
+    width: "80%",
   },
   title: {
-    fontSize: spacing.thirty,
+    fontSize: theme.spacing.thirty,
     fontFamily: theme.fonts.body,
+  },
+  loginButton: {
+    backgroundColor: theme.colors.brand.muted,
+    color: theme.colors.brand.primary,
+    width: "80%",
   },
 });

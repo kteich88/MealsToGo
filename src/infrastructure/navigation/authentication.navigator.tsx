@@ -15,7 +15,7 @@ const screenOptions = () => {
 export const AuthenticationNavigator = () => (
   <Stack.Navigator screenOptions={screenOptions}>
     <Stack.Screen name="Main" component={AuthenticationScreen} />
-    {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
-    {/* <Stack.Screen name="Register" component={RegistrationScreen} /> */}
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Register" component={RegistrationScreen} />
   </Stack.Navigator>
 );

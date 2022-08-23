@@ -1,5 +1,4 @@
-import { spacing } from "infrastructure/theme";
-import { theme } from "infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -15,12 +14,12 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontFamily: theme.fonts.heading,
-    fontSize: spacing.twelve,
-    lineHeight: spacing.sixteen,
+    fontSize: theme.spacing.twelve,
+    lineHeight: theme.spacing.sixteen,
     fontWeight: "bold",
     letterSpacing: 0.25,
     textAlign: "center",
     color: theme.colors.text.inverse,
-    paddingLeft: spacing.twelve,
+    paddingLeft: theme.spacing.twelve,
   },
 });

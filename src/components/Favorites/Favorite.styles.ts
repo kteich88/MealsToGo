@@ -1,24 +1,23 @@
 import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
-import { colors, spacing } from "../../infrastructure/theme";
-import { theme } from "../../infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 
 export const Title = styled.Text`
   font-family: ${theme.fonts.heading}
   font-weight: ${theme.fontWeights.bold};
   font-size: ${theme.fontSizes.body}
-  color: ${colors.text.primary};
-  margin-left: ${spacing.md};
+  color: ${theme.colors.text.primary};
+  margin-left: ${theme.spacing.eight};
 `;
 
 export const Favorite = styled(TouchableOpacity)`
   position: absolute;
-  top: ${spacing.xl};
-  right: ${spacing.xl};
+  top: ${theme.spacing.thirtyTwo};
+  right: ${theme.spacing.thirtyTwo};
   z-index: 9;
 `;
 
 export const FavoritesContainer = styled.View`
-  padding: ${spacing.xs} ${spacing.md};
-  margin: ${spacing.xs} ${spacing.md};
+  padding: ${theme.spacing.zero} ${theme.spacing.eight};
+  margin: ${theme.spacing.zero} ${theme.spacing.eight};
 `;

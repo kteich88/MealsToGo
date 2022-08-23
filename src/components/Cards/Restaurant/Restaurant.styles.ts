@@ -1,33 +1,32 @@
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
-import { lineHeights, spacing } from "../../../infrastructure/theme/spacing";
-import { colors } from "../../../infrastructure/theme/colors";
-import { theme } from "../../../infrastructure/theme/helpers";
+import { theme } from "infrastructure/theme";
 
 export const RestaurantCard = styled(Card)`
-  background-color: ${colors.bg.primary};
-  margin: ${spacing.xs} ${spacing.sm} ${spacing.xl} ${spacing.sm};
+  background-color: ${theme.colors.bg.primary};
+  margin: ${theme.spacing.zero} ${theme.spacing.four} ${theme.spacing.thirtyTwo}
+    ${theme.spacing.four};
 `;
 
 export const CoverImage = styled(Card.Cover)`
-  padding: ${spacing.lg};
-  background-color: ${colors.bg.primary};
+  padding: ${theme.spacing.sixteen};
+  background-color: ${theme.colors.bg.primary};
 `;
 
 export const Info = styled.View`
-  padding: ${spacing.lg};
-  lineheights: ${lineHeights.copy};
+  padding: ${theme.spacing.sixteen};
+  lineheights: ${theme.lineHeights.copy};
 `;
 
 export const Title = styled.Text`
   font-family: ${theme.fonts.heading};
   font-size: ${theme.fontSizes.title};
   font-weight: ${theme.fontWeights.bold};
-  color: ${colors.text.primary};
+  color: ${theme.colors.text.primary};
 `;
 
 export const RatingsContainer = styled.View`
-  padding: ${spacing.xs} ${spacing.lg};
+  padding: ${theme.spacing.zero} ${theme.spacing.sixteen};
   align-items: space-between;
   flex-direction: row;
   justify-content: space-between;
@@ -36,5 +35,5 @@ export const RatingsContainer = styled.View`
 export const Address = styled.Text`
   font-family: ${theme.fonts.body}
   font-size: ${theme.fontSizes.body}
-  color: ${colors.text.primary};
+  color: ${theme.colors.text.primary};
 `;

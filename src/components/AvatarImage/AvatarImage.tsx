@@ -17,7 +17,7 @@ const AvatarImage: React.FC<AvatarImageProps> = ({ image, navigation }) => {
     <View style={styles.avatarContainer}>
       <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
         {image ? (
-          <Image style={styles.image} source={{ uri: image }} />
+          <Image style={styles.avatar} source={{ uri: image }} />
         ) : (
           <View style={styles.avatar}>
             <Icon

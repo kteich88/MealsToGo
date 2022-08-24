@@ -9,14 +9,10 @@ export const styles = StyleSheet.create({
   },
   avatar: {
     backgroundColor: theme.colors.brand.secondary,
-    width: theme.spacing.oneTwentyEight,
-    height: theme.spacing.oneTwentyEight,
-    borderRadius: theme.spacing.oneTwentyEight / 2,
+    width: theme.spacing.twoHundred,
+    height: theme.spacing.twoHundred,
+    borderRadius: theme.spacing.twoHundred / 2,
     alignItems: "center",
     justifyContent: "center",
-  },
-  image: {
-    height: "25%",
-    width: "25%",
   },
 });

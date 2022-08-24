@@ -55,9 +55,8 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
         const data = await cameraRef.current?.takePictureAsync({
           base64: true,
         });
-        if (user && data) {
+        if (data) {
           setImage(data.uri);
-          AsyncStorage.setItem(`${user.uid}-photo`, data.uri);
         }
         setDisabled(false);
       } catch (error) {
@@ -71,6 +70,9 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
       try {
         setDisabled(true);
         await MediaLibrary.createAssetAsync(image);
+        if (user) {
+          AsyncStorage.setItem(`${user.uid}-photo`, image);
+        }
         setImage(undefined);
         setDisabled(false);
         navigation.goBack();

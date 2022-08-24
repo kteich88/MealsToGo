@@ -12,6 +12,7 @@ import { FavoritesContextProvider } from "contexts/favorites.context";
 import { RecipesNavigator } from "./recipes.navigator";
 import { IngredientsNavigator } from "./ingredients.navigator";
 import Icon from "components/Icon/Icon";
+import IngredientsScreen from "screens/ingredients/ingredients.screen";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -47,7 +48,7 @@ const AppNavigator = () => {
               />
               <Tab.Screen
                 name="Ingredients"
-                component={IngredientsNavigator}
+                component={IngredientsScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Icon

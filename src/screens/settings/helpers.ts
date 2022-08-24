@@ -2,17 +2,8 @@ import { theme } from "infrastructure/theme";
 import { DataType } from "types/types";
 
 export const SETTINGS: DataType[] = [
-  // {
-  //   title: "Camera",
-  //   icon: {
-  //     type: "MaterialIcons",
-  //     name: "photo-camera",
-  //     color: theme.colors.brand.primary,
-  //     size: theme.spacing.twentyFive,
-  //   },
-  // },
   {
-    title: "Favorites",
+    title: "Favorite Recipes",
     icon: {
       type: "Entypo",
       name: "heart",

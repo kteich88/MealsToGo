@@ -6,6 +6,7 @@ import {
 import FreezerScreen from "screens/ingredients/freezer.screen";
 import PantryScreen from "screens/ingredients/pantry.screen";
 import RefrigeratorScreen from "screens/ingredients/refrigerator.screen";
+import IngredientsScreen from "screens/ingredients/ingredients.screen";
 
 const IngredientsStack = createStackNavigator();
 
@@ -19,6 +20,13 @@ const screenOptions = () => {
 export const IngredientsNavigator = () => {
   return (
     <IngredientsStack.Navigator screenOptions={screenOptions}>
+      <IngredientsStack.Screen
+        options={{
+          header: () => null,
+        }}
+        name="Settings Screen"
+        component={IngredientsScreen}
+      />
       <IngredientsStack.Screen name="Pantry" component={PantryScreen} />
       <IngredientsStack.Screen
         name="Refrigerator"

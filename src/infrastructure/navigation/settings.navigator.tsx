@@ -25,7 +25,7 @@ export const SettingsNavigator = () => {
         name="Settings Screen"
         component={SettingsScreen}
       />
-      <SettingsStack.Screen name="Camera Screen" component={CameraScreen} />
+      <SettingsStack.Screen name="Camera" component={CameraScreen} />
       {/* Favorite Recipes */}
       {/* <SettingsStack.Screen name="Favorites Screen" component={FavoritesScreen} /> */}
       {/* Grocery List */}

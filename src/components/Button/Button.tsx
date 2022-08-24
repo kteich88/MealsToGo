@@ -5,7 +5,7 @@ import { styles } from "./Button.styles";
 interface ButtonProps {
   text: string;
   onPress: () => void;
-  isDisabled: boolean;
+  disabled?: boolean;
   children?: ReactNode;
   customStyles?: any;
 }
@@ -13,14 +13,13 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   text,
   onPress,
-  isDisabled = false,
+  disabled = false,
   children,
   customStyles,
 }) => {
   return (
     <TouchableOpacity
-      disabled={isDisabled}
-      // style={[styles.button, { backgroundColor: buttonColor }]}
+      disabled={disabled}
       style={[styles.button, customStyles]}
       onPress={onPress}
     >

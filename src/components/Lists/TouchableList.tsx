@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, TouchableOpacity } from "react-native";
+import { FlatList, Text, TouchableOpacity } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -7,6 +7,7 @@ import {
 } from "react-navigation";
 import Icon from "components/Icon/Icon";
 import { DataType } from "types/types";
+import { styles } from "./index.styles";
 
 interface TouchableListProps {
   data: DataType[];
@@ -20,13 +21,17 @@ const TouchableList: React.FC<TouchableListProps> = ({ data, navigation }) => {
       keyExtractor={(item) => item.title}
       renderItem={({ item }) => (
         <TouchableOpacity
-          onPress={() => navigation.navigate(item.title, { item: item })}
+          style={styles.container}
+          onPress={() => navigation.navigate(`${item.title} Screen`)}
         >
           <Icon
             type={item.icon.type}
             name={item.icon.name}
             color={item.icon.color}
+            size={item.icon.size}
           />
+
+          <Text style={styles.text}>{`${item.title}`}</Text>
         </TouchableOpacity>
       )}
     />

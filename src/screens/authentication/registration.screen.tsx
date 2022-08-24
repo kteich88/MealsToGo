@@ -58,7 +58,7 @@ const RegistrationScreen: React.FC = () => {
           <Button
             text="Register"
             onPress={() => onRegister(email, password, authenticatePassword)}
-            isDisabled={false}
+            disabled={false}
             customStyles={styles.loginButton}
           />
         </View>

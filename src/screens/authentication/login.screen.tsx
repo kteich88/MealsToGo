@@ -10,8 +10,6 @@ const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { onLogin, isLoading, error } = useContext(AuthenticationContext);
-  console.log("BRUH", onLogin);
-  console.log("Loading", isLoading);
   return (
     <ImageBackground
       style={styles.backgroundImage}
@@ -48,7 +46,7 @@ const LoginScreen: React.FC = () => {
           <Button
             text="Login"
             onPress={() => onLogin(email, password)}
-            isDisabled={false}
+            disabled={false}
             customStyles={styles.loginButton}
           />
         </View>

@@ -1,43 +1,195 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Camera, CameraType } from "expo-camera";
-import { Text } from "react-native";
-import { CameraButton, CameraContainer, ProfileCamera } from "./camera.styles";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { Camera, CameraType, FlashMode } from "expo-camera";
+import * as MediaLibrary from "expo-media-library";
+import { Image, Text, View } from "react-native";
+import { styles } from "./camera.styles";
+import Button from "components/Button/Button";
+import Icon from "components/Icon/Icon";
+import { AuthenticationContext } from "contexts/authentication.context";
+import { theme } from "infrastructure/theme";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from "react-navigation";
 
-const CameraScreen = () => {
-  const [hasPermission, setHasPermission] = useState(false);
-  const cameraRef = useRef<Camera | null>();
+interface CameraScreenProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
 
-  const snap = async () => {
-    if (cameraRef && cameraRef.current) {
-      const photo = await cameraRef.current.takePictureAsync();
-      return photo;
-    }
-  };
+const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
+  const [hasPermission, setHasPermission] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
+  const [image, setImage] = useState<string>();
+  const [type, setType] = useState<CameraType>(CameraType.front);
+  const [flash, setFlash] = useState(FlashMode.off);
+  const cameraRef = useRef<Camera | null>(null);
+  const { user } = useContext(AuthenticationContext);
 
   useEffect(() => {
     (async () => {
-      const { granted } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(granted);
+      MediaLibrary.requestPermissionsAsync();
+      const cameraStatus = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(cameraStatus.status === "granted");
     })();
   }, []);
 
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.accessDenied}>Access Denied</Text>
+        <Icon
+          type={"Fontisto"}
+          name={"locked"}
+          size={theme.spacing.oneTwentyEight}
+        />
+      </View>
+    );
   }
 
-  return (
-    <CameraContainer>
-      <ProfileCamera
-        ref={(camera) => (cameraRef.current = camera)}
-        ratio={"16:9"}
-        type={CameraType.front}
-        onCameraReady={() => {
-          console.log("Camera Ready");
-        }}
-      />
+  const takePhoto = async () => {
+    if (cameraRef) {
+      try {
+        setDisabled(true);
+        const data = await cameraRef.current?.takePictureAsync();
+        if (user && data) {
+          setImage(data.uri);
+          AsyncStorage.setItem(`${user.uid}-photo`, data.uri);
+        }
+        setDisabled(false);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
 
-      <CameraButton onPress={() => snap()}>Snap!</CameraButton>
-    </CameraContainer>
+  const savePhoto = async () => {
+    if (image) {
+      try {
+        setDisabled(true);
+        await MediaLibrary.createAssetAsync(image);
+        setImage(undefined);
+        setDisabled(false);
+        navigation.goBack();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  return (
+    <>
+      {image ? (
+        <>
+          <Image source={{ uri: image }} style={styles.camera} />
+          <View style={styles.imageContainer}>
+            <Button
+              text={"Save Photo"}
+              onPress={savePhoto}
+              disabled={disabled}
+              children={
+                <Icon
+                  type={"Entypo"}
+                  name={"check"}
+                  color={theme.colors.brand.primary}
+                />
+              }
+              customStyles={styles.button}
+            />
+            <Button
+              text={"Retake Photo"}
+              onPress={() => setImage(undefined)}
+              disabled={disabled}
+              children={
+                <Icon
+                  type={"FontAwesome5"}
+                  name={"retweet"}
+                  color={theme.colors.brand.primary}
+                />
+              }
+              customStyles={styles.button}
+            />
+          </View>
+        </>
+      ) : (
+        <View style={styles.camera}>
+          <Camera
+            style={styles.camera}
+            type={type}
+            flashMode={flash}
+            ref={cameraRef}
+          >
+            <View style={styles.cameraButtons}>
+              <Button
+                text={""}
+                onPress={() =>
+                  setType(
+                    type === CameraType.back
+                      ? CameraType.front
+                      : CameraType.back,
+                  )
+                }
+                customStyles={styles.button}
+              >
+                {type === CameraType.front ? (
+                  <Icon
+                    type={"MaterialCommunityIcon"}
+                    name={"camera-front-variant"}
+                    color={theme.colors.brand.primary}
+                  />
+                ) : (
+                  <Icon
+                    type={"MaterialCommunityIcon"}
+                    name={"camera-flip"}
+                    color={theme.colors.brand.primary}
+                  />
+                )}
+              </Button>
+              <Button
+                text={""}
+                onPress={() =>
+                  setFlash(
+                    flash === FlashMode.off ? FlashMode.on : FlashMode.off,
+                  )
+                }
+                disabled={disabled}
+                customStyles={styles.button}
+              >
+                {flash === FlashMode.off ? (
+                  <Icon
+                    type={"Ionicons"}
+                    name={"flash-off"}
+                    color={theme.colors.brand.primary}
+                  />
+                ) : (
+                  <Icon
+                    type={"Ionicons"}
+                    name={"flash"}
+                    color={theme.colors.brand.primary}
+                  />
+                )}
+              </Button>
+            </View>
+          </Camera>
+          <View style={styles.buttonContainer}>
+            <Button
+              text={"Take A Photo"}
+              onPress={takePhoto}
+              disabled={disabled}
+              children={
+                <Icon
+                  type={"MaterialIcons"}
+                  name={"photo-camera"}
+                  color={theme.colors.brand.primary}
+                />
+              }
+              customStyles={styles.fullWidthButton}
+            />
+          </View>
+        </View>
+      )}
+    </>
   );
 };
 

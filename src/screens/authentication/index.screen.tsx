@@ -40,18 +40,18 @@ const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({
           <Button
             text="Login"
             onPress={() => navigation.navigate("Login")}
-            isDisabled={false}
+            disabled={false}
           >
-            <Icon icon={"MaterialIcons"} name={"login"} />
+            <Icon type={"MaterialIcons"} name={"login"} />
           </Button>
           <Button
             text="Register"
             onPress={() => navigation.navigate("Login")}
-            isDisabled={false}
+            disabled={false}
             customStyles={{
               backgroundColor: theme.colors.brand.secondary,
             }}
-            children={<Icon icon={"Fontisto"} name={"locked"} />}
+            children={<Icon type={"Fontisto"} name={"locked"} />}
           />
         </View>
       </ImageBackground>

@@ -13,4 +13,8 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.heading,
     marginTop: theme.spacing.sixteen,
   },
+  avatarContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

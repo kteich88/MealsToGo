@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,13 +9,9 @@ import { SettingsNavigator } from "./settings.navigator";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
-import {
-  recipeTabOptions,
-  ingredientsTabOptions,
-  settingsTabOptions,
-} from "./helpers";
 import { RecipesNavigator } from "./recipes.navigator";
 import { IngredientsNavigator } from "./ingredients.navigator";
+import Icon from "components/Icon/Icon";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -37,18 +34,45 @@ const AppNavigator = () => {
               <Tab.Screen
                 name="Recipes"
                 component={RecipesNavigator}
-                options={recipeTabOptions}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon
+                      type={"MaterialCommunityIcon"}
+                      name={"card-text-outline"}
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
               />
               <Tab.Screen
                 name="Ingredients"
                 component={IngredientsNavigator}
-                options={ingredientsTabOptions}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon
+                      type={"Ionicons"}
+                      name={"md-restaurant"}
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
               />
 
               <Tab.Screen
                 name="Settings"
                 component={SettingsNavigator}
-                options={settingsTabOptions}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon
+                      type={"SimpleLineIcons"}
+                      name={"settings"}
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
               />
             </Tab.Navigator>
           </RecipesContextProvider>

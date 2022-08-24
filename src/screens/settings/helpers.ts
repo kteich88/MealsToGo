@@ -1,18 +1,23 @@
+import { theme } from "infrastructure/theme";
 import { DataType } from "types/types";
 
 export const SETTINGS: DataType[] = [
-  {
-    title: "Camera",
-    icon: {
-      type: "MaterialIcons",
-      name: "photo-camera",
-    },
-  },
+  // {
+  //   title: "Camera",
+  //   icon: {
+  //     type: "MaterialIcons",
+  //     name: "photo-camera",
+  //     color: theme.colors.brand.primary,
+  //     size: theme.spacing.twentyFive,
+  //   },
+  // },
   {
     title: "Favorites",
     icon: {
       type: "Entypo",
       name: "heart",
+      color: theme.colors.brand.primary,
+      size: theme.spacing.twentyFive,
     },
   },
   {
@@ -20,13 +25,17 @@ export const SETTINGS: DataType[] = [
     icon: {
       type: "Octicons",
       name: "tasklist",
+      color: theme.colors.brand.primary,
+      size: theme.spacing.twentyFive,
     },
   },
   {
     title: "Meal Planning",
     icon: {
-      type: "MaterialCommunityIcons",
-      name: "cards-outline",
+      type: "MaterialCommunityIcon",
+      name: "calendar-edit",
+      color: theme.colors.brand.primary,
+      size: theme.spacing.twentyFive,
     },
   },
 ];

@@ -11,8 +11,6 @@ interface AvatarImageProps {
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = ({ image, navigation }) => {
-  console.log(image);
-
   return (
     <View style={styles.avatarContainer}>
       <TouchableOpacity onPress={() => navigation.navigate("Camera")}>

@@ -49,6 +49,9 @@ export const AuthenticationContextProvider: React.FC<
       .catch((err) => {
         setIsLoading(false);
         setError(errorHandler(err.message));
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
       });
   };
 
@@ -72,8 +75,10 @@ export const AuthenticationContextProvider: React.FC<
       .catch((err) => {
         setIsLoading(false);
         setError(errorHandler(err.message));
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
       });
-    setError(null);
   };
 
   const onLogout = () => {
@@ -87,6 +92,9 @@ export const AuthenticationContextProvider: React.FC<
       .catch((err) => {
         setIsLoading(false);
         setError(errorHandler(err.message));
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
       });
   };
 

@@ -16,6 +16,7 @@ export const spacing = {
   thirtyTwo: 32,
   sixtyFour: 64,
   oneTwentyEight: 128,
+  twoHundred: 200,
   twoFiftySix: 256,
   twoSeventy: 270,
   threeHundred: 300,

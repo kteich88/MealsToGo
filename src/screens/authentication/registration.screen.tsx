@@ -9,7 +9,7 @@ import { styles } from "./index.styles";
 const RegistrationScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [authenticatePassword, setAuthenticatePassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const { onRegister, isLoading, error } = useContext(AuthenticationContext);
   return (
@@ -23,8 +23,7 @@ const RegistrationScreen: React.FC = () => {
         <LoadingScreen />
       ) : (
         <View style={styles.container}>
-          {error && <Text>{error}</Text>}
-
+          {error && <Text style={styles.error}>{error}</Text>}
           <TextInput
             style={styles.textInput}
             placeholder="Email"
@@ -47,17 +46,17 @@ const RegistrationScreen: React.FC = () => {
           />
           <TextInput
             style={styles.textInput}
-            placeholder="Authenticate Password"
+            placeholder="Confirm Password"
             selectionColor={theme.colors.brand.primary}
-            value={authenticatePassword}
+            value={confirmPassword}
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
-            onChangeText={(p) => setAuthenticatePassword(p)}
+            onChangeText={(p) => setConfirmPassword(p)}
           />
           <Button
             text="Register"
-            onPress={() => onRegister(email, password, authenticatePassword)}
+            onPress={() => onRegister(email, password, confirmPassword)}
             disabled={false}
             customStyles={styles.loginButton}
           />

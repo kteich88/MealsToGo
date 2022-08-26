@@ -43,4 +43,8 @@ export const styles = StyleSheet.create({
     color: theme.colors.brand.primary,
     width: "80%",
   },
+  error: {
+    color: theme.colors.text.error,
+    marginBottom: theme.spacing.sixteen,
+  },
 });

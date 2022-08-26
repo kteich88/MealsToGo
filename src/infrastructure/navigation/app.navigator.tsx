@@ -9,8 +9,9 @@ import { SettingsNavigator } from "./settings.navigator";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
+import { IngredientsContextProvider } from "contexts/ingredients.context";
+
 import { RecipesNavigator } from "./recipes.navigator";
-import { IngredientsNavigator } from "./ingredients.navigator";
 import Icon from "components/Icon/Icon";
 import IngredientsScreen from "screens/ingredients/ingredients.screen";
 
@@ -28,54 +29,56 @@ const AppNavigator = () => {
       {isAuthenticated ? (
         <FavoritesContextProvider>
           <RecipesContextProvider>
-            <Tab.Navigator
-              initialRouteName="Settings"
-              screenOptions={screenOptions}
-            >
-              <Tab.Screen
-                name="Recipes"
-                component={RecipesNavigator}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Icon
-                      type={"MaterialCommunityIcon"}
-                      name={"card-text-outline"}
-                      color={color}
-                      size={size}
-                    />
-                  ),
-                }}
-              />
-              <Tab.Screen
-                name="Ingredients"
-                component={IngredientsScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Icon
-                      type={"Ionicons"}
-                      name={"md-restaurant"}
-                      color={color}
-                      size={size}
-                    />
-                  ),
-                }}
-              />
+            <IngredientsContextProvider>
+              <Tab.Navigator
+                initialRouteName="Settings"
+                screenOptions={screenOptions}
+              >
+                <Tab.Screen
+                  name="Recipes"
+                  component={RecipesNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"MaterialCommunityIcon"}
+                        name={"card-text-outline"}
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Ingredients"
+                  component={IngredientsScreen}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"Ionicons"}
+                        name={"md-restaurant"}
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
 
-              <Tab.Screen
-                name="Settings"
-                component={SettingsNavigator}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Icon
-                      type={"SimpleLineIcons"}
-                      name={"settings"}
-                      color={color}
-                      size={size}
-                    />
-                  ),
-                }}
-              />
-            </Tab.Navigator>
+                <Tab.Screen
+                  name="Settings"
+                  component={SettingsNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"SimpleLineIcons"}
+                        name={"settings"}
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+              </Tab.Navigator>
+            </IngredientsContextProvider>
           </RecipesContextProvider>
         </FavoritesContextProvider>
       ) : (

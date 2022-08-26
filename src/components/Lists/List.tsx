@@ -1,7 +1,5 @@
 import React, { ReactNode } from "react";
-import Restaurant from "../Cards/Restaurant/Restaurant";
 import { FlatList, TouchableOpacity } from "react-native";
-import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -9,7 +7,7 @@ import {
 } from "react-navigation";
 
 interface ListProps {
-  data: TransformedRestaurantDataResults[];
+  data: [];
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
   children?: ReactNode;
 }

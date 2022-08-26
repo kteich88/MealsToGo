@@ -3,9 +3,8 @@ import { List } from "react-native-paper";
 import { Grocery } from "../../utils/types/grocery.types";
 import { GroceriesContainer, GroceryItem, Loading } from "./groceries.styles";
 import ListIcon from "../../components/Lists/ListItem";
-import { SearchContainer } from "../../components/SearchBar/SearchBar.styles";
-import Search from "../../components/SearchBar/SearchBar";
-import { SafeArea } from "../../components/SafeArea/SafeArea.styles";
+import Search from "../../components/Search/SearchBar";
+import { SafeArea } from "components/SafeArea/SafeArea.styles";
 import {
   NavigationScreenProp,
   NavigationState,

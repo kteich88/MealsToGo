@@ -46,7 +46,7 @@ const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({
           </Button>
           <Button
             text="Register"
-            onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Register")}
             disabled={false}
             customStyles={{
               backgroundColor: theme.colors.brand.secondary,

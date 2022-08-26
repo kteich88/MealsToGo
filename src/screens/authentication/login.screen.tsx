@@ -10,6 +10,7 @@ const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+
   return (
     <ImageBackground
       style={styles.backgroundImage}
@@ -21,7 +22,7 @@ const LoginScreen: React.FC = () => {
         <LoadingScreen />
       ) : (
         <View style={styles.container}>
-          {error && <Text>{error}</Text>}
+          {error && <Text style={styles.error}>{error}</Text>}
 
           <TextInput
             style={styles.textInput}

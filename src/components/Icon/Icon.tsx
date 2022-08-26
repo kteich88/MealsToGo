@@ -16,55 +16,72 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { theme } from "infrastructure/theme";
-import { OpaqueColorValue } from "react-native";
+import { OpaqueColorValue, StyleProp } from "react-native";
 
 export interface IconProps {
   type: string;
   name: any;
+  style?: StyleProp<any>;
   color?: string | OpaqueColorValue | undefined;
   size?: number | undefined;
 }
 
-export const renderIcon = ({ type, name, color, size }: IconProps) => {
+export const renderIcon = ({ type, name, style, color, size }: IconProps) => {
   switch (type) {
     case "AntDesign":
-      return <AntDesign name={name} size={size} color={color} />;
+      return <AntDesign name={name} style={style} color={color} size={size} />;
     case "Entypo":
-      return <Entypo name={name} size={size} color={color} />;
+      return <Entypo name={name} style={style} color={color} size={size} />;
     case "EvilIcons":
-      return <EvilIcons name={name} size={size} color={color} />;
+      return <EvilIcons name={name} style={style} color={color} size={size} />;
     case "Feather":
-      return <Feather name={name} size={size} color={color} />;
+      return <Feather name={name} style={style} color={color} size={size} />;
     case "FontAwesome":
-      return <FontAwesome name={name} size={size} color={color} />;
+      return (
+        <FontAwesome name={name} style={style} color={color} size={size} />
+      );
     case "FontAwesome5":
-      return <FontAwesome5 name={name} size={size} color={color} />;
+      return (
+        <FontAwesome5 name={name} style={style} color={color} size={size} />
+      );
     case "Fontisto":
-      return <Fontisto name={name} size={size} color={color} />;
+      return <Fontisto name={name} style={style} color={color} size={size} />;
     case "Foundation":
-      return <Foundation name={name} size={size} color={color} />;
+      return <Foundation name={name} style={style} color={color} size={size} />;
     case "Ionicons":
-      return <Ionicons name={name} size={size} color={color} />;
+      return <Ionicons name={name} style={style} color={color} size={size} />;
     case "Octicons":
-      return <Octicons name={name} size={size} color={color} />;
+      return <Octicons name={name} style={style} color={color} size={size} />;
     case "Zocial":
-      return <Zocial name={name} size={size} color={color} />;
+      return <Zocial name={name} style={style} color={color} size={size} />;
     case "SimpleLineIcons":
-      return <SimpleLineIcons name={name} size={size} color={color} />;
+      return (
+        <SimpleLineIcons name={name} style={style} color={color} size={size} />
+      );
     case "MaterialCommunityIcon":
-      return <MaterialCommunityIcons name={name} size={size} color={color} />;
+      return (
+        <MaterialCommunityIcons
+          name={name}
+          style={style}
+          color={color}
+          size={size}
+        />
+      );
     default:
-      return <MaterialIcons name={name} size={size} color={color} />;
+      return (
+        <MaterialIcons name={name} style={style} color={color} size={size} />
+      );
   }
 };
 
 const Icon: React.FC<IconProps> = ({
   type,
   name,
+  style,
   color = theme.colors.bg.primary,
   size = theme.spacing.sixteen,
 }) => {
-  return renderIcon({ type, name, color, size });
+  return renderIcon({ type, name, style, color, size });
 };
 
 export default Icon;

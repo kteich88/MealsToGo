@@ -42,7 +42,7 @@ const IngredientsScreen: React.FC = () => {
       ) : (
         <SafeAreaView style={globalStyles.safeArea}>
           <SearchBar />
-          <AccordionList data={ingredients} />
+          {/* <AccordionList data={DATA} /> */}
         </SafeAreaView>
       )}
     </>

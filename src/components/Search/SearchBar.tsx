@@ -1,23 +1,14 @@
-import Button from "components/Button/Button";
 import Icon from "components/Icon/Icon";
 import VoiceIcon from "components/Icon/VoiceIcon";
-import firebase from "firebase/compat";
+import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  Animated,
-  StatusBar,
-  StyleSheet,
-  TextInput,
-  View,
-  Text,
-  Platform,
-  TouchableOpacity,
-} from "react-native";
+import React, { useContext, useState } from "react";
+import { TextInput, View } from "react-native";
 import { styles } from "./SearchBar.styles";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
+  const { text } = useContext(VoiceContext);
 
   return (
     <View style={styles.container}>
@@ -32,7 +23,7 @@ const SearchBar = () => {
         style={styles.textInput}
         placeholder="Search..."
         selectionColor={theme.colors.brand.primary}
-        value={search}
+        value={search ? search : text.join()}
         textContentType="emailAddress"
         keyboardType="email-address"
         autoCapitalize="none"

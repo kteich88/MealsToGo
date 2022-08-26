@@ -1,53 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Alert, Text, TouchableOpacity } from "react-native";
-import Voice, {
-  SpeechResultsEvent,
-  SpeechErrorEvent,
-} from "@react-native-voice/voice";
+import React, { useContext, useEffect, useState } from "react";
+import { TouchableOpacity } from "react-native";
 import Icon from "components/Icon/Icon";
 import { styles } from "./index.styles";
 import { theme } from "infrastructure/theme";
+import { VoiceContext } from "contexts/voice.context";
 
 const VoiceIcon: React.FC = () => {
-  const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [text, setText] = useState<string[]>([]);
-
-  const onSpeechStart = () => {
-    setText([]);
-  };
-
-  const onSpeechEnd = () => {
-    setText([]);
-  };
-
-  const onSpeechResults = (event: SpeechResultsEvent) => {
-    setText(event.value ?? []);
-  };
-
-  const onSpeechError = (event: SpeechErrorEvent) => {
-    console.error(event.error);
-  };
-
-  const onRecordVoice = () => {
-    isRecording ? Voice.stop() : Voice.start("en-US");
-    setIsRecording(!isRecording);
-  };
-
-  useEffect(() => {
-    Voice.onSpeechStart = onSpeechStart;
-    Voice.onSpeechEnd = onSpeechEnd;
-    Voice.onSpeechResults = onSpeechResults;
-    Voice.onSpeechError = onSpeechError;
-
-    return () => {
-      Voice.destroy()
-        .then(Voice.removeAllListeners)
-        .catch((error) => {
-          console.error(error);
-          Alert.alert(error);
-        });
-    };
-  }, []);
+  const { onRecordVoice, isRecording } = useContext(VoiceContext);
 
   return (
     <>
@@ -55,14 +14,11 @@ const VoiceIcon: React.FC = () => {
         <Icon
           style={styles.voice}
           type={"MaterialIcons"}
-          name={"keyboard-voice"}
-          color={
-            isRecording ? theme.colors.text.primary : theme.colors.text.disabled
-          }
+          name={isRecording ? "voice-over-off" : "record-voice-over"}
+          color={theme.colors.text.primary}
           size={theme.spacing.twenty}
         />
       </TouchableOpacity>
-      <Text>{text}</Text>
     </>
   );
 };

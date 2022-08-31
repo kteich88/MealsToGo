@@ -3,7 +3,7 @@ import { Camera, CameraType, FlashMode } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { Image, Text, View } from "react-native";
 import { styles } from "./camera.styles";
-import Button from "components/Button/Button";
+import Button from "components/Buttons/Button";
 import Icon from "components/Icon/Icon";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { theme } from "infrastructure/theme";

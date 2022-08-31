@@ -21,7 +21,7 @@ const TouchableList: React.FC<TouchableListProps> = ({ data, navigation }) => {
       keyExtractor={(item) => item.title}
       renderItem={({ item }) => (
         <TouchableOpacity
-          style={styles.container}
+          style={styles.settings}
           onPress={() => navigation.navigate(`${item.title} Screen`)}
         >
           <Icon

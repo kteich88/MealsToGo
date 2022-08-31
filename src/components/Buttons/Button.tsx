@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { styles } from "./Button.styles";
+import { styles } from "./index.styles";
 
 interface ButtonProps {
   text: string;

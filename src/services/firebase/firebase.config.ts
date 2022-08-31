@@ -1,3 +1,5 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import {
   API_KEY,
   AUTH_DOMAIN,
@@ -6,7 +8,7 @@ import {
   MESSAGING_SENDER_ID,
   APP_ID,
 } from "@env";
-import { getEnvironmentVariable } from "../../utils/helpers";
+import { getEnvironmentVariable } from "utils/helpers";
 
 export const firebaseConfig = {
   apiKey: getEnvironmentVariable(API_KEY),
@@ -16,3 +18,8 @@ export const firebaseConfig = {
   messagingSenderId: getEnvironmentVariable(MESSAGING_SENDER_ID),
   appId: getEnvironmentVariable(APP_ID),
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export { db };

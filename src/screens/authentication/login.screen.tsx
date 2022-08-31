@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { ImageBackground, Text, TextInput, View } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
 import { styles } from "./index.styles";
-import Button from "components/Button/Button";
 import { theme } from "infrastructure/theme";
 import { AuthenticationContext } from "contexts/authentication.context";
+import Button from "components/Buttons/Button";
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");

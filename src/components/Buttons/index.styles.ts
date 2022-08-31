@@ -22,4 +22,14 @@ export const styles = StyleSheet.create({
     color: theme.colors.text.inverse,
     paddingLeft: theme.spacing.twelve,
   },
+  buttonContainer: {
+    backgroundColor: theme.colors.brand.muted,
+  },
+  fullWidthButton: {
+    backgroundColor: theme.colors.brand.muted,
+    color: theme.colors.brand.primary,
+    margin: theme.spacing.zero,
+    borderRadius: 0,
+    alignSelf: "center",
+  },
 });

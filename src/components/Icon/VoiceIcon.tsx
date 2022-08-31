@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
 import Icon from "components/Icon/Icon";
 import { styles } from "./index.styles";
@@ -13,8 +13,8 @@ const VoiceIcon: React.FC = () => {
       <TouchableOpacity onPress={onRecordVoice}>
         <Icon
           style={styles.voice}
-          type={"MaterialIcons"}
-          name={isRecording ? "voice-over-off" : "record-voice-over"}
+          type={"FontAwesome"}
+          name={isRecording ? "microphone-slash" : "microphone"}
           color={theme.colors.text.primary}
           size={theme.spacing.twenty}
         />

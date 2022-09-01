@@ -3,19 +3,33 @@ import VoiceIcon from "components/Icon/VoiceIcon";
 import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
 import React, { useContext, useEffect, useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./SearchBar.styles";
 import { DocumentData } from "firebase/firestore";
 import { FlatList } from "react-native-gesture-handler";
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from "react-navigation";
 
 interface SearchBarProps {
   data: DocumentData[];
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ data, navigation }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResults] = useState<DocumentData[]>([]);
   const { text } = useContext(VoiceContext);
+
+  useEffect(() => {
+    setSearchResults(data);
+  }, [data]);
+
+  const filteredList = searchResults.filter((item) => {
+    return item.name.includes(searchTerm);
+  });
 
   return (
     <View style={styles.container}>
@@ -37,6 +51,24 @@ const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
         />
         <VoiceIcon />
       </View>
+      {/* {filteredList.length > 0 && <Text>{filteredList[0].name}</Text>} */}
+      {/* <IngredientsList list={filteredList} /> */}
+      {filteredList.length === 0 && (
+        <FlatList
+          style={styles.search}
+          data={filteredList}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Ingredient Screen")}
+              >
+                <Text>{item.name} </Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      )}
     </View>
   );
 };

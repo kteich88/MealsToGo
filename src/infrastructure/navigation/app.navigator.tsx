@@ -15,6 +15,7 @@ import { VoiceContextProvider } from "contexts/voice.context";
 import { RecipesNavigator } from "./recipes.navigator";
 import Icon from "components/Icon/Icon";
 import IngredientsScreen from "screens/ingredients/ingredients.screen";
+import { IngredientsNavigator } from "./ingredients.navigator";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -52,7 +53,7 @@ const AppNavigator = () => {
                   />
                   <Tab.Screen
                     name="Ingredients"
-                    component={IngredientsScreen}
+                    component={IngredientsNavigator}
                     options={{
                       tabBarIcon: ({ color, size }) => (
                         <Icon

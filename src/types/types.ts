@@ -5,17 +5,8 @@ export interface DataType {
   title: string;
   icon: IconProps;
 }
-export interface IngredientLists {
+export interface IngredientsList {
   pantry: DocumentData[];
   freezer: DocumentData[];
   refrigerator: DocumentData[];
-}
-
-export interface IngredientListData extends DocumentData {
-  amount: number;
-  authorID: string;
-  id: string;
-  docId: string;
-  location: string;
-  name: string;
 }

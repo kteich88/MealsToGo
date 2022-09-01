@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import { IngredientLists } from "types/types";
+import { IngredientsList } from "types/types";
 
 export const getEnvironmentVariable = (KEY: string): string => {
   if (!KEY) {

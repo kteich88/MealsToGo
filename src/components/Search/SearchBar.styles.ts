@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     alignSelf: "center",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   searchBar: {
     marginVertical: theme.spacing.twenty,
@@ -30,5 +30,10 @@ export const styles = StyleSheet.create({
   icon: {
     color: theme.colors.text.secondary,
     padding: theme.spacing.twelve,
+  },
+  search: {
+    backgroundColor: theme.colors.brand.primary,
+    height: "100%",
+    width: "100%",
   },
 });

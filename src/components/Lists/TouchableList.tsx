@@ -8,9 +8,10 @@ import {
 import Icon from "components/Icon/Icon";
 import { DataType } from "types/types";
 import { styles } from "./index.styles";
+import { DocumentData } from "firebase/firestore";
 
 interface TouchableListProps {
-  data: DataType[];
+  data: DataType[] | DocumentData[];
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 

@@ -3,10 +3,8 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
-import FreezerScreen from "screens/ingredients/freezer.screen";
-import PantryScreen from "screens/ingredients/pantry.screen";
-import RefrigeratorScreen from "screens/ingredients/refrigerator.screen";
 import IngredientsScreen from "screens/ingredients/ingredients.screen";
+import IngredientScreen from "screens/ingredients/ingredient.screen";
 
 const IngredientsStack = createStackNavigator();
 
@@ -24,15 +22,13 @@ export const IngredientsNavigator = () => {
         options={{
           header: () => null,
         }}
-        name="Settings Screen"
+        name="Ingredients Screen"
         component={IngredientsScreen}
       />
-      <IngredientsStack.Screen name="Pantry" component={PantryScreen} />
       <IngredientsStack.Screen
-        name="Refrigerator"
-        component={RefrigeratorScreen}
+        name="Ingredient Screen"
+        component={IngredientScreen}
       />
-      <IngredientsStack.Screen name="Freezer" component={FreezerScreen} />
     </IngredientsStack.Navigator>
   );
 };

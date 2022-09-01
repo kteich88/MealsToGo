@@ -1,7 +1,7 @@
 import { DocumentData } from "firebase/firestore";
-import { IngredientLists } from "types/types";
+import { IngredientsList } from "types/types";
 
-export const filterIngredients = (data: DocumentData[]): IngredientLists[] => {
+export const sortIngredients = (data: DocumentData[]): IngredientsList[] => {
   let pantryItems: DocumentData[] = [];
   let freezerItems: DocumentData[] = [];
   let refrigeratorItems: DocumentData[] = [];

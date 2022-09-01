@@ -5,19 +5,10 @@ export const styles = StyleSheet.create({
   container: {
     padding: theme.spacing.sixteen,
   },
-  pantry: {
-    flexDirection: "column",
-    alignSelf: "center",
+  title: {
+    textAlign: "center",
     padding: theme.spacing.sixteen,
-  },
-  fridge: {
-    flexDirection: "column",
-    alignSelf: "center",
-    padding: theme.spacing.sixteen,
-  },
-  freezer: {
-    flexDirection: "column",
-    alignSelf: "center",
-    padding: theme.spacing.sixteen,
+    width: "100%",
+    backgroundColor: theme.colors.brand.secondary,
   },
 });

@@ -5,8 +5,6 @@ import React, {
   ReactNode,
   useEffect,
 } from "react";
-import { Keyboard } from "react-native";
-
 import firebase from "firebase/compat";
 import {
   collection,
@@ -14,17 +12,17 @@ import {
   doc,
   addDoc,
   deleteDoc,
+  DocumentData,
 } from "firebase/firestore";
 import { db } from "services/firebase/firebase.config";
-import uuid from "react-native-uuid";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { errorHandler } from "services/firebase/firebase-error-handler";
-import { filterIngredients } from "./helpers";
-import { IngredientLists } from "types/types";
+import { sortIngredients } from "./helpers";
+import { IngredientsList } from "types/types";
 
 interface IngredientsContext {
-  ingredientLists: IngredientLists[];
-  searchIngredient: string;
+  ingredientsList: DocumentData[];
+  sortedIngredientsList: IngredientsList[];
   error: string | null;
   addIngredient: (ingredient: string) => void;
 }
@@ -40,9 +38,11 @@ interface IngredientsContextProviderProps {
 export const IngredientsContextProvider: React.FC<
   IngredientsContextProviderProps
 > = ({ children }) => {
-  const [ingredientLists, setIngredientLists] = useState<IngredientLists[]>([]);
-  const [searchIngredient, setSearchIngredient] = useState<string>("");
-  // const [search, setSearch] = useState<string>("");
+  const [ingredientsList, setIngredientsList] = useState<DocumentData[]>([]);
+  const [sortedIngredientsList, setSortedIngredientsList] = useState<
+    IngredientsList[]
+  >([]);
+
   const [error, setError] = useState<string | null>(null);
 
   const { user } = useContext(AuthenticationContext);
@@ -52,12 +52,12 @@ export const IngredientsContextProvider: React.FC<
     onSnapshot(firebaseCollectionRef, (snapshot) => {
       const ingredientsSnapshot = snapshot.docs.map((d) => {
         return {
-          docId: d.id,
-          id: uuid.v4(),
+          id: d.id,
           ...d.data(),
         };
       });
-      setIngredientLists(filterIngredients(ingredientsSnapshot));
+      setIngredientsList(ingredientsSnapshot);
+      setSortedIngredientsList(sortIngredients(ingredientsSnapshot));
     });
   }, []);
 
@@ -83,9 +83,9 @@ export const IngredientsContextProvider: React.FC<
   return (
     <IngredientsContext.Provider
       value={{
-        ingredientLists,
+        ingredientsList,
+        sortedIngredientsList,
         error,
-        searchIngredient,
         addIngredient,
       }}
     >

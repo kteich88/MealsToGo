@@ -20,7 +20,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({ list }) => {
 
               <View key={item.name} style={styles.item}>
                 <Text>{item.name}</Text>
-                <Counter amount={item.amount} />
+                {/* <Counter amount={item.amount} /> */}
               </View>
             </>
           );

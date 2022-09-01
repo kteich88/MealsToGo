@@ -42,6 +42,7 @@ export const VoiceContextProvider: React.FC<VoiceContextProviderProps> = ({
   const onRecordVoice = () => {
     isRecording ? Voice.stop() : Voice.start("en-US");
     setIsRecording(!isRecording);
+    return text;
   };
 
   useEffect(() => {

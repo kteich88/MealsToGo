@@ -80,11 +80,27 @@ const IngredientsScreen: React.FC = () => {
     },
   ];
 
-  const initializeIngredientsList = () => {};
-
   useEffect(() => {
-    initializeIngredientsList();
-  }, [ingredientLists]);
+    const ingredientList = ingredientLists.map((list) => {
+      return [...list.pantry, ...list.refrigerator, ...list.freezer];
+    });
+    setIngredientListData(ingredientList);
+  }, []);
+
+  const renderIngredientsList = () => {
+    return ingredientLists.map((list) => {
+      return (
+        <>
+          <Text style={styles.pantry}>{"PANTRY"}</Text>
+          <IngredientsList list={list.pantry} />
+          <Text style={styles.fridge}>{"REFRIGERATOR"}</Text>
+          <IngredientsList list={list.refrigerator} />
+          <Text style={styles.freezer}>{"FREEZER"}</Text>
+          <IngredientsList list={list.freezer} />
+        </>
+      );
+    });
+  };
 
   return (
     <>
@@ -92,24 +108,8 @@ const IngredientsScreen: React.FC = () => {
         <LoadingScreen />
       ) : (
         <SafeAreaView style={globalStyles.safeArea}>
-          {/* <SearchBar data={ingredientsData} /> */}
-          {/* <Search /> */}
-          {ingredientLists.map((list) => {
-            console.log("LIST", ingredientListData);
-            return (
-              <>
-                <Text style={styles.title}>{"PANTRY"}</Text>
-                <IngredientsList key={"pantry"} list={list.pantry} />
-                <Text style={styles.title}>{"REFRIGERATOR"}</Text>
-                <IngredientsList
-                  key={"refrigerator"}
-                  list={list.refrigerator}
-                />
-                <Text style={styles.title}>{"FREEZER"}</Text>
-                <IngredientsList key={"freezer"} list={list.freezer} />
-              </>
-            );
-          })}
+          <SearchBar data={ingredientListData} />
+          <View style={styles.container}>{renderIngredientsList()}</View>
         </SafeAreaView>
       )}
     </>

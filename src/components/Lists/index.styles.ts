@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   item: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: theme.colors.bg.search,
+    backgroundColor: theme.colors.bg.primary,
+    padding: theme.spacing.sixteen,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "components/Icon/Icon";
 import { styles } from "./Counter.styles";
@@ -10,6 +10,10 @@ interface CounterProps {
 
 const Counter: React.FC<CounterProps> = ({ amount }) => {
   const [count, setCount] = useState<number>(0);
+
+  useEffect(() => {
+    setCount(amount);
+  }, [amount]);
 
   return (
     <View style={styles.counter}>
@@ -25,7 +29,7 @@ const Counter: React.FC<CounterProps> = ({ amount }) => {
         />
       </TouchableOpacity>
 
-      <Text>{amount}</Text>
+      <Text>{count}</Text>
       <TouchableOpacity onPress={() => setCount(count + 1)}>
         <Icon
           style={styles.icon}

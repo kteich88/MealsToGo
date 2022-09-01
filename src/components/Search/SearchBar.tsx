@@ -2,44 +2,20 @@ import Icon from "components/Icon/Icon";
 import VoiceIcon from "components/Icon/VoiceIcon";
 import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-import { FlatList, Text, TextInput, View } from "react-native";
-import { IngredientLists } from "types/types";
+import React, { useContext, useEffect, useState } from "react";
+import { TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./SearchBar.styles";
-import HorizontalRule from "components/HorizontalRule/HorizontalRule";
-import SearchContainer from "./SearchContainer";
+import { DocumentData } from "firebase/firestore";
+import { FlatList } from "react-native-gesture-handler";
 
 interface SearchBarProps {
-  data: IngredientLists[];
+  data: DocumentData[];
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<IngredientLists[]>([]);
+  const [searchResults, setSearchResults] = useState<DocumentData[]>([]);
   const { text } = useContext(VoiceContext);
-
-  const search = () => {
-    if (searchTerm) {
-      const newData = data.filter((item) => {
-        const itemData = item.title
-          ? item.title.toUpperCase()
-          : "".toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-      });
-      setSearchResults(newData);
-      setSearchTerm(searchTerm);
-    } else {
-      // Inserted text is blank
-      // Update FilteredDataSource with masterDataSource
-      setSearchResults(masterDataSource);
-      setSearchTerm(text);
-    }
-  };
-
-  useEffect(() => {
-    // Clear SearchBar
-  });
 
   return (
     <View style={styles.container}>
@@ -61,21 +37,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ data }) => {
         />
         <VoiceIcon />
       </View>
-      {/* {data.filter()} */}
-      <FlatList
-        data={searchResults}
-        keyExtractor={(item) => item.name}
-        // ItemSeparatorComponent={() => {
-        //   <HorizontalRule />;
-        // }}
-        renderItem={({ item }) => {
-          <Text style={styles.itemStyle} onPress={() => getItem(item)}>
-            {item.id}
-            {"."}
-            {item.title.toUpperCase()}
-          </Text>;
-        }}
-      />
     </View>
   );
 };

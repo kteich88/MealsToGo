@@ -18,13 +18,13 @@ import { db } from "services/firebase/firebase.config";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { errorHandler } from "services/firebase/firebase-error-handler";
 import { sortIngredients } from "./helpers";
-import { IngredientsList } from "types/types";
+import { IngredientDocumentDataType, IngredientsList } from "types/types";
 
 interface IngredientsContext {
   ingredientsList: DocumentData[];
   sortedIngredientsList: IngredientsList[];
   error: string | null;
-  addIngredient: (ingredient: string) => void;
+  addIngredient: (ingredient: IngredientDocumentDataType) => void;
 }
 
 export const IngredientsContext = createContext<IngredientsContext>(
@@ -61,11 +61,17 @@ export const IngredientsContextProvider: React.FC<
     });
   }, []);
 
-  const addIngredient = (ingredient: string) => {
+  const addIngredient = (ingredient: DocumentData) => {
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     const data = {
-      title: ingredient,
-      authorID: user?.uid,
+      amount: ingredient.amount,
+      authorId: user?.uid,
+      icon: {
+        type: ingredient.icon.type,
+        name: ingredient.icon.name,
+      },
+      location: ingredient.location,
+      name: ingredient.name,
       createdAt: timestamp,
     };
     addDoc(firebaseCollectionRef, data).catch((e) => {

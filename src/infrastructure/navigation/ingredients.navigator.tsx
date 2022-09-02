@@ -5,6 +5,7 @@ import {
 } from "@react-navigation/stack";
 import IngredientsScreen from "screens/ingredients/ingredients.screen";
 import IngredientScreen from "screens/ingredients/ingredient.screen";
+import AddIngredientScreen from "screens/ingredients/add-ingredient.screen";
 
 const IngredientsStack = createStackNavigator();
 
@@ -24,6 +25,10 @@ export const IngredientsNavigator = () => {
         }}
         name="Ingredients Screen"
         component={IngredientsScreen}
+      />
+      <IngredientsStack.Screen
+        name="Add Ingredient Screen"
+        component={AddIngredientScreen}
       />
       <IngredientsStack.Screen
         name="Ingredient Screen"

@@ -11,8 +11,8 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { styles } from "./ingredients.styles";
-import TouchableList from "components/Lists/TouchableList";
+import { styles } from "./index.styles";
+import FullWidthButton from "components/Buttons/FullWidthButton";
 
 interface IngredientsScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -30,8 +30,7 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
       return (
         <>
           <Text style={styles.title}>{"PANTRY"}</Text>
-          <TouchableList data={list.pantry} navigation={navigation} />
-
+          <IngredientsList list={list.pantry} />
           <Text style={styles.title}>{"REFRIGERATOR"}</Text>
           <IngredientsList list={list.refrigerator} />
           <Text style={styles.title}>{"FREEZER"}</Text>
@@ -49,6 +48,10 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
         <SafeAreaView style={globalStyles.safeArea}>
           <SearchBar data={ingredientsList} navigation={navigation} />
           <View style={styles.container}>{renderIngredientsList()}</View>
+          <FullWidthButton
+            text={"Add Ingredient"}
+            onPress={() => navigation.navigate("Add Ingredient Screen")}
+          />
         </SafeAreaView>
       )}
     </>

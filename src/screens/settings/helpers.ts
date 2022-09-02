@@ -1,7 +1,7 @@
 import { theme } from "infrastructure/theme";
-import { DataType } from "types/types";
+import { Settings } from "types/types";
 
-export const SETTINGS: DataType[] = [
+export const SETTINGS: Settings[] = [
   {
     title: "Favorite Recipes",
     icon: {

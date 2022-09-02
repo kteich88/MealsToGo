@@ -5,9 +5,13 @@ export const styles = StyleSheet.create({
   counter: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   icon: {
-    marginHorizontal: theme.spacing.eight,
+    marginHorizontal: theme.spacing.sixteen,
     color: theme.colors.brand.primary,
+  },
+  text: {
+    fontSize: theme.spacing.thirtyTwo,
   },
 });

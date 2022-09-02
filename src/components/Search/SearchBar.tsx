@@ -31,6 +31,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ data, navigation }) => {
     return item.name.includes(searchTerm);
   });
 
+  console.log("LIST", filteredList);
   return (
     <View style={styles.container}>
       <View style={styles.searchBar}>

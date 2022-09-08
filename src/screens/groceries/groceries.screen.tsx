@@ -27,7 +27,7 @@ export const GroceriesScreen: React.FC<GroceriesScreenProps> = ({
       ) : (
         <>
           <SearchContainer>
-            <Search placeholder={"Search for location..."} />
+            <SearchBar placeholder={"Search for location..."} />
           </SearchContainer>
 
           {/* <Favorites favorites={favorites} navigation={navigation} /> */}

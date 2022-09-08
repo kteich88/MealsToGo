@@ -13,6 +13,7 @@ import {
 } from "react-navigation";
 import { styles } from "./index.styles";
 import FullWidthButton from "components/Buttons/FullWidthButton";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface IngredientsScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -22,23 +23,12 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
   navigation,
 }) => {
   const { isLoading } = useContext(AuthenticationContext);
-  const { ingredientsList, sortedIngredientsList } =
+  const { sortedIngredientsList, loadIngredientsList } =
     useContext(IngredientsContext);
 
-  const renderIngredientsList = () => {
-    return sortedIngredientsList.map((list) => {
-      return (
-        <>
-          <Text style={styles.title}>{"PANTRY"}</Text>
-          <IngredientsList list={list.pantry} />
-          <Text style={styles.title}>{"REFRIGERATOR"}</Text>
-          <IngredientsList list={list.refrigerator} />
-          <Text style={styles.title}>{"FREEZER"}</Text>
-          <IngredientsList list={list.freezer} />
-        </>
-      );
-    });
-  };
+  // useEffect(() => {
+  //   loadIngredientsList();
+  // });
 
   return (
     <>
@@ -46,12 +36,30 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
         <LoadingScreen />
       ) : (
         <SafeAreaView style={globalStyles.safeArea}>
-          <SearchBar data={ingredientsList} navigation={navigation} />
-          <View style={styles.container}>{renderIngredientsList()}</View>
-          <FullWidthButton
-            text={"Add Ingredient"}
-            onPress={() => navigation.navigate("Add Ingredient Screen")}
+          <SearchBar
+            placeholder="Search Ingredients..."
+            navigation={navigation}
           />
+          <ScrollView style={styles.container}>
+            {sortedIngredientsList.map((list) => {
+              return (
+                <>
+                  <Text style={styles.title}>{"PANTRY"}</Text>
+                  <IngredientsList list={list.pantry} navigation={navigation} />
+                  <Text style={styles.title}>{"REFRIGERATOR"}</Text>
+                  <IngredientsList
+                    list={list.refrigerator}
+                    navigation={navigation}
+                  />
+                  <Text style={styles.title}>{"FREEZER"}</Text>
+                  <IngredientsList
+                    list={list.freezer}
+                    navigation={navigation}
+                  />
+                </>
+              );
+            })}
+          </ScrollView>
         </SafeAreaView>
       )}
     </>

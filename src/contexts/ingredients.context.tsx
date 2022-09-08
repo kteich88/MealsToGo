@@ -23,8 +23,10 @@ import { IngredientDocumentDataType, IngredientsList } from "types/types";
 interface IngredientsContext {
   ingredientsList: DocumentData[];
   sortedIngredientsList: IngredientsList[];
+  isLoading: boolean;
   error: string | null;
   addIngredient: (ingredient: IngredientDocumentDataType) => void;
+  loadIngredientsList: () => void;
 }
 
 export const IngredientsContext = createContext<IngredientsContext>(
@@ -42,13 +44,18 @@ export const IngredientsContextProvider: React.FC<
   const [sortedIngredientsList, setSortedIngredientsList] = useState<
     IngredientsList[]
   >([]);
-
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const { user } = useContext(AuthenticationContext);
   const firebaseCollectionRef = collection(db, "ingredients");
 
   useEffect(() => {
+    loadIngredientsList();
+  }, []);
+
+  const loadIngredientsList = () => {
+    setIsLoading(true);
     onSnapshot(firebaseCollectionRef, (snapshot) => {
       const ingredientsSnapshot = snapshot.docs.map((d) => {
         return {
@@ -58,18 +65,16 @@ export const IngredientsContextProvider: React.FC<
       });
       setIngredientsList(ingredientsSnapshot);
       setSortedIngredientsList(sortIngredients(ingredientsSnapshot));
+      setIsLoading(false);
     });
-  }, []);
+  };
 
   const addIngredient = (ingredient: DocumentData) => {
+    setIsLoading(true);
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     const data = {
       amount: ingredient.amount,
       authorId: user?.uid,
-      icon: {
-        type: ingredient.icon.type,
-        name: ingredient.icon.name,
-      },
       location: ingredient.location,
       name: ingredient.name,
       createdAt: timestamp,
@@ -77,6 +82,7 @@ export const IngredientsContextProvider: React.FC<
     addDoc(firebaseCollectionRef, data).catch((e) => {
       setError(errorHandler(e.message));
     });
+    loadIngredientsList();
   };
 
   // const removeIngredient = () => {
@@ -91,8 +97,10 @@ export const IngredientsContextProvider: React.FC<
       value={{
         ingredientsList,
         sortedIngredientsList,
+        isLoading,
         error,
         addIngredient,
+        loadIngredientsList,
       }}
     >
       {children}

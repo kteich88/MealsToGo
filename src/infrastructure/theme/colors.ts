@@ -17,7 +17,7 @@ export const colors = {
     primary: "#FFFFFF",
     secondary: "#F1F1F1",
     tertiary: "#EFEFEF",
-    search: "#D9DBDA",
+    search: "#D5D3D1",
   },
   text: {
     primary: "#262626",

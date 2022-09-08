@@ -1,12 +1,12 @@
-import Icon from "components/Icon/Icon";
+/* eslint-disable react/no-unstable-nested-components */
+import React, { useContext, useState } from "react";
+import { View } from "react-native";
+import { Searchbar } from "react-native-paper";
 import VoiceIcon from "components/Icon/VoiceIcon";
 import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
-import React, { useContext, useEffect, useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { styles } from "./SearchBar.styles";
-import { DocumentData } from "firebase/firestore";
-import { FlatList } from "react-native-gesture-handler";
+import { styles } from "./index.styles";
+import SearchResults from "./SearchResults";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -14,62 +14,32 @@ import {
 } from "react-navigation";
 
 interface SearchBarProps {
-  data: DocumentData[];
+  placeholder: string;
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ data, navigation }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<DocumentData[]>([]);
   const { text } = useContext(VoiceContext);
 
-  useEffect(() => {
-    setSearchResults(data);
-  }, [data]);
+  const onChangeSearch = (query: string) => setSearchTerm(query);
 
-  const filteredList = searchResults.filter((item) => {
-    return item.name.includes(searchTerm);
-  });
-
-  console.log("LIST", filteredList);
   return (
     <View style={styles.container}>
-      <View style={styles.searchBar}>
-        <Icon
-          style={styles.icon}
-          type={"Ionicons"}
-          name={"search"}
-          color={theme.colors.text.primary}
-          size={theme.spacing.twenty}
-        />
-        <TextInput
-          placeholder="Search..."
-          style={styles.textInput}
-          selectionColor={theme.colors.brand.primary}
-          value={searchTerm ? searchTerm : text.join()}
-          autoCapitalize="none"
-          onChangeText={(s) => setSearchTerm(s)}
-        />
-        <VoiceIcon />
-      </View>
-      {/* {filteredList.length > 0 && <Text>{filteredList[0].name}</Text>} */}
-      {/* <IngredientsList list={filteredList} /> */}
-      {filteredList.length === 0 && (
-        <FlatList
-          style={styles.search}
-          data={filteredList}
-          keyExtractor={(item) => item.name}
-          renderItem={({ item }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Ingredient Screen")}
-              >
-                <Text>{item.name} </Text>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      )}
+      <Searchbar
+        icon={() => <VoiceIcon />}
+        placeholder={placeholder}
+        searchAccessibilityLabel={"Search"}
+        value={searchTerm ? searchTerm : text.join()}
+        onChangeText={onChangeSearch}
+        style={styles.searchbar}
+        selectionColor={theme.colors.brand.primary}
+        inputStyle={styles.searchbar}
+      />
+      <SearchResults
+        searchTerm={searchTerm ? searchTerm : text.join()}
+        navigation={navigation}
+      />
     </View>
   );
 };

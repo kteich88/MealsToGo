@@ -25,26 +25,31 @@ export const styles = StyleSheet.create({
     color: theme.colors.text.error,
     marginBottom: theme.spacing.sixteen,
   },
-  icon: {
-    backgroundColor: theme.colors.brand.secondary,
-    width: theme.spacing.oneTwentyEight,
-    height: theme.spacing.oneTwentyEight,
-    borderRadius: theme.spacing.oneTwentyEight / 2,
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    marginTop: theme.spacing.sixtyFour,
-    marginBottom: theme.spacing.thirtyTwo,
-  },
   textInput: {
-    margin: theme.spacing.thirtyTwo,
+    flexDirection: "row",
+    marginVertical: theme.spacing.sixteen,
     paddingHorizontal: theme.spacing.eight,
-    paddingVertical: theme.spacing.sixteen,
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: theme.colors.brand.primary,
+    borderColor: theme.colors.brand.primary,
   },
   counter: {
     width: theme.spacing.twoHundred,
     height: theme.spacing.twoHundred,
+  },
+  selector: {
+    marginTop: theme.spacing.twoHundred,
+    color: theme.colors.bg.search,
+  },
+  buttonContainer: {
+    width: "100%",
+  },
+
+  button: {
+    backgroundColor: theme.colors.brand.muted,
+    padding: theme.spacing.twentyFive,
+  },
+  buttonText: {
+    color: theme.colors.brand.primary,
   },
 });

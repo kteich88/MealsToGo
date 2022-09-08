@@ -1,20 +1,18 @@
 import React, { useContext, useState } from "react";
-import { ImageBackground, SafeAreaView, TextInput, View } from "react-native";
+import { ImageBackground, SafeAreaView, Text, View } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
 import { globalStyles, theme } from "infrastructure/theme";
-import { AuthenticationContext } from "contexts/authentication.context";
 import Counter from "components/Counter/Counter";
 import { IngredientsContext } from "contexts/ingredients.context";
 import { styles } from "./index.styles";
-import Icon, { IconProps } from "components/Icon/Icon";
-import FullWidthButton from "components/Buttons/FullWidthButton";
-import Dropdown from "components/Dropdown/Dropdown";
-import { IngredientDocumentDataType } from "types/types";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationParams,
 } from "react-navigation";
+import ModalSelector from "react-native-modal-selector";
+import { selectorData } from "services/data/selector";
+import { Button, TextInput } from "react-native-paper";
 
 interface AddIngredientsScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -24,23 +22,16 @@ const AddIngredientScreen: React.FC<AddIngredientsScreenProps> = ({
   navigation,
 }) => {
   const [amount, setAmount] = useState<number>(0);
-  const [icon, setIcon] = useState<IconProps>();
-  const [location, setLocation] = useState<string>("");
-  const [ingredient, setIngredient] = useState<string>("");
-  const { isLoading } = useContext(AuthenticationContext);
-  const { error, addIngredient } = useContext(IngredientsContext);
-
-  const ingredientData: IngredientDocumentDataType = {
-    amount,
-    icon,
-    location,
-    name: ingredient,
-  };
-  console.log("LOCATION", location);
-  console.log("ICON", icon);
+  const [location, setLocation] = useState<string>();
+  const [name, setName] = useState<string>("");
+  const { addIngredient, isLoading, error } = useContext(IngredientsContext);
 
   const onButtonPress = () => {
-    addIngredient(ingredientData);
+    addIngredient({
+      amount,
+      location,
+      name,
+    });
     navigation.navigate("Ingredients Screen");
   };
 
@@ -56,50 +47,46 @@ const AddIngredientScreen: React.FC<AddIngredientsScreenProps> = ({
         <LoadingScreen />
       ) : (
         <SafeAreaView style={globalStyles.safeArea}>
-          {icon ? (
-            <View style={styles.icon}>
-              <Icon
-                type={icon.type}
-                name={icon.name}
-                color={theme.colors.brand.primary}
-                size={theme.spacing.sixtyFour}
-              />
-            </View>
-          ) : (
-            <View style={styles.icon}>
-              <Icon
-                type={"Fontisto"}
-                name={"photograph"}
-                color={theme.colors.brand.primary}
-                size={theme.spacing.sixtyFour}
-              />
-            </View>
-          )}
-          <Dropdown
-            label={"Select Ingredient Icon..."}
-            setIcon={setIcon}
-            setLocation={setLocation}
+          {error && <Text>{error}</Text>}
+          <ModalSelector
+            style={styles.selector}
+            data={selectorData}
+            initValue="Select ingredient location..."
+            accessible={true}
+            scrollViewAccessibilityLabel={"Scrollable options"}
+            cancelButtonAccessibilityLabel={"Cancel Button"}
+            onChange={(option) => setLocation(option.label)}
           />
           <TextInput
+            mode="outlined"
             style={styles.textInput}
             placeholder="Ingredient Name..."
             selectionColor={theme.colors.brand.primary}
-            value={ingredient}
+            outlineColor={theme.colors.bg.search}
+            activeOutlineColor={theme.colors.bg.search}
+            value={name}
             autoCapitalize="none"
-            onChangeText={(i) => setIngredient(i)}
+            onChangeText={(i) => setName(i)}
           />
-          <View>
+          <View style={styles.counter}>
             <Counter amount={amount} setAmount={setAmount} />
           </View>
         </SafeAreaView>
       )}
-      {ingredient !== "" && (
-        <FullWidthButton
-          text={"Add Ingredient"}
+      {name !== "" && (
+        <Button
+          style={styles.buttonContainer}
+          mode="contained"
+          icon={"plus"}
+          accessibilityLabel="Press Button to Add Ingredient"
+          contentStyle={styles.button}
+          labelStyle={styles.buttonText}
           onPress={() => {
-            onButtonPress;
+            onButtonPress();
           }}
-        />
+        >
+          Add Ingredient
+        </Button>
       )}
     </ImageBackground>
   );

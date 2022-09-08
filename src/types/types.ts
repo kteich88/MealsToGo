@@ -13,7 +13,6 @@ export interface IngredientsList {
 
 export interface IngredientDocumentDataType {
   amount: number;
-  icon: IconProps | undefined;
-  location: string;
+  location: string | undefined;
   name: string;
 }

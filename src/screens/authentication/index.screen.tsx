@@ -49,7 +49,7 @@ const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({
             onPress={() => navigation.navigate("Register")}
             disabled={false}
             customStyles={{
-              backgroundColor: theme.colors.brand.secondary,
+              backgroundColor: theme.colors.turquoise,
             }}
             children={<Icon type={"Fontisto"} name={"locked"} />}
           />

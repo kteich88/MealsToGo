@@ -1,8 +1,5 @@
-/* eslint-disable react/no-unstable-nested-components */
 import FullWidthButton from "components/Buttons/FullWidthButton";
 import { IngredientsContext } from "contexts/ingredients.context";
-import { VoiceContext } from "contexts/voice.context";
-import { DocumentData } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
@@ -19,11 +16,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
-  const [searchResult, setSearchResult] = useState<DocumentData[]>([]);
-  const { ingredientsList } = useContext(IngredientsContext);
+  const [searchResult, setSearchResult] = useState<string[]>([]);
+  const { ingredientList } = useContext(IngredientsContext);
 
   useEffect(() => {
-    const newData = ingredientsList.filter((result) =>
+    const newData = ingredientList.filter((result) =>
       result.name.toUpperCase().includes(searchTerm.toUpperCase()),
     );
     setSearchResult(newData);
@@ -35,13 +32,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
         <FlatList
           style={styles.list}
           data={searchResult}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 onPress={() => navigation.navigate("Ingredient Screen")}
               >
-                <Text style={styles.result}>{item.name.toUpperCase()} </Text>
+                <Text style={styles.result}>{item.toUpperCase()} </Text>
               </TouchableOpacity>
             );
           }}

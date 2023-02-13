@@ -7,8 +7,8 @@ export const SETTINGS: Settings[] = [
     icon: {
       type: "Entypo",
       name: "heart",
-      color: theme.colors.brand.primary,
-      size: theme.spacing.twentyFive,
+      color: theme.colors.turquoise,
+      size: theme.spacing.lg,
     },
   },
   {
@@ -16,8 +16,8 @@ export const SETTINGS: Settings[] = [
     icon: {
       type: "Octicons",
       name: "tasklist",
-      color: theme.colors.brand.primary,
-      size: theme.spacing.twentyFive,
+      color: theme.colors.turquoise,
+      size: theme.spacing.lg,
     },
   },
   {
@@ -25,8 +25,8 @@ export const SETTINGS: Settings[] = [
     icon: {
       type: "MaterialCommunityIcon",
       name: "calendar-edit",
-      color: theme.colors.brand.primary,
-      size: theme.spacing.twentyFive,
+      color: theme.colors.turquoise,
+      size: theme.spacing.lg,
     },
   },
 ];

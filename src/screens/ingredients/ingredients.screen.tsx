@@ -22,13 +22,12 @@ interface IngredientsScreenProps {
 const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
   navigation,
 }) => {
-  const { isLoading } = useContext(AuthenticationContext);
-  const { sortedIngredientsList, loadIngredientsList } =
+  const { sortedIngredientList, isLoading, loadIngredientsList } =
     useContext(IngredientsContext);
 
-  // useEffect(() => {
-  //   loadIngredientsList();
-  // });
+  useEffect(() => {
+    loadIngredientsList();
+  }, []);
 
   return (
     <>
@@ -41,24 +40,21 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
             navigation={navigation}
           />
           <ScrollView style={styles.container}>
-            {sortedIngredientsList.map((list) => {
-              return (
-                <>
-                  <Text style={styles.title}>{"PANTRY"}</Text>
-                  <IngredientsList list={list.pantry} navigation={navigation} />
-                  <Text style={styles.title}>{"REFRIGERATOR"}</Text>
-                  <IngredientsList
-                    list={list.refrigerator}
-                    navigation={navigation}
-                  />
-                  <Text style={styles.title}>{"FREEZER"}</Text>
-                  <IngredientsList
-                    list={list.freezer}
-                    navigation={navigation}
-                  />
-                </>
-              );
-            })}
+            <Text style={styles.title}>{"PANTRY"}</Text>
+            <IngredientsList
+              list={sortedIngredientList.pantry}
+              navigation={navigation}
+            />
+            <Text style={styles.title}>{"REFRIGERATOR"}</Text>
+            <IngredientsList
+              list={sortedIngredientList.refrigerator}
+              navigation={navigation}
+            />
+            <Text style={styles.title}>{"FREEZER"}</Text>
+            <IngredientsList
+              list={sortedIngredientList.freezer}
+              navigation={navigation}
+            />
           </ScrollView>
         </SafeAreaView>
       )}

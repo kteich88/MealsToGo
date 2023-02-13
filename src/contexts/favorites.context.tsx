@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { TransformedRestaurantDataResults } from "../services/types/restaurant.types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

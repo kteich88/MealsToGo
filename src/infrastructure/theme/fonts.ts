@@ -1,23 +1,51 @@
-export const fonts = {
-  body: "Spectral_400Regular",
-  heading: "Poppins_400Regular",
-  monospace: "Assistant_400Regular",
-};
+import {
+  Colors,
+  FontFamily,
+  FontSize,
+  FontWeight,
+  LineHeight,
+} from "./constants";
+import { Fonts, TextProps } from "./types";
 
-export const fontWeights = {
-  regular: 400,
-  medium: 500,
-  bold: 700,
-};
+export const fonts = (props?: TextProps): Fonts => {
+  const fontWeight = props?.fontWeight ?? FontWeight.medium;
+  const color = props?.color ?? Colors.black;
+  const textDecorationLine = props?.textDecorationLine ?? "none";
+  const fontFamily = props?.fontFamily ?? FontFamily.monospace;
 
-export const fontSizes = {
-  caption: "12px",
-  button: "14px",
-  body: "16px",
-  title: "20px",
-  h5: "24px",
-  h4: "34px",
-  h3: "45px",
-  h2: "56px",
-  h1: "112px",
+  return {
+    bodyText: {
+      color,
+      fontFamily,
+      fontSize: FontSize.bodyText,
+      fontWeight,
+      letterSpacing: 0,
+      lineHeight: LineHeight.bodyText,
+      textDecorationLine,
+    },
+    heading: {
+      color,
+      fontFamily,
+      fontSize: FontSize.heading,
+      fontWeight: "800",
+      letterSpacing: 0,
+      lineHeight: LineHeight.heading,
+    },
+    subheading: {
+      color,
+      fontFamily,
+      fontSize: FontSize.subheading,
+      fontWeight: "800",
+      letterSpacing: -2,
+      lineHeight: LineHeight.subheading,
+    },
+    caption: {
+      color,
+      fontFamily,
+      fontSize: FontSize.caption,
+      fontWeight,
+      letterSpacing: 0,
+      lineHeight: LineHeight.caption,
+    },
+  };
 };

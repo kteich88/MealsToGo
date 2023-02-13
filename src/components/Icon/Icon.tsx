@@ -78,8 +78,8 @@ const Icon: React.FC<IconProps> = ({
   type,
   name,
   style,
-  color = theme.colors.bg.primary,
-  size = theme.spacing.sixteen,
+  color = theme.colors.white,
+  size = theme.spacing.md,
 }) => {
   return renderIcon({ type, name, style, color, size });
 };

@@ -4,12 +4,12 @@ import styled from "styled-components/native";
 import { theme } from "infrastructure/theme";
 
 export const FavoritesContainer = styled(List.Section)`
-  margin: ${theme.spacing.zero};
+  margin: ${theme.spacing.xs};
 `;
 
 export const FavoritesItem = styled(List.Item)`
-  padding: ${theme.spacing.sixteen};
-  margin: ${theme.spacing.zero};
+  padding: ${theme.spacing.md};
+  margin: ${theme.spacing.xs};
 `;
 
 export const BackgroundImage = styled(ImageBackground).attrs({
@@ -27,12 +27,9 @@ export const ImageOverlay = styled.View`
 `;
 
 export const Title = styled.Text`
-  margin-top: ${theme.spacing.oneTwentyEight}};
-  padding: ${theme.spacing.sixtyFour}
-  font-family: ${theme.fonts.monospace};
-  font-weight: ${theme.fontWeights.bold};
-  font-size: ${theme.fontSizes.title};
-  color: ${theme.colors.text.primary};
+  margin-top: ${theme.spacing.xl}};
+  padding: ${theme.spacing.xl}
+  color: ${theme.colors.turquoise};
   flex-wrap: wrap;
   flex: 1;
 `;

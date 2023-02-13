@@ -3,10 +3,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: theme.spacing.twenty,
+    marginTop: theme.spacing.md,
   },
   searchbar: {
-    color: theme.colors.brand.primary,
+    color: theme.colors.turquoise,
   },
   // container: {
   //   marginTop: theme.spacing.sixteen,

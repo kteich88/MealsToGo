@@ -1,24 +1,18 @@
-export const lineHeights = {
-  title: "28px",
-  copy: "20px",
-};
+import { Spacing } from "./types";
 
-export const spacing = {
-  zero: 0,
-  four: 4,
-  eight: 8,
-  twelve: 12,
-  sixteen: 16,
-  twenty: 20,
-  twentyOne: 21,
-  twentyFive: 25,
-  thirty: 30,
-  thirtyTwo: 32,
-  sixty: 60,
-  sixtyFour: 64,
-  oneTwentyEight: 128,
-  twoHundred: 200,
-  twoFiftySix: 256,
-  twoSeventy: 270,
-  threeHundred: 300,
+/**
+ * Space between elements; set in pixels
+ * As a general rule, spacing is set in multiples of 4
+ * xs: 4px;
+ * sm: 8px;
+ * md: 16px;
+ * lg: 24px;
+ * xl: 32px;
+ */
+export const spacing: Spacing = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
 };

@@ -27,7 +27,7 @@ const RegistrationScreen: React.FC = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Email"
-            selectionColor={theme.colors.brand.primary}
+            selectionColor={theme.colors.turquoise}
             value={email}
             textContentType="emailAddress"
             keyboardType="email-address"
@@ -37,7 +37,7 @@ const RegistrationScreen: React.FC = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Password"
-            selectionColor={theme.colors.brand.primary}
+            selectionColor={theme.colors.turquoise}
             value={password}
             textContentType="password"
             secureTextEntry
@@ -47,7 +47,7 @@ const RegistrationScreen: React.FC = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
-            selectionColor={theme.colors.brand.primary}
+            selectionColor={theme.colors.turquoise}
             value={confirmPassword}
             textContentType="password"
             secureTextEntry

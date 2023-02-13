@@ -9,23 +9,28 @@ import firebase from "firebase/compat";
 import {
   collection,
   onSnapshot,
-  doc,
+  // doc,
   addDoc,
-  deleteDoc,
-  DocumentData,
+  // deleteDoc,
+  // DocumentData,
+  FieldValue,
 } from "firebase/firestore";
 import { db } from "services/firebase/firebase.config";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { errorHandler } from "services/firebase/firebase-error-handler";
-import { sortIngredients } from "./helpers";
-import { IngredientDocumentDataType, IngredientsList } from "types/types";
+import { sortIngredients, transformDocumentData } from "./helpers";
+import {
+  defaultSortedIngredientList,
+  Ingredient,
+  IngredientList,
+} from "types/ingredient.types";
 
 interface IngredientsContext {
-  ingredientsList: DocumentData[];
-  sortedIngredientsList: IngredientsList[];
+  ingredientList: Ingredient[];
+  sortedIngredientList: IngredientList;
   isLoading: boolean;
   error: string | null;
-  addIngredient: (ingredient: IngredientDocumentDataType) => void;
+  addIngredient: (ingredient: Ingredient) => void;
   loadIngredientsList: () => void;
 }
 
@@ -40,19 +45,14 @@ interface IngredientsContextProviderProps {
 export const IngredientsContextProvider: React.FC<
   IngredientsContextProviderProps
 > = ({ children }) => {
-  const [ingredientsList, setIngredientsList] = useState<DocumentData[]>([]);
-  const [sortedIngredientsList, setSortedIngredientsList] = useState<
-    IngredientsList[]
-  >([]);
+  const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
+  const [sortedIngredientList, setSortedIngredientList] =
+    useState<IngredientList>(defaultSortedIngredientList);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const { user } = useContext(AuthenticationContext);
   const firebaseCollectionRef = collection(db, "ingredients");
-
-  useEffect(() => {
-    loadIngredientsList();
-  }, []);
 
   const loadIngredientsList = () => {
     setIsLoading(true);
@@ -63,15 +63,21 @@ export const IngredientsContextProvider: React.FC<
           ...d.data(),
         };
       });
-      setIngredientsList(ingredientsSnapshot);
-      setSortedIngredientsList(sortIngredients(ingredientsSnapshot));
+
+      setIngredientList(
+        ingredientsSnapshot.map((data) => transformDocumentData(data, data.id)),
+      );
+      setSortedIngredientList(sortIngredients(ingredientList));
       setIsLoading(false);
     });
   };
 
-  const addIngredient = (ingredient: DocumentData) => {
+  const addIngredient = async (ingredient: Ingredient) => {
     setIsLoading(true);
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+    const timestamp: FieldValue =
+      firebase.firestore.FieldValue.serverTimestamp();
+
     const data = {
       amount: ingredient.amount,
       authorId: user?.uid,
@@ -79,9 +85,19 @@ export const IngredientsContextProvider: React.FC<
       name: ingredient.name,
       createdAt: timestamp,
     };
-    addDoc(firebaseCollectionRef, data).catch((e) => {
-      setError(errorHandler(e.message));
-    });
+
+    try {
+      await addDoc(firebaseCollectionRef, data);
+      setSortedIngredientList({
+        ...sortedIngredientList,
+        [ingredient.location]: [data],
+      });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(errorHandler(err.message));
+      }
+    }
+    setIsLoading(false);
     loadIngredientsList();
   };
 
@@ -95,8 +111,8 @@ export const IngredientsContextProvider: React.FC<
   return (
     <IngredientsContext.Provider
       value={{
-        ingredientsList,
-        sortedIngredientsList,
+        ingredientList,
+        sortedIngredientList,
         isLoading,
         error,
         addIngredient,

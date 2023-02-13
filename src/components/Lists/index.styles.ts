@@ -3,15 +3,13 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   settings: {
-    margin: theme.spacing.thirtyTwo,
+    margin: theme.spacing.xl,
     flexDirection: "row",
     alignContent: "center",
     alignItems: "center",
   },
   text: {
-    fontSize: theme.spacing.sixteen,
-    fontFamily: theme.fonts.heading,
-    marginLeft: theme.spacing.twenty,
+    ...theme.fonts().heading,
   },
   list: {
     flexDirection: "column",
@@ -20,7 +18,7 @@ export const styles = StyleSheet.create({
   item: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: theme.colors.bg.primary,
-    padding: theme.spacing.sixteen,
+    backgroundColor: theme.colors.turquoise,
+    padding: theme.spacing.md,
   },
 });

@@ -3,7 +3,7 @@ import { theme } from "infrastructure/theme";
 
 export const styles = StyleSheet.create({
   line: {
-    borderBottomColor: theme.colors.text.primary,
+    borderBottomColor: theme.colors.turquoise,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

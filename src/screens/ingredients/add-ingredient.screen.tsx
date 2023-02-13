@@ -61,9 +61,9 @@ const AddIngredientScreen: React.FC<AddIngredientsScreenProps> = ({
             mode="outlined"
             style={styles.textInput}
             placeholder="Ingredient Name..."
-            selectionColor={theme.colors.brand.primary}
-            outlineColor={theme.colors.bg.search}
-            activeOutlineColor={theme.colors.bg.search}
+            selectionColor={theme.colors.turquoise}
+            outlineColor={theme.colors.midGray}
+            activeOutlineColor={theme.colors.midGray}
             value={name}
             autoCapitalize="none"
             onChangeText={(i) => setName(i)}

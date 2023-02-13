@@ -17,12 +17,12 @@ export const styles = StyleSheet.create({
     height: "40%",
     position: "absolute",
     top: "10%",
-    padding: theme.spacing.eight,
+    padding: theme.spacing.sm,
   },
   container: {
     backgroundColor: "rgba(255, 255, 255, 0.60)",
-    marginTop: theme.spacing.eight,
-    padding: theme.spacing.sixteen,
+    marginTop: theme.spacing.sm,
+    padding: theme.spacing.md,
     justifyContent: "center",
     alignItems: "center",
     top: "35%",
@@ -35,16 +35,15 @@ export const styles = StyleSheet.create({
     width: "80%",
   },
   title: {
-    fontSize: theme.spacing.thirty,
-    fontFamily: theme.fonts.body,
+    ...theme.fonts().bodyText,
   },
   loginButton: {
-    backgroundColor: theme.colors.brand.muted,
-    color: theme.colors.brand.primary,
+    backgroundColor: theme.colors.mintGreen,
+    color: theme.colors.turquoise,
     width: "80%",
   },
   error: {
-    color: theme.colors.text.error,
-    marginBottom: theme.spacing.sixteen,
+    color: theme.colors.errorRed,
+    marginBottom: theme.spacing.md,
   },
 });

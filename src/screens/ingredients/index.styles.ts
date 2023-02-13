@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    padding: theme.spacing.sixteen,
+    padding: theme.spacing.md,
   },
   title: {
     textAlign: "center",
-    padding: theme.spacing.sixteen,
+    padding: theme.spacing.md,
     width: "100%",
-    backgroundColor: theme.colors.brand.secondary,
+    backgroundColor: theme.colors.mintGreen,
   },
   backgroundImage: {
     flex: 1,
@@ -22,34 +22,34 @@ export const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.35)",
   },
   error: {
-    color: theme.colors.text.error,
-    marginBottom: theme.spacing.sixteen,
+    color: theme.colors.errorRed,
+    marginBottom: theme.spacing.md,
   },
   textInput: {
     flexDirection: "row",
-    marginVertical: theme.spacing.sixteen,
-    paddingHorizontal: theme.spacing.eight,
+    marginVertical: theme.spacing.md,
+    paddingHorizontal: theme.spacing.sm,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
-    color: theme.colors.brand.primary,
-    borderColor: theme.colors.brand.primary,
+    color: theme.colors.turquoise,
+    borderColor: theme.colors.turquoise,
   },
   counter: {
-    width: theme.spacing.twoHundred,
-    height: theme.spacing.twoHundred,
+    width: theme.spacing.xl,
+    height: theme.spacing.xl,
   },
   selector: {
-    marginTop: theme.spacing.twoHundred,
-    color: theme.colors.bg.search,
+    marginTop: theme.spacing.xl,
+    color: theme.colors.midGray,
   },
   buttonContainer: {
     width: "100%",
   },
 
   button: {
-    backgroundColor: theme.colors.brand.muted,
-    padding: theme.spacing.twentyFive,
+    backgroundColor: theme.colors.midnight,
+    padding: theme.spacing.lg,
   },
   buttonText: {
-    color: theme.colors.brand.primary,
+    color: theme.colors.turquoise,
   },
 });

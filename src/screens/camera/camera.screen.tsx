@@ -39,11 +39,7 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <Text style={styles.accessDenied}>Access Denied</Text>
-        <Icon
-          type={"Fontisto"}
-          name={"locked"}
-          size={theme.spacing.oneTwentyEight}
-        />
+        <Icon type={"Fontisto"} name={"locked"} size={theme.spacing.xl} />
       </View>
     );
   }
@@ -96,7 +92,7 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
                 <Icon
                   type={"Entypo"}
                   name={"check"}
-                  color={theme.colors.brand.primary}
+                  color={theme.colors.turquoise}
                 />
               }
               customStyles={styles.button}
@@ -109,7 +105,7 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
                 <Icon
                   type={"FontAwesome5"}
                   name={"retweet"}
-                  color={theme.colors.brand.primary}
+                  color={theme.colors.turquoise}
                 />
               }
               customStyles={styles.button}
@@ -140,13 +136,13 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
                   <Icon
                     type={"MaterialCommunityIcon"}
                     name={"camera-front-variant"}
-                    color={theme.colors.brand.primary}
+                    color={theme.colors.turquoise}
                   />
                 ) : (
                   <Icon
                     type={"MaterialCommunityIcon"}
                     name={"camera-flip"}
-                    color={theme.colors.brand.primary}
+                    color={theme.colors.turquoise}
                   />
                 )}
               </Button>
@@ -164,13 +160,13 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
                   <Icon
                     type={"Ionicons"}
                     name={"flash-off"}
-                    color={theme.colors.brand.primary}
+                    color={theme.colors.turquoise}
                   />
                 ) : (
                   <Icon
                     type={"Ionicons"}
                     name={"flash"}
-                    color={theme.colors.brand.primary}
+                    color={theme.colors.turquoise}
                   />
                 )}
               </Button>
@@ -185,7 +181,7 @@ const CameraScreen: React.FC<CameraScreenProps> = ({ navigation }) => {
                 <Icon
                   type={"MaterialIcons"}
                   name={"photo-camera"}
-                  color={theme.colors.brand.primary}
+                  color={theme.colors.turquoise}
                 />
               }
               customStyles={styles.fullWidthButton}

@@ -15,8 +15,8 @@ const VoiceIcon: React.FC = () => {
           style={styles.voice}
           type={"FontAwesome"}
           name={isRecording ? "microphone-slash" : "microphone"}
-          color={theme.colors.text.primary}
-          size={theme.spacing.twenty}
+          color={theme.colors.turquoise}
+          size={theme.spacing.md}
         />
       </TouchableOpacity>
     </>

@@ -28,7 +28,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
               <HorizontalRule />
 
               <TouchableOpacity
-                key={item.name}
+                key={item.id}
                 style={styles.item}
                 onPress={() =>
                   navigation.navigate("Ingredient Screen", {

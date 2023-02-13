@@ -17,11 +17,7 @@ const FullWidthButton: React.FC<FullWidthButtonProps> = ({ text, onPress }) => {
         text={text}
         onPress={onPress}
         children={
-          <Icon
-            type={"Ionicons"}
-            name={"add"}
-            color={theme.colors.brand.primary}
-          />
+          <Icon type={"Ionicons"} name={"add"} color={theme.colors.turquoise} />
         }
         customStyles={styles.fullWidthButton}
       />

@@ -1,34 +1,30 @@
 import { theme } from "infrastructure/theme";
+import { FontWeight } from "infrastructure/theme/constants";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.brand.primary,
-    padding: theme.spacing.twenty,
-    margin: theme.spacing.sixteen,
-    borderRadius: 30,
+    backgroundColor: theme.colors.turquoise,
+    padding: theme.spacing.md,
+    margin: theme.spacing.md,
+    borderRadius: theme.radius.lg,
     flexDirection: "row",
     width: "50%",
   },
   text: {
-    fontFamily: theme.fonts.heading,
-    fontSize: theme.spacing.twelve,
-    lineHeight: theme.spacing.sixteen,
-    fontWeight: "bold",
-    letterSpacing: 0.25,
+    ...theme.fonts({ fontWeight: FontWeight.bold }).heading,
     textAlign: "center",
-    color: theme.colors.text.inverse,
-    paddingLeft: theme.spacing.twelve,
+    paddingLeft: theme.spacing.md,
   },
   buttonContainer: {
-    backgroundColor: theme.colors.brand.muted,
+    backgroundColor: theme.colors.midnight,
   },
   fullWidthButton: {
-    backgroundColor: theme.colors.brand.muted,
-    color: theme.colors.brand.primary,
-    margin: theme.spacing.zero,
+    backgroundColor: theme.colors.midnight,
+    color: theme.colors.white,
+    margin: theme.spacing.xs,
     borderRadius: 0,
     alignSelf: "center",
   },

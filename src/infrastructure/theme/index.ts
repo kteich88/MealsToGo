@@ -1,16 +1,15 @@
 import { colors } from "./colors";
-import { spacing, lineHeights } from "./spacing";
-import { sizes } from "./sizes";
-import { fonts, fontWeights, fontSizes } from "./fonts";
+import { spacing } from "./spacing";
+import { size } from "./size";
+import { fonts } from "./fonts";
+import { radius } from "./radius";
 
 export const theme = {
   colors,
-  spacing,
-  lineHeights,
-  sizes,
   fonts,
-  fontSizes,
-  fontWeights,
+  radius,
+  size,
+  spacing,
 };
 
 export * from "./global.styles";

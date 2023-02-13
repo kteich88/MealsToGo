@@ -33,7 +33,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
         value={searchTerm ? searchTerm : text.join()}
         onChangeText={onChangeSearch}
         style={styles.searchbar}
-        selectionColor={theme.colors.brand.primary}
+        selectionColor={theme.colors.turquoise}
         inputStyle={styles.searchbar}
       />
       <SearchResults

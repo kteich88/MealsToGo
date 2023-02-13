@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Pressable, Text } from "react-native";
 import { styles } from "./index.styles";
 
 interface ButtonProps {
@@ -18,14 +18,14 @@ const Button: React.FC<ButtonProps> = ({
   customStyles,
 }) => {
   return (
-    <TouchableOpacity
+    <Pressable
       disabled={disabled}
       style={[styles.button, customStyles]}
       onPress={onPress}
     >
       {children}
       <Text style={[styles.text, customStyles]}>{text}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

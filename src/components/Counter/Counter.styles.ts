@@ -8,12 +8,12 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   icon: {
-    marginTop: theme.spacing.thirty,
-    marginHorizontal: theme.spacing.sixteen,
-    color: theme.colors.brand.primary,
+    marginTop: theme.spacing.xl,
+    marginHorizontal: theme.spacing.md,
+    color: theme.colors.turquoise,
   },
   text: {
-    marginTop: theme.spacing.thirty,
-    fontSize: theme.spacing.thirtyTwo,
+    marginTop: theme.spacing.xl,
+    fontSize: theme.spacing.xl,
   },
 });

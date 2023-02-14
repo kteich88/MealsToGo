@@ -4,7 +4,6 @@ import {
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import CameraScreen from "screens/camera/camera.screen";
-import { GroceriesScreen } from "screens/groceries/groceries.screen";
 import { ProfileScreen } from "screens/profile/Profile.screen";
 
 const ProfileStack = createStackNavigator();

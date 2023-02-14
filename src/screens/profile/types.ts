@@ -1,6 +1,7 @@
 import { IconProps } from "components/Icon/Icon";
+import { ProfileListItems } from "./constants";
 
 export interface ProfileList {
-  title: string;
+  title: ProfileListItems;
   icon: IconProps;
 }

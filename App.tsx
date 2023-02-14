@@ -28,7 +28,7 @@ export const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <AppNavigator />
+          <AppNavigator Icon={undefined} />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

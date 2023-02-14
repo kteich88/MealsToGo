@@ -2,18 +2,20 @@ import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { BottomTabNavigatorParamList } from "types/navigation.types";
-import { AuthenticationNavigator } from "./authentication.navigator";
-
 import { AuthenticationContext } from "contexts/authentication.context";
 import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
 import { IngredientsContextProvider } from "contexts/ingredients.context";
 import { VoiceContextProvider } from "contexts/voice.context";
-
-import { RecipesNavigator } from "./recipes.navigator";
-import Icon from "components/Icon/Icon";
+import { ScreenNames } from "./constants";
+import {
+  AuthenticationNavigator,
+  GroceriesNavigator,
+  MealPlanNavigator,
+  ProfileNavigator,
+  RecipesNavigator,
+} from "./index";
 import { IngredientsNavigator } from "./ingredients.navigator";
-import { ProfileNavigator } from "./profile.navigator";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -36,47 +38,24 @@ const AppNavigator = () => {
                   screenOptions={screenOptions}
                 >
                   <Tab.Screen
-                    name="Recipes"
+                    name={ScreenNames.recipes}
                     component={RecipesNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"MaterialCommunityIcon"}
-                          name={"card-text-outline"}
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
                   />
                   <Tab.Screen
-                    name="Ingredients"
+                    name={ScreenNames.groceries}
+                    component={GroceriesNavigator}
+                  />
+                  <Tab.Screen
+                    name={ScreenNames.meals}
+                    component={MealPlanNavigator}
+                  />
+                  <Tab.Screen
+                    name={ScreenNames.ingredients}
                     component={IngredientsNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"Ionicons"}
-                          name={"md-restaurant"}
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
                   />
-
                   <Tab.Screen
-                    name="Profile"
+                    name={ScreenNames.profile}
                     component={ProfileNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"SimpleLineIcons"}
-                          name={"settings"}
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
                   />
                 </Tab.Navigator>
               </IngredientsContextProvider>

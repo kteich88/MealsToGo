@@ -1,15 +1,15 @@
 import React from "react";
 import { List } from "react-native-paper";
-import { Grocery } from "../../utils/types/grocery.types";
 import { GroceriesContainer, GroceryItem, Loading } from "./groceries.styles";
 import ListIcon from "../../components/Lists/ListItem";
 import Search from "../../components/Search/SearchBar";
-import { SafeArea } from "components/SafeArea/SafeArea.styles";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationParams,
 } from "react-navigation";
+import { globalStyles } from "infrastructure/theme";
+import { SafeAreaView } from "react-native";
 
 interface GroceriesScreenProps {
   groceries: Grocery[];
@@ -21,8 +21,8 @@ export const GroceriesScreen: React.FC<GroceriesScreenProps> = ({
   navigation,
 }) => {
   return (
-    <SafeArea>
-      {isLoading ? (
+    <SafeAreaView style={globalStyles.safeArea}>
+      {/* {isLoading ? (
         <Loading size="large" color="#03F7EB" />
       ) : (
         <>
@@ -32,7 +32,7 @@ export const GroceriesScreen: React.FC<GroceriesScreenProps> = ({
 
           {/* <Favorites favorites={favorites} navigation={navigation} /> */}
 
-          <GroceriesContainer>
+      {/* <GroceriesContainer>
             <List.Section>
               {groceries.map((grocery) => {
                 const IconComponent = () => {
@@ -50,8 +50,8 @@ export const GroceriesScreen: React.FC<GroceriesScreenProps> = ({
               })}
             </List.Section>
           </GroceriesContainer>
-        </>
-      )}
-    </SafeArea>
+        </> 
+      )} */}
+    </SafeAreaView>
   );
 };

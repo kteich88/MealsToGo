@@ -1,10 +1,15 @@
+import { Size } from "./types";
+
 /**
- * Size of elements; set in pixels;
+ * Size of elements
  * Example use case: for height & width of icons
- * sm: 48px;
+ * sm: 24px;
+ * md: 48px;
  * lg: 75px;
  */
-export const size = {
-  sm: 48,
+export const size: Size = {
+  sm: 24,
+  md: 48,
   lg: 75,
+  giant: 105,
 };

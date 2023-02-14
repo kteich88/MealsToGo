@@ -16,7 +16,7 @@ const RegistrationScreen: React.FC = () => {
     <ImageBackground
       style={styles.backgroundImage}
       resizeMode="cover"
-      source={require("assets/backgrounds/good-eats.jpeg")}
+      source={require("assets/images/backgrounds/good-eats.jpeg")}
     >
       <View style={styles.overlay} />
       {isLoading ? (

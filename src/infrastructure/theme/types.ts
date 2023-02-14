@@ -26,10 +26,19 @@ export interface Spacing {
   md: number;
   lg: number;
   xl: number;
+  giant: number;
 }
 
 export interface Radius {
   sm: number;
   md: number;
   lg: number;
+  giant: number;
+}
+
+export interface Size {
+  sm: number;
+  md: number;
+  lg: number;
+  giant: number;
 }

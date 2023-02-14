@@ -1,28 +1,30 @@
 import React from "react";
-import { FlatList, Text, TouchableOpacity } from "react-native";
+import { FlatList, Pressable, Text } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
 import Icon from "components/Icon/Icon";
-import { Settings } from "types/types";
-import { styles } from "./index.styles";
 import { DocumentData } from "firebase/firestore";
+import { theme } from "infrastructure/theme";
+import { styles } from "./PressableList.styles";
+import { ProfileList } from "screens/profile/types";
 
-interface TouchableListProps {
-  data: Settings[] | DocumentData[];
+interface PressableListProps {
+  data: ProfileList[] | DocumentData[];
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
-const TouchableList: React.FC<TouchableListProps> = ({ data, navigation }) => {
+const PressableList: React.FC<PressableListProps> = ({ data, navigation }) => {
   return (
     <FlatList
+      style={styles.list}
       data={data}
       keyExtractor={(item) => item.title}
       renderItem={({ item }) => (
-        <TouchableOpacity
-          style={styles.settings}
+        <Pressable
+          style={styles.listItem}
           onPress={() => navigation.navigate(`${item.title} Screen`)}
         >
           <Icon
@@ -33,10 +35,16 @@ const TouchableList: React.FC<TouchableListProps> = ({ data, navigation }) => {
           />
 
           <Text style={styles.text}>{`${item.title}`}</Text>
-        </TouchableOpacity>
+          <Icon
+            style={styles.chevron}
+            type={"Entypo"}
+            name={"chevron-right"}
+            size={theme.size.sm}
+          />
+        </Pressable>
       )}
     />
   );
 };
 
-export default TouchableList;
+export default PressableList;

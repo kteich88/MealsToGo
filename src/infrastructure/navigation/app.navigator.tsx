@@ -1,10 +1,8 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { BottomTabNavigatorParamList } from "types/navigation.types";
 import { AuthenticationNavigator } from "./authentication.navigator";
-import { SettingsNavigator } from "./settings.navigator";
 
 import { AuthenticationContext } from "contexts/authentication.context";
 import { RecipesContextProvider } from "contexts/recipes.context";
@@ -14,8 +12,8 @@ import { VoiceContextProvider } from "contexts/voice.context";
 
 import { RecipesNavigator } from "./recipes.navigator";
 import Icon from "components/Icon/Icon";
-import IngredientsScreen from "screens/ingredients/ingredients.screen";
 import { IngredientsNavigator } from "./ingredients.navigator";
+import { ProfileNavigator } from "./profile.navigator";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
@@ -34,7 +32,7 @@ const AppNavigator = () => {
             <RecipesContextProvider>
               <IngredientsContextProvider>
                 <Tab.Navigator
-                  initialRouteName="Settings"
+                  initialRouteName="Profile"
                   screenOptions={screenOptions}
                 >
                   <Tab.Screen
@@ -67,8 +65,8 @@ const AppNavigator = () => {
                   />
 
                   <Tab.Screen
-                    name="Settings"
-                    component={SettingsNavigator}
+                    name="Profile"
+                    component={ProfileNavigator}
                     options={{
                       tabBarIcon: ({ color, size }) => (
                         <Icon

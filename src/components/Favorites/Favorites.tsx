@@ -7,10 +7,10 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
+// import { TransformedRestaurantDataResults } from "services/types/restaurant.types";
 
 interface FavoritesProps {
-  favorites: TransformedRestaurantDataResults[];
+  // favorites: TransformedRestaurantDataResults[];
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 

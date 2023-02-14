@@ -4,15 +4,17 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   avatarContainer: {
     alignItems: "center",
-    padding: theme.spacing.md,
-    margin: theme.spacing.xl,
+    padding: theme.spacing.xl,
+    margin: theme.spacing.lg,
   },
   avatar: {
-    backgroundColor: theme.colors.turquoise,
-    width: theme.size.lg,
-    height: theme.size.lg,
-    borderRadius: theme.spacing.lg / 2,
+    width: theme.size.giant,
+    height: theme.size.giant,
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 2,
+    borderColor: theme.colors.midMediumGray,
+    borderRadius: theme.radius.giant,
+    backgroundColor: theme.colors.turquoise,
   },
 });

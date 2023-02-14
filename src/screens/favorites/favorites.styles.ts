@@ -13,7 +13,7 @@ export const FavoritesItem = styled(List.Item)`
 `;
 
 export const BackgroundImage = styled(ImageBackground).attrs({
-  source: require("assets/backgrounds/pusheen-favorites.png"),
+  source: require("assets/images/backgrounds/pusheen-favorites.png"),
 })`
   flex: 1;
   align-items: center;

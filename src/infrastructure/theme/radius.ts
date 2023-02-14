@@ -10,4 +10,5 @@ export const radius: Radius = {
   sm: 8,
   md: 12,
   lg: 26,
+  giant: 180,
 };

@@ -23,7 +23,7 @@ const AuthenticationScreen: React.FC<AuthenticationScreenProps> = ({
       <ImageBackground
         style={styles.backgroundImage}
         resizeMode="cover"
-        source={require("assets/backgrounds/good-eats.jpeg")}
+        source={require("assets/images/backgrounds/good-eats.jpeg")}
       >
         <View style={styles.overlay} />
         <View style={styles.animationWrapper}>

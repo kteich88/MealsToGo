@@ -8,6 +8,7 @@ import { Spacing } from "./types";
  * md: 16px;
  * lg: 24px;
  * xl: 32px;
+ * giant: 75px;
  */
 export const spacing: Spacing = {
   xs: 4,
@@ -15,4 +16,5 @@ export const spacing: Spacing = {
   md: 16,
   lg: 24,
   xl: 32,
+  giant: 75,
 };

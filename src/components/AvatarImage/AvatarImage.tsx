@@ -2,12 +2,16 @@ import Icon from "components/Icon/Icon";
 import { theme } from "infrastructure/theme";
 import React from "react";
 import { View, Image, Pressable } from "react-native";
-import { NavigationScreenProp } from "react-navigation";
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from "react-navigation";
 import { styles } from "./AvatarImage.styles";
 
 interface AvatarImageProps {
   image: string | undefined;
-  navigation: NavigationScreenProp<any>;
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = ({ image, navigation }) => {
@@ -19,9 +23,9 @@ const AvatarImage: React.FC<AvatarImageProps> = ({ image, navigation }) => {
         ) : (
           <View style={styles.avatar}>
             <Icon
-              type={"FontAwesome"}
+              type={"EvilIcons"}
               name={"user"}
-              color={theme.colors.limeGreen}
+              color={theme.colors.lightGray}
               size={theme.size.lg}
             />
           </View>

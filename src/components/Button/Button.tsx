@@ -1,25 +1,35 @@
 import React, { ReactNode } from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, StyleProp, Text, TextStyle, ViewStyle } from "react-native";
+import { ButtonText } from "./constants";
+import styles from "./Button.styles";
 
 interface ButtonProps {
-  text: string;
-  onPress: () => void;
+  buttonText: ButtonText;
+  onPress: any;
+  buttonStyle?: StyleProp<ViewStyle>;
+  buttonTextStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
   children?: ReactNode;
-  customStyles?: any;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  text,
+  buttonText,
   onPress,
+  buttonTextStyle,
+  buttonStyle,
   disabled = false,
   children,
-  customStyles,
 }) => {
   return (
-    <Pressable disabled={disabled} style={[customStyles]} onPress={onPress}>
+    <Pressable
+      disabled={disabled}
+      style={[styles.buttonStyle, buttonStyle]}
+      onPress={onPress}
+    >
       {children}
-      <Text style={[customStyles]}>{text}</Text>
+      <Text style={[styles.buttonTextStyle, buttonTextStyle]}>
+        {buttonText}
+      </Text>
     </Pressable>
   );
 };

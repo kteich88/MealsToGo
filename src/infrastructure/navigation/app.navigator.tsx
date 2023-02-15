@@ -8,16 +8,15 @@ import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
 import { IngredientsContextProvider } from "contexts/ingredients.context";
 import { ScreenName } from "./constants";
-import {
-  AuthenticationNavigator,
-  GroceriesNavigator,
-  MealPlanNavigator,
-  ProfileNavigator,
-  RecipesNavigator,
-} from "./index";
+
 import { IngredientsNavigator } from "./ingredients.navigator";
 import Icon from "components/Icons/Icon";
 import { theme } from "infrastructure/theme/theme";
+import { AuthenticationNavigator } from "./authentication.navigator";
+import { GroceriesNavigator } from "./groceries.navigator";
+import { MealPlanNavigator } from "./meal-plan.navigator";
+import { ProfileNavigator } from "./profile.navigator";
+import { RecipesNavigator } from "./recipes.navigator";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 

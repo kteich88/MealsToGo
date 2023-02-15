@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
-import { globalStyles } from "infrastructure/theme/theme";
+import { globalStyles } from "infrastructure/theme/global.styles";
 import SearchBar from "components/Search/SearchBar";
 import { IngredientsContext } from "contexts/ingredients.context";
 import IngredientsList from "components/Lists/IngredientsList";

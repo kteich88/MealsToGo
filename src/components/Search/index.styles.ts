@@ -8,12 +8,7 @@ export const styles = StyleSheet.create({
   searchbar: {
     color: theme.colors.turquoise,
   },
-  bottomButtons: {
-    position: "absolute",
-    bottom: -5,
-    left: 16,
-    right: 16,
-  },
+
   // container: {
   //   marginTop: theme.spacing.sixteen,
   //   justifyContent: "center",

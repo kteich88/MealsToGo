@@ -11,5 +11,3 @@ export const theme = {
   size,
   spacing,
 };
-
-export * from "./global.styles";

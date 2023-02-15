@@ -20,13 +20,8 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const {
-    textWhileListening,
-    recordedText,
-    isRecording,
-    onRecordVoice,
-    onStopRecording,
-  } = useVoice();
+  const { textWhileListening, recordedText, isRecording, onRecordVoice } =
+    useVoice();
 
   console.log("I am listening to this text:", textWhileListening);
   console.log("I am the recorded text:", recordedText);

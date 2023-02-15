@@ -8,6 +8,7 @@ import {
   NavigationState,
 } from "react-navigation";
 import { styles } from "./index.styles";
+import { Ingredient } from "types/ingredient.types";
 
 interface SearchBarProps {
   searchTerm: string;
@@ -15,7 +16,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
-  const [searchResult, setSearchResult] = useState<string[]>([]);
+  const [searchResult, setSearchResult] = useState<Ingredient[]>([]);
   const { ingredientList } = useContext(IngredientsContext);
 
   useEffect(() => {
@@ -31,27 +32,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
         <FlatList
           style={styles.list}
           data={searchResult}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.name}
           renderItem={({ item }) => {
             return (
               <Pressable
                 onPress={() => navigation.navigate("Ingredient Screen")}
               >
-                <Text style={styles.result}>{item.toUpperCase()} </Text>
+                <Text style={styles.result}>{item.name.toUpperCase()} </Text>
               </Pressable>
             );
           }}
         />
       )}
-
-      <View style={styles.bottomButtons}>
-        {/* <Button
-          buttonText={ButtonText.addIngredient}
-          onPress={() => navigation.navigate("Add Ingredient Screen")}
-          icon={"plus"}
-          mode={"contained"}
-        /> */}
-      </View>
     </View>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ImageBackground, SafeAreaView, Text, View } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
-import { globalStyles, theme } from "infrastructure/theme";
+import { globalStyles, theme } from "infrastructure/theme/theme";
 import Counter from "components/Counter/Counter";
 import { IngredientsContext } from "contexts/ingredients.context";
 import { styles } from "./index.styles";

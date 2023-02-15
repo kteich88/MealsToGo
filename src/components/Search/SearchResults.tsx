@@ -1,4 +1,3 @@
-import FullWidthButton from "components/Buttons/FullWidthButton";
 import { IngredientsContext } from "contexts/ingredients.context";
 import React, { useContext, useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
@@ -9,6 +8,8 @@ import {
   NavigationState,
 } from "react-navigation";
 import { styles } from "./index.styles";
+import CTAButton from "components/CTAButton/CTAButton";
+import { ButtonText } from "components/CTAButton/constants";
 
 interface SearchBarProps {
   searchTerm: string;
@@ -38,19 +39,21 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
               <Pressable
                 onPress={() => navigation.navigate("Ingredient Screen")}
               >
-                {/* <Text style={styles.result}>{item.toUpperCase()} </Text> */}
+                <Text style={styles.result}>{item.toUpperCase()} </Text>
               </Pressable>
             );
           }}
         />
       )}
 
-      {searchResult.length === 0 && (
-        <FullWidthButton
-          text={"Add Ingredient"}
+      <View style={styles.bottomButtons}>
+        <CTAButton
+          buttonText={ButtonText.addIngredient}
           onPress={() => navigation.navigate("Add Ingredient Screen")}
+          icon={"plus"}
+          mode={"contained"}
         />
-      )}
+      </View>
     </View>
   );
 };

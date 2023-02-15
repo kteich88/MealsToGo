@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { ImageBackground, View, Text, TextInput } from "react-native";
 import { AuthenticationContext } from "contexts/authentication.context";
-import Button from "components/Buttons/Button";
+import Button from "components/CTAButton/CTAButton";
 import LoadingScreen from "screens/loading/loading.screen";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { styles } from "./index.styles";
 
 const RegistrationScreen: React.FC = () => {

@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 export const Image = styled.Image`
   border-radius: ${theme.spacing.sm};

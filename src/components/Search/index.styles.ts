@@ -1,4 +1,4 @@
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
   },
   searchbar: {
     color: theme.colors.turquoise,
+  },
+  bottomButtons: {
+    position: "absolute",
+    bottom: -5,
+    left: 16,
+    right: 16,
   },
   // container: {
   //   marginTop: theme.spacing.sixteen,

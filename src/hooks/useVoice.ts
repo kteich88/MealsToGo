@@ -6,20 +6,19 @@ import { useState, useEffect } from "react";
 
 export const useVoice = () => {
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [text, setText] = useState<string[]>([]);
-  const [recordedText, setRecordedText] = useState<string>();
+  const [textWhileListening, setTextWhileListening] = useState<string[]>([]);
+  const [recordedText, setRecordedText] = useState<string>("");
 
   const onSpeechStart = () => {
-    setText([]);
+    setTextWhileListening([]);
   };
 
   const onSpeechEnd = () => {
-    setText([]);
-    // return text.join();
+    setRecordedText(textWhileListening.join());
   };
 
   const onSpeechResults = (event: SpeechResultsEvent) => {
-    setText(event.value ?? []);
+    setTextWhileListening(event.value ?? []);
   };
 
   const onSpeechError = (event: SpeechErrorEvent) => {
@@ -28,15 +27,12 @@ export const useVoice = () => {
 
   const onRecordVoice = () => {
     setIsRecording(!isRecording);
-
-    // return text;
   };
 
   const onStopRecording = () => {
     try {
-      Voice.stop();
       Voice.destroy();
-      //   Voice.removeAllListeners();
+      Voice.removeAllListeners();
     } catch (error) {
       console.error(error);
     }
@@ -59,6 +55,7 @@ export const useVoice = () => {
     onRecordVoice,
     onStopRecording,
     isRecording,
-    text,
+    textWhileListening,
+    recordedText,
   };
 };

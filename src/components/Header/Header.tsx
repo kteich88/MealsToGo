@@ -1,4 +1,4 @@
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { FontWeight } from "infrastructure/theme/constants";
 import { StyleSheet } from "react-native";
 

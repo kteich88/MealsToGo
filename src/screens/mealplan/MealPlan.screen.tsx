@@ -5,7 +5,7 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import { globalStyles } from "infrastructure/theme";
+import { globalStyles } from "infrastructure/theme/theme";
 
 interface MealPlanProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;

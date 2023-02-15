@@ -1,17 +1,17 @@
 import styled from "styled-components/native";
 import { ActivityIndicator, List } from "react-native-paper";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 export const GroceriesContainer = styled.View`
-  padding: ${theme.spacing.eight};
+  padding: ${theme.spacing.sm};
 `;
 
 export const GroceryItem = styled(List.Item)`
-  padding: ${theme.spacing.sixteen};
+  padding: ${theme.spacing.md};
 `;
 
 export const SearchContainer = styled.View`
-  padding: ${theme.spacing.sixteen};
+  padding: ${theme.spacing.md};
 `;
 
 export const Loading = styled(ActivityIndicator)`

@@ -7,7 +7,7 @@ import {
 } from "react-navigation";
 import Icon from "components/Icons/Icon";
 import { DocumentData } from "firebase/firestore";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { styles } from "./PressableList.styles";
 import { ProfileList } from "screens/profile/types";
 

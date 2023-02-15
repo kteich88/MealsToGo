@@ -1,5 +1,5 @@
 import React from "react";
-import { colors } from "../../infrastructure/theme";
+import { colors } from "../../infrastructure/theme/theme";
 import { ClosedTemporarily, Open, Closed } from "./Status.styles";
 import { ClosedIcon, ClockIcon } from "../../utils/icons";
 

@@ -8,7 +8,7 @@ import {
   NavigationState,
   NavigationParams,
 } from "react-navigation";
-import { globalStyles } from "infrastructure/theme";
+import { globalStyles } from "infrastructure/theme/theme";
 import { SafeAreaView } from "react-native";
 
 interface GroceriesScreenProps {

@@ -6,7 +6,7 @@ import {
   NavigationState,
 } from "react-navigation";
 import AvatarImage from "components/AvatarImage/AvatarImage";
-import { globalStyles } from "infrastructure/theme";
+import { globalStyles } from "infrastructure/theme/theme";
 import useProfile from "hooks/useProfile";
 import PressableList from "components/Lists/PressableList/PressableList";
 import { PROFILE_LIST } from "./constants";

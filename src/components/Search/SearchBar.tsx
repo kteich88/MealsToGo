@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import VoiceIcon from "components/Icons/VoiceIcon";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { styles } from "./index.styles";
 import SearchResults from "./SearchResults";
 import {
@@ -21,8 +21,16 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { text, isRecording, onRecordVoice } = useVoice();
-  console.log("I am text:", text);
+  const {
+    textWhileListening,
+    recordedText,
+    isRecording,
+    onRecordVoice,
+    onStopRecording,
+  } = useVoice();
+
+  console.log("I am listening to this text:", textWhileListening);
+  console.log("I am the recorded text:", recordedText);
 
   const onChangeSearch = (query: string) => setSearchTerm(query);
 
@@ -40,14 +48,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
         onIconPress={onRecordVoice}
         placeholder={placeholder}
         searchAccessibilityLabel={"Search"}
-        value={searchTerm ? searchTerm : text.join()}
+        value={searchTerm ? searchTerm : textWhileListening.join()}
         onChangeText={onChangeSearch}
         style={styles.searchbar}
         selectionColor={theme.colors.turquoise}
         inputStyle={styles.searchbar}
       />
       <SearchResults
-        searchTerm={searchTerm ? searchTerm : text.join()}
+        searchTerm={searchTerm ? searchTerm : recordedText}
         navigation={navigation}
       />
     </View>

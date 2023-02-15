@@ -8,8 +8,8 @@ import {
   ImageOverlay,
 } from "./favorites.styles";
 import { List } from "react-native-paper";
-import { TransformedRestaurantDataResults } from "../../services/types/restaurant.types";
-import { colors } from "../../infrastructure/theme";
+import { TransformedRestaurantDataResults } from "services/types/restaurant.types";
+import { theme } from "infrastructure/theme/theme";
 
 export const FavoritesScreen = ({ navigation }) => {
   const { favorites } = useContext(FavoritesContext);
@@ -23,7 +23,9 @@ export const FavoritesScreen = ({ navigation }) => {
               title={favorite.name}
               description={favorite.address}
               // eslint-disable-next-line react/no-unstable-nested-components
-              left={() => <List.Icon color={colors.ui.error} icon="heart" />}
+              left={() => (
+                <List.Icon color={theme.colors.errorRed} icon="heart" />
+              )}
               onPress={() =>
                 navigation.navigate("Restaurant Details", {
                   favorite,

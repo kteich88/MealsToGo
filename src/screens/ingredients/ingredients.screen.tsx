@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import React, { useContext, useEffect } from "react";
+import { SafeAreaView, Text } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
-import { globalStyles } from "infrastructure/theme";
+import { globalStyles } from "infrastructure/theme/theme";
 import SearchBar from "components/Search/SearchBar";
-import { AuthenticationContext } from "contexts/authentication.context";
 import { IngredientsContext } from "contexts/ingredients.context";
 import IngredientsList from "components/Lists/IngredientsList";
 import {
@@ -12,7 +11,6 @@ import {
   NavigationState,
 } from "react-navigation";
 import { styles } from "./index.styles";
-import FullWidthButton from "components/Buttons/FullWidthButton";
 import { ScrollView } from "react-native-gesture-handler";
 
 interface IngredientsScreenProps {

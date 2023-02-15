@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { Pressable } from "react-native";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 export const Title = styled.Text`
   margin-left: ${theme.spacing.sm};

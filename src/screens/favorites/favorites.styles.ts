@@ -1,7 +1,7 @@
 import { ImageBackground } from "react-native";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 export const FavoritesContainer = styled(List.Section)`
   margin: ${theme.spacing.xs};

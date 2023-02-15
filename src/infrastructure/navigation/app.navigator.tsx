@@ -17,7 +17,7 @@ import {
 } from "./index";
 import { IngredientsNavigator } from "./ingredients.navigator";
 import Icon from "components/Icons/Icon";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 

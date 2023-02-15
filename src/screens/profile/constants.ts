@@ -1,4 +1,4 @@
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 import { ProfileList } from "./types";
 
 export enum ProfileListItems {

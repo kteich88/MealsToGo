@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Image, SafeAreaView, Text } from "react-native";
 import LoadingScreen from "screens/loading/loading.screen";
-import { globalStyles } from "infrastructure/theme";
+import { globalStyles } from "infrastructure/theme/theme";
 import { AuthenticationContext } from "contexts/authentication.context";
 import Counter from "components/Counter/Counter";
 import { DocumentData } from "firebase/firestore";

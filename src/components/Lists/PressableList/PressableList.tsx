@@ -5,7 +5,7 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 import { DocumentData } from "firebase/firestore";
 import { theme } from "infrastructure/theme";
 import { styles } from "./PressableList.styles";

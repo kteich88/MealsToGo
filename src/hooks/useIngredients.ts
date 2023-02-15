@@ -1,4 +1,4 @@
-import { IconProps } from "components/Icon/Icon";
+import { IconProps } from "components/Icons/Icon";
 import { useEffect, useState } from "react";
 
 const useIngredients = () => {

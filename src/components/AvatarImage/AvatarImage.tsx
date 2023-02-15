@@ -1,4 +1,4 @@
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 import { theme } from "infrastructure/theme";
 import React from "react";
 import { View, Image, Pressable } from "react-native";

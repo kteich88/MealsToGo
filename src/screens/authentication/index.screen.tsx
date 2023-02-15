@@ -9,7 +9,7 @@ import { ImageBackground, Text, View } from "react-native";
 import Button from "components/Buttons/Button";
 import LottieView from "lottie-react-native";
 import { theme } from "infrastructure/theme";
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 
 interface AuthenticationScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;

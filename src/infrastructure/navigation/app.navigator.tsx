@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,7 +8,7 @@ import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
 import { IngredientsContextProvider } from "contexts/ingredients.context";
 import { VoiceContextProvider } from "contexts/voice.context";
-import { ScreenNames } from "./constants";
+import { ScreenName } from "./constants";
 import {
   AuthenticationNavigator,
   GroceriesNavigator,
@@ -16,12 +17,16 @@ import {
   RecipesNavigator,
 } from "./index";
 import { IngredientsNavigator } from "./ingredients.navigator";
+import Icon from "components/Icons/Icon";
+import { theme } from "infrastructure/theme";
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
-const screenOptions = {
+const screenOptions = () => ({
   headerShown: false,
-};
+  tabBarActiveTintColor: theme.colors.turquoise,
+  tabBarInactiveTintColor: theme.colors.midnight,
+});
 
 const AppNavigator = () => {
   const { isAuthenticated } = useContext(AuthenticationContext);
@@ -38,24 +43,74 @@ const AppNavigator = () => {
                   screenOptions={screenOptions}
                 >
                   <Tab.Screen
-                    name={ScreenNames.recipes}
+                    name={ScreenName.recipes}
                     component={RecipesNavigator}
+                    options={{
+                      tabBarIcon: ({ color, size }) => (
+                        <Icon
+                          type={"AntDesign"}
+                          name="book"
+                          color={color}
+                          size={size}
+                        />
+                      ),
+                    }}
                   />
                   <Tab.Screen
-                    name={ScreenNames.groceries}
+                    name={ScreenName.groceries}
                     component={GroceriesNavigator}
+                    options={{
+                      tabBarIcon: ({ color, size }) => (
+                        <Icon
+                          type={"Fontisto"}
+                          name="shopping-basket"
+                          color={color}
+                          size={size}
+                        />
+                      ),
+                    }}
                   />
                   <Tab.Screen
-                    name={ScreenNames.meals}
+                    name={ScreenName.meals}
                     component={MealPlanNavigator}
+                    options={{
+                      tabBarIcon: ({ color, size }) => (
+                        <Icon
+                          type={"MaterialCommunityIcon"}
+                          name="calendar-edit"
+                          color={color}
+                          size={size}
+                        />
+                      ),
+                    }}
                   />
                   <Tab.Screen
-                    name={ScreenNames.ingredients}
+                    name={ScreenName.ingredients}
                     component={IngredientsNavigator}
+                    options={{
+                      tabBarIcon: ({ color, size }) => (
+                        <Icon
+                          type={"Ionicons"}
+                          name="md-restaurant"
+                          color={color}
+                          size={size}
+                        />
+                      ),
+                    }}
                   />
                   <Tab.Screen
-                    name={ScreenNames.profile}
+                    name={ScreenName.profile}
                     component={ProfileNavigator}
+                    options={{
+                      tabBarIcon: ({ color, size }) => (
+                        <Icon
+                          type={"EvilIcons"}
+                          name="user"
+                          color={color}
+                          size={size}
+                        />
+                      ),
+                    }}
                   />
                 </Tab.Navigator>
               </IngredientsContextProvider>

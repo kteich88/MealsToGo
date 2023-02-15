@@ -1,8 +1,8 @@
 import { ComponentType } from "react";
-import { ScreenNames } from "./constants";
+import { ScreenName } from "./constants";
 
 export interface NavigatorList {
-  name: ScreenNames;
+  name: ScreenName;
   component: ComponentType<any> | undefined;
   //   tabBarIcon: ReactNode;
 }

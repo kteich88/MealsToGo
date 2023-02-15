@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
-import VoiceIcon from "components/Icon/VoiceIcon";
+import VoiceIcon from "components/Icons/VoiceIcon";
 import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
 import { styles } from "./index.styles";

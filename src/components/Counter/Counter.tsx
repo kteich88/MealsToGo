@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 import { styles } from "./Counter.styles";
 import { theme } from "infrastructure/theme";
 

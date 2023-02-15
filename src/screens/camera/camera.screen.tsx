@@ -4,7 +4,7 @@ import * as MediaLibrary from "expo-media-library";
 import { Image, Text, View } from "react-native";
 import { styles } from "./camera.styles";
 import Button from "components/Buttons/Button";
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { theme } from "infrastructure/theme";
 import AsyncStorage from "@react-native-async-storage/async-storage";

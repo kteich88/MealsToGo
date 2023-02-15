@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
-import Icon from "components/Icon/Icon";
+import { Pressable } from "react-native";
+import Icon from "components/Icons/Icon";
 import { styles } from "./index.styles";
 import { theme } from "infrastructure/theme";
 import { VoiceContext } from "contexts/voice.context";
@@ -10,7 +10,7 @@ const VoiceIcon: React.FC = () => {
 
   return (
     <>
-      <TouchableOpacity onPress={onRecordVoice}>
+      <Pressable onPress={onRecordVoice}>
         <Icon
           style={styles.voice}
           type={"FontAwesome"}
@@ -18,7 +18,7 @@ const VoiceIcon: React.FC = () => {
           color={theme.colors.turquoise}
           size={theme.spacing.md}
         />
-      </TouchableOpacity>
+      </Pressable>
     </>
   );
 };

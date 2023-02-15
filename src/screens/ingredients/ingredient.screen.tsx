@@ -5,7 +5,7 @@ import { globalStyles } from "infrastructure/theme";
 import { AuthenticationContext } from "contexts/authentication.context";
 import Counter from "components/Counter/Counter";
 import { DocumentData } from "firebase/firestore";
-import Icon from "components/Icon/Icon";
+import Icon from "components/Icons/Icon";
 
 interface IngredientScreenProps {
   ingredient: DocumentData;

@@ -1,12 +1,12 @@
 import styled from "styled-components/native";
-import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import { theme } from "infrastructure/theme";
 
 export const Title = styled.Text`
   margin-left: ${theme.spacing.sm};
 `;
 
-export const Favorite = styled(TouchableOpacity)`
+export const Favorite = styled(Pressable)`
   position: absolute;
   top: ${theme.spacing.xl};
   right: ${theme.spacing.xl};

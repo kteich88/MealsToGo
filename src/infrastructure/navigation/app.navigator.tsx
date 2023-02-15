@@ -7,7 +7,6 @@ import { AuthenticationContext } from "contexts/authentication.context";
 import { RecipesContextProvider } from "contexts/recipes.context";
 import { FavoritesContextProvider } from "contexts/favorites.context";
 import { IngredientsContextProvider } from "contexts/ingredients.context";
-import { VoiceContextProvider } from "contexts/voice.context";
 import { ScreenName } from "./constants";
 import {
   AuthenticationNavigator,
@@ -34,89 +33,87 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       {isAuthenticated ? (
-        <VoiceContextProvider>
-          <FavoritesContextProvider>
-            <RecipesContextProvider>
-              <IngredientsContextProvider>
-                <Tab.Navigator
-                  initialRouteName="Profile"
-                  screenOptions={screenOptions}
-                >
-                  <Tab.Screen
-                    name={ScreenName.recipes}
-                    component={RecipesNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"AntDesign"}
-                          name="book"
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name={ScreenName.groceries}
-                    component={GroceriesNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"Fontisto"}
-                          name="shopping-basket"
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name={ScreenName.meals}
-                    component={MealPlanNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"MaterialCommunityIcon"}
-                          name="calendar-edit"
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name={ScreenName.ingredients}
-                    component={IngredientsNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"Ionicons"}
-                          name="md-restaurant"
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
-                  />
-                  <Tab.Screen
-                    name={ScreenName.profile}
-                    component={ProfileNavigator}
-                    options={{
-                      tabBarIcon: ({ color, size }) => (
-                        <Icon
-                          type={"EvilIcons"}
-                          name="user"
-                          color={color}
-                          size={size}
-                        />
-                      ),
-                    }}
-                  />
-                </Tab.Navigator>
-              </IngredientsContextProvider>
-            </RecipesContextProvider>
-          </FavoritesContextProvider>
-        </VoiceContextProvider>
+        <FavoritesContextProvider>
+          <RecipesContextProvider>
+            <IngredientsContextProvider>
+              <Tab.Navigator
+                initialRouteName="Profile"
+                screenOptions={screenOptions}
+              >
+                <Tab.Screen
+                  name={ScreenName.recipes}
+                  component={RecipesNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"AntDesign"}
+                        name="book"
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name={ScreenName.groceries}
+                  component={GroceriesNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"Fontisto"}
+                        name="shopping-basket"
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name={ScreenName.meals}
+                  component={MealPlanNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"MaterialCommunityIcon"}
+                        name="calendar-edit"
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name={ScreenName.ingredients}
+                  component={IngredientsNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"Ionicons"}
+                        name="md-restaurant"
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name={ScreenName.profile}
+                  component={ProfileNavigator}
+                  options={{
+                    tabBarIcon: ({ color, size }) => (
+                      <Icon
+                        type={"EvilIcons"}
+                        name="user"
+                        color={color}
+                        size={size}
+                      />
+                    ),
+                  }}
+                />
+              </Tab.Navigator>
+            </IngredientsContextProvider>
+          </RecipesContextProvider>
+        </FavoritesContextProvider>
       ) : (
         <AuthenticationNavigator />
       )}

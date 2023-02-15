@@ -1,9 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 import VoiceIcon from "components/Icons/VoiceIcon";
-import { VoiceContext } from "contexts/voice.context";
 import { theme } from "infrastructure/theme";
 import { styles } from "./index.styles";
 import SearchResults from "./SearchResults";
@@ -12,6 +11,8 @@ import {
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
+import { useVoice } from "hooks/useVoice";
+import Icon from "components/Icons/Icon";
 
 interface SearchBarProps {
   placeholder: string;
@@ -20,14 +21,23 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { text } = useContext(VoiceContext);
+  const { text, isRecording, onRecordVoice } = useVoice();
+  console.log("I am text:", text);
 
   const onChangeSearch = (query: string) => setSearchTerm(query);
 
   return (
     <View style={styles.container}>
       <Searchbar
-        icon={() => <VoiceIcon />}
+        icon={() => (
+          <Icon
+            type={"FontAwesome"}
+            name={isRecording ? "microphone-slash" : "microphone"}
+            color={theme.colors.midGray}
+            size={theme.spacing.lg}
+          />
+        )}
+        onIconPress={onRecordVoice}
         placeholder={placeholder}
         searchAccessibilityLabel={"Search"}
         value={searchTerm ? searchTerm : text.join()}

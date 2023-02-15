@@ -1,7 +1,7 @@
 import FullWidthButton from "components/Buttons/FullWidthButton";
 import { IngredientsContext } from "contexts/ingredients.context";
 import React, { useContext, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import {
   NavigationParams,
@@ -35,11 +35,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
           keyExtractor={(item) => item}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity
+              <Pressable
                 onPress={() => navigation.navigate("Ingredient Screen")}
               >
-                <Text style={styles.result}>{item.toUpperCase()} </Text>
-              </TouchableOpacity>
+                {/* <Text style={styles.result}>{item.toUpperCase()} </Text> */}
+              </Pressable>
             );
           }}
         />

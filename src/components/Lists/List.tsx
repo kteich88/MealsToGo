@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { FlatList, TouchableOpacity } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -17,13 +17,13 @@ const List: React.FC<ListProps> = ({ data, navigation, children }) => {
     <FlatList
       data={data}
       renderItem={({ item }) => (
-        <TouchableOpacity
+        <Pressable
           onPress={() =>
             navigation.navigate("Recipe Details", { recipe: item })
           }
         >
           {children}
-        </TouchableOpacity>
+        </Pressable>
       )}
       keyExtractor={(item) => item.name}
     />

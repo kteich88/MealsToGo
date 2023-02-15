@@ -1,14 +1,14 @@
 import HorizontalRule from "components/HorizontalRule/HorizontalRule";
 import { DocumentData } from "firebase/firestore";
 import React from "react";
-import { Text } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Pressable, Text } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
 import { styles } from "./index.styles";
+import Counter from "components/Counter/Counter";
 
 interface IngredientsListProps {
   list: DocumentData[];
@@ -27,7 +27,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
             <>
               <HorizontalRule />
 
-              <TouchableOpacity
+              <Pressable
                 key={item.id}
                 style={styles.item}
                 onPress={() =>
@@ -37,8 +37,8 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                 }
               >
                 <Text>{item.name}</Text>
-                {/* <Counter amount={item.amount} /> */}
-              </TouchableOpacity>
+                <Counter amount={item.amount} />
+              </Pressable>
             </>
           );
         })}

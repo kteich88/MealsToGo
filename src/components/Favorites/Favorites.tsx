@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, Pressable } from "react-native";
 import CompactCard from "../Cards/Card";
 import { FavoritesContainer, Title } from "./Favorite.styles";
 import {
@@ -26,7 +26,7 @@ const Favorites: React.FC<FavoritesProps> = ({ favorites, navigation }) => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favorites.map((restaurant) => {
           return (
-            <TouchableOpacity
+            <Pressable
               key={restaurant.placeId}
               onPress={() =>
                 navigation.navigate("Restaurant Details", {
@@ -40,7 +40,7 @@ const Favorites: React.FC<FavoritesProps> = ({ favorites, navigation }) => {
                 photo={restaurant.photo}
                 isFavorite={isFavorite}
               />
-            </TouchableOpacity>
+            </Pressable>
           );
         })}
       </ScrollView>

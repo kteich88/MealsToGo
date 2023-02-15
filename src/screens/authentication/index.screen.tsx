@@ -6,10 +6,10 @@ import {
 } from "react-navigation";
 import { styles } from "./index.styles";
 import { ImageBackground, Text, View } from "react-native";
-import Button from "components/CTAButton/CTAButton";
 import LottieView from "lottie-react-native";
 import { theme } from "infrastructure/theme/theme";
 import Icon from "components/Icons/Icon";
+import Button from "components/Button/Button";
 
 interface AuthenticationScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;

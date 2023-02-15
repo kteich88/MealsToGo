@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { Pressable, Text } from "react-native";
-import { styles } from "./index.styles";
 
 interface ButtonProps {
   text: string;
@@ -18,13 +17,9 @@ const Button: React.FC<ButtonProps> = ({
   customStyles,
 }) => {
   return (
-    <Pressable
-      disabled={disabled}
-      style={[styles.button, customStyles]}
-      onPress={onPress}
-    >
+    <Pressable disabled={disabled} style={[customStyles]} onPress={onPress}>
       {children}
-      <Text style={[styles.text, customStyles]}>{text}</Text>
+      <Text style={[customStyles]}>{text}</Text>
     </Pressable>
   );
 };

@@ -12,7 +12,7 @@ import { ThemeProvider } from "styled-components/native";
 import AppNavigator from "./src/infrastructure/navigation/app.navigator";
 import LoadingScreen from "screens/loading/loading.screen";
 import { AuthenticationContextProvider } from "contexts/authentication.context";
-import { theme } from "infrastructure/theme";
+import { theme } from "infrastructure/theme/theme";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -28,7 +28,7 @@ export const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <AppNavigator Icon={undefined} />
+          <AppNavigator />
         </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />

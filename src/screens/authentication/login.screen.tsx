@@ -4,7 +4,7 @@ import LoadingScreen from "screens/loading/loading.screen";
 import { styles } from "./index.styles";
 import { theme } from "infrastructure/theme/theme";
 import { AuthenticationContext } from "contexts/authentication.context";
-import Button from "components/CTAButton/CTAButton";
+import Button from "components/Button/Button";
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>("");

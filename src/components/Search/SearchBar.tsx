@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
-import VoiceIcon from "components/Icons/VoiceIcon";
 import { theme } from "infrastructure/theme/theme";
 import { styles } from "./index.styles";
 import SearchResults from "./SearchResults";

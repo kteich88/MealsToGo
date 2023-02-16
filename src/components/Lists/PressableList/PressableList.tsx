@@ -1,15 +1,16 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from "react";
-import { FlatList, Pressable, Text } from "react-native";
+import { FlatList } from "react-native";
 import {
   NavigationParams,
   NavigationScreenProp,
   NavigationState,
 } from "react-navigation";
-import Icon from "components/Icons/Icon";
 import { DocumentData } from "firebase/firestore";
-import { theme } from "infrastructure/theme/theme";
 import { styles } from "./PressableList.styles";
 import { ProfileList } from "screens/profile/types";
+import PressableListItem from "../PressableListItem/PressableListItem";
+import Icon from "components/Icons/Icon";
 
 interface PressableListProps {
   data: ProfileList[] | DocumentData[];
@@ -23,25 +24,18 @@ const PressableList: React.FC<PressableListProps> = ({ data, navigation }) => {
       data={data}
       keyExtractor={(item) => item.title}
       renderItem={({ item }) => (
-        <Pressable
-          style={styles.listItem}
-          onPress={() => navigation.navigate(`${item.title} Screen`)}
+        <PressableListItem
+          title={item.title}
+          onPress={() => navigation.navigate(item.title)}
         >
           <Icon
+            style={styles.icon}
             type={item.icon.type}
             name={item.icon.name}
             color={item.icon.color}
             size={item.icon.size}
           />
-
-          <Text style={styles.text}>{`${item.title}`}</Text>
-          <Icon
-            style={styles.chevron}
-            type={"Entypo"}
-            name={"chevron-right"}
-            size={theme.size.sm}
-          />
-        </Pressable>
+        </PressableListItem>
       )}
     />
   );

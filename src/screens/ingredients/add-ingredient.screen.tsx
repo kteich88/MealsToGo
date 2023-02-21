@@ -30,7 +30,7 @@ const AddIngredientScreen: React.FC<AddIngredientsScreenProps> = ({
     addIngredient({
       amount,
       location,
-      name,
+      item: name,
     });
     navigation.navigate("Ingredients Screen");
   };

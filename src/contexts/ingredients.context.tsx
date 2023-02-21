@@ -18,12 +18,15 @@ import {
 import { db } from "services/firebase/firebase.config";
 import { AuthenticationContext } from "contexts/authentication.context";
 import { errorHandler } from "services/firebase/firebase-error-handler";
-import { sortIngredients, transformDocumentData } from "./helpers";
 import {
-  defaultSortedIngredientList,
+  sortIngredients,
+  transformIngredientsDocumentData as transformIngredientDocumentData,
+} from "./helpers";
+import {
   Ingredient,
   IngredientList,
-} from "types/ingredient.types";
+  defaultSortedIngredientList,
+} from "screens/ingredients/types";
 
 interface IngredientsContext {
   ingredientList: Ingredient[];
@@ -45,7 +48,7 @@ interface IngredientsContextProviderProps {
 export const IngredientsContextProvider: React.FC<
   IngredientsContextProviderProps
 > = ({ children }) => {
-  const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
+  const [ingredientList, setIngredientList] = useState();
   const [sortedIngredientList, setSortedIngredientList] =
     useState<IngredientList>(defaultSortedIngredientList);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -57,32 +60,36 @@ export const IngredientsContextProvider: React.FC<
   const loadIngredientsList = () => {
     setIsLoading(true);
     onSnapshot(firebaseCollectionRef, (snapshot) => {
-      const ingredientsSnapshot = snapshot.docs.map((d) => {
+      const ingredientsSnapshot = snapshot.docs.map((doc) => {
+        transformIngredientDocumentData(doc.data(), doc.id);
+
+        // console.log("Whatsup doc: ", doc.data());
         return {
-          id: d.id,
-          ...d.data(),
+          ...doc.data(),
         };
       });
+      // setIngredientList(
+      //   ingredientsSnapshot.map((data) => transformDocumentData(data, id)),
+      // );
 
-      setIngredientList(
-        ingredientsSnapshot.map((data) => transformDocumentData(data, data.id)),
-      );
-      setSortedIngredientList(sortIngredients(ingredientList));
+      // setSortedIngredientList(sortIngredients(ingredientList));
       setIsLoading(false);
     });
   };
 
   const addIngredient = async (ingredient: Ingredient) => {
+    const { item, amount, unit } = ingredient;
+
     setIsLoading(true);
 
     const timestamp: FieldValue =
       firebase.firestore.FieldValue.serverTimestamp();
 
     const data = {
-      amount: ingredient.amount,
-      authorId: user?.uid,
-      location: ingredient.location,
-      name: ingredient.name,
+      amount,
+      userId: user?.uid,
+      item,
+      unit,
       createdAt: timestamp,
     };
 

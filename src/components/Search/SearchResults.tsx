@@ -9,6 +9,7 @@ import {
 } from "react-navigation";
 import { styles } from "./index.styles";
 import { Ingredient } from "types/ingredient.types";
+import PressableList from "components/Lists/PressableList/PressableList";
 
 interface SearchBarProps {
   searchTerm: string;
@@ -21,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
 
   useEffect(() => {
     const newData = ingredientList.filter((result) =>
-      result.name.toUpperCase().includes(searchTerm.toUpperCase()),
+      result.item.toUpperCase().includes(searchTerm.toUpperCase()),
     );
     setSearchResult(newData);
   }, [searchTerm]);
@@ -29,20 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, navigation }) => {
   return (
     <View style={styles.resultsContainer}>
       {searchTerm.length > 0 && (
-        <FlatList
-          style={styles.list}
-          data={searchResult}
-          keyExtractor={(item) => item.name}
-          renderItem={({ item }) => {
-            return (
-              <Pressable
-                onPress={() => navigation.navigate("Ingredient Screen")}
-              >
-                <Text style={styles.result}>{item.name.toUpperCase()} </Text>
-              </Pressable>
-            );
-          }}
-        />
+        <PressableList data={[]} navigation={undefined} />
       )}
     </View>
   );

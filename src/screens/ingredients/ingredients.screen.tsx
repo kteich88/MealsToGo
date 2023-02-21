@@ -12,6 +12,9 @@ import {
 } from "react-navigation";
 import { styles } from "./index.styles";
 import { ScrollView } from "react-native-gesture-handler";
+import PressableList from "components/Lists/PressableList/PressableList";
+import AccordianGroup from "components/Lists/AccordianList/AccordianGroup";
+import { INGREDIENT_LIST } from "./constants";
 
 interface IngredientsScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -27,6 +30,7 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
     loadIngredientsList();
   }, []);
 
+  // console.log("INGREDIENTS", sortedIngredientList.freezer);
   return (
     <>
       {isLoading ? (
@@ -38,7 +42,8 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
             navigation={navigation}
           />
           <ScrollView style={styles.container}>
-            <Text style={styles.title}>{"PANTRY"}</Text>
+            {/* <AccordianGroup data={INGREDIENT_LIST} navigation={navigation} /> */}
+            {/* <Text style={styles.title}>{"PANTRY"}</Text>
             <IngredientsList
               list={sortedIngredientList.pantry}
               navigation={navigation}
@@ -52,7 +57,7 @@ const IngredientsScreen: React.FC<IngredientsScreenProps> = ({
             <IngredientsList
               list={sortedIngredientList.freezer}
               navigation={navigation}
-            />
+            /> */}
           </ScrollView>
         </SafeAreaView>
       )}

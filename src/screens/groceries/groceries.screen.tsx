@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "react-native-paper";
 import { GroceriesContainer, GroceryItem, Loading } from "./groceries.styles";
-import ListIcon from "../../components/Lists/ListItem";
+import ListIcon from "../../components/Lists/PressableList";
 import Search from "../../components/Search/SearchBar";
 import {
   NavigationScreenProp,

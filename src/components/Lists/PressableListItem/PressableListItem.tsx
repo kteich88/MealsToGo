@@ -15,7 +15,6 @@ const PressableListItem: React.FC<PressableListProps> = ({
   title,
   children,
 }) => {
-  console.log(title);
   return (
     <Pressable style={styles.listItem} onPress={onPress}>
       {children}

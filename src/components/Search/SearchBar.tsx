@@ -12,6 +12,7 @@ import {
 } from "react-navigation";
 import { useVoice } from "hooks/useVoice";
 import Icon from "components/Icons/Icon";
+import PressableList from "components/Lists/PressableList/PressableList";
 
 interface SearchBarProps {
   placeholder: string;
@@ -23,8 +24,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
   const { textWhileListening, recordedText, isRecording, onRecordVoice } =
     useVoice();
 
-  console.log("I am listening to this text:", textWhileListening);
-  console.log("I am the recorded text:", recordedText);
+  // console.log("I am listening to this text:", textWhileListening);
+  // console.log("I am the recorded text:", recordedText);
 
   const onChangeSearch = (query: string) => setSearchTerm(query);
 
@@ -48,10 +49,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, navigation }) => {
         selectionColor={theme.colors.turquoise}
         inputStyle={styles.searchbar}
       />
-      <SearchResults
-        searchTerm={searchTerm ? searchTerm : recordedText}
+      {/* <PressableList
+        data={searchTerm ? searchTerm : recordedText}
         navigation={navigation}
-      />
+      /> */}
     </View>
   );
 };

@@ -1,24 +1,24 @@
 import { DocumentData } from "firebase/firestore";
-import { Ingredient, IngredientList } from "types/ingredient.types";
+import { Ingredient, IngredientList } from "screens/ingredients/types";
 
 /**
- * Helper function that transforms the DocumentData received from
- * Firebase / Firestore and converts it to known types that can be
- * used throughout the app.
+ * Helper function that transforms Ingredient DocumentData received from
+ * Firebase / Firestore and converts it to IngredientList object.
  * @param data DocumentData Object from Firebase
  * @param id Unique Id set in Firebase for each new item
  * @returns Ingredient Object
  */
-export const transformDocumentData = (
+export const transformIngredientsDocumentData = (
   data: DocumentData,
   id: string,
-): Ingredient => ({
-  id,
-  amount: data.amount,
-  authorId: data.authorId,
-  location: data.location,
-  name: data.name,
-});
+): IngredientList => {
+  console.log(data);
+  return {
+    id: { data },
+  };
+  console.log(id);
+  console.log(data);
+};
 
 /**
  * Helper function that sorts Ingredients based on their location.

@@ -47,7 +47,7 @@ export const useVoice = () => {
   }, []);
 
   useEffect(() => {
-    console.log("I am in this useEffect. isRecording:", isRecording);
+    // console.log("I am in this useEffect. isRecording:", isRecording);
     isRecording ? Voice.start("en-GB") : Voice.stop();
   }, [isRecording]);
 

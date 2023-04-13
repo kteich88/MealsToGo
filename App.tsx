@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import {
+  useFonts,
+  Manrope_300Light,
+  Manrope_400Regular,
+  Manrope_500Medium,
+  Manrope_600SemiBold,
+  Manrope_700Bold,
+} from "@expo-google-fonts/manrope";
+import firebase from "firebase/compat/app";
+import { API_KEY, firebaseConfig } from "services/firebase/firebase.config";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Router from "navigation/router";
+import LottieAnimation from "components/LottieAnimation/LottieAnimation";
+import { globalStyles } from "theme/global.styles";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export const App = () => {
+  const [fontsLoaded] = useFonts({
+    Manrope_300Light,
+    Manrope_400Regular,
+    Manrope_500Medium,
+    Manrope_600SemiBold,
+    Manrope_700Bold,
+  });
+  return fontsLoaded ? (
+    <SafeAreaProvider>
+      <Router />
+      <ExpoStatusBar style="auto" />
+    </SafeAreaProvider>
+  ) : (
+    <LottieAnimation
+      source={"assets/lottie/loading.json"}
+      styles={globalStyles.loading}
+    />
+  );
+};
+
+export default App;

@@ -20,4 +20,6 @@ export enum RootStackRouteNames {
   AddIngredients = "Add Ingredient",
   EditIngredients = "Edit Ingredient",
   ProfileScreen = "Profile",
+  Login = "Login",
+  Register = "Register",
 }

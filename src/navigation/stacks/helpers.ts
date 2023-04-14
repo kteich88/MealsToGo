@@ -12,3 +12,9 @@ export const stackHeaderOptions = () => {
     header: () => null,
   };
 };
+
+export const authenticationStackScreenOptions = () => {
+  return {
+    headerShown: false,
+  };
+};

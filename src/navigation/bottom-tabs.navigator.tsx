@@ -7,7 +7,13 @@ import RecipeStack from "./stacks/recipe.stack";
 import ProfileScreen from "screens/profile/profile.screen";
 import IngredientStack from "./stacks/ingredient.stack";
 import MealPlanStack from "./stacks/meal-plan.stack";
-import { tabBarIcon } from "./helpers";
+import { tabBarIcon, tabBarLabel } from "./helpers";
+import BottomTabGroceriesIcon from "assets/icons/bottom-tab-icons/groceries.png";
+import BottomTabIngredientsIcon from "assets/icons/bottom-tab-icons/ingredients.png";
+import BottomTabMealPlansIcon from "assets/icons/bottom-tab-icons/meal-planning.png";
+import BottomTabProfileIcon from "assets/icons/bottom-tab-icons/profile.png";
+import BottomTabRecipesIcon from "assets/icons/bottom-tab-icons/recipes.png";
+
 import { theme } from "theme/theme";
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
@@ -15,6 +21,7 @@ const Tab = createBottomTabNavigator<BottomTabParamList>();
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName={BottomTabRouteNames.Profile}
       screenOptions={{
         headerShown: false,
       }}
@@ -23,35 +30,40 @@ const BottomTabsNavigator = () => {
         name={BottomTabRouteNames.Recipes}
         component={RecipeStack}
         options={{
-          tabBarLabel: BottomTabRouteNames.Recipes,
-          tabBarIcon: ({ focused }) => tabBarIcon(focused, "AntDesign", "book"),
+          tabBarLabel: ({ focused }) =>
+            tabBarLabel(focused, BottomTabRouteNames.Recipes),
+          tabBarIcon: ({ focused }) =>
+            tabBarIcon(focused, BottomTabRecipesIcon),
         }}
       />
       <Tab.Screen
         name={BottomTabRouteNames.Groceries}
         component={GroceryStack}
         options={{
-          tabBarLabel: BottomTabRouteNames.Groceries,
+          tabBarLabel: ({ focused }) =>
+            tabBarLabel(focused, BottomTabRouteNames.Groceries),
           tabBarIcon: ({ focused }) =>
-            tabBarIcon(focused, "Fontisto", "shopping-basket"),
+            tabBarIcon(focused, BottomTabGroceriesIcon),
         }}
       />
       <Tab.Screen
         name={BottomTabRouteNames.MealPlans}
         component={MealPlanStack}
         options={{
-          tabBarLabel: BottomTabRouteNames.MealPlans,
+          tabBarLabel: ({ focused }) =>
+            tabBarLabel(focused, BottomTabRouteNames.MealPlans),
           tabBarIcon: ({ focused }) =>
-            tabBarIcon(focused, "MaterialCommunityIcon", "calendar-edit"),
+            tabBarIcon(focused, BottomTabMealPlansIcon),
         }}
       />
       <Tab.Screen
         name={BottomTabRouteNames.Ingredients}
         component={IngredientStack}
         options={{
-          tabBarLabel: BottomTabRouteNames.Ingredients,
+          tabBarLabel: ({ focused }) =>
+            tabBarLabel(focused, BottomTabRouteNames.Ingredients),
           tabBarIcon: ({ focused }) =>
-            tabBarIcon(focused, "Ionicons", "md-restaurant"),
+            tabBarIcon(focused, BottomTabIngredientsIcon),
         }}
       />
       <Tab.Screen
@@ -61,9 +73,10 @@ const BottomTabsNavigator = () => {
           tabBarStyle: {
             justifyContent: "center",
           },
-          tabBarLabel: BottomTabRouteNames.Profile,
+          tabBarLabel: ({ focused }) =>
+            tabBarLabel(focused, BottomTabRouteNames.Profile),
           tabBarIcon: ({ focused }) =>
-            tabBarIcon(focused, "FontAwesome5", "user-circle"),
+            tabBarIcon(focused, BottomTabProfileIcon),
         }}
       />
     </Tab.Navigator>

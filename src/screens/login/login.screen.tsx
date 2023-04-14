@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, TextInput, View } from "react-native";
+import { ScrollView, TextInput, View, Image } from "react-native";
 import { theme } from "theme/theme";
 import useAuthentication from "hooks/useAuthentication";
 import LottieAnimation from "components/LottieAnimation/LottieAnimation";
@@ -24,9 +24,9 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProps) => {
         />
       ) : (
         <View style={styles.form}>
-          <LottieAnimation
-            styles={styles.animation}
-            source={require("assets/lottie/cooking.json")}
+          <Image
+            style={styles.image}
+            source={require("assets/images/good-eats-title.png")}
           />
 
           <TextInput
@@ -53,7 +53,7 @@ const LoginScreen = ({ navigation }: LoginScreenNavigationProps) => {
             buttonText={ButtonText.Login}
             onPress={() => onLogin(email, password)}
             disabled={false}
-            buttonStyle={styles.loginButtonStyle}
+            buttonStyle={styles.buttonStyle}
           />
           <Button
             buttonText={ButtonText.Register}

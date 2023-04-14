@@ -49,3 +49,8 @@ export type LoginScreenNavigationProps = NativeStackScreenProps<
   RootStackParamList,
   RootStackRouteNames.Login
 >;
+
+export type RegisterScreenNavigationProps = NativeStackScreenProps<
+  RootStackParamList,
+  RootStackRouteNames.Register
+>;

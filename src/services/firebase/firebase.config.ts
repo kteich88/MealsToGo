@@ -1,9 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getEnvironmentVariable } from "../helpers";
 import Constants from "expo-constants";
 
-export const API_KEY = Constants.expoConfig?.extra?.API_KEY;
+const API_KEY = Constants.expoConfig?.extra?.API_KEY;
 const AUTH_DOMAIN = Constants.expoConfig?.extra?.AUTH_DOMAIN;
 const PROJECT_ID = Constants.expoConfig?.extra?.PROJECT_ID;
 const STORAGE_BUCKET = Constants.expoConfig?.extra?.STORAGE_BUCKET;

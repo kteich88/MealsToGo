@@ -1,4 +1,7 @@
 import React from "react";
+import Router from "navigation/router";
+import LottieAnimation from "components/LottieAnimation/LottieAnimation";
+import firebase from "firebase/compat/app";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   useFonts,
@@ -8,11 +11,8 @@ import {
   Manrope_600SemiBold,
   Manrope_700Bold,
 } from "@expo-google-fonts/manrope";
-import firebase from "firebase/compat/app";
-import { API_KEY, firebaseConfig } from "services/firebase/firebase.config";
+import { firebaseConfig } from "services/firebase/firebase.config";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Router from "navigation/router";
-import LottieAnimation from "components/LottieAnimation/LottieAnimation";
 import { globalStyles } from "theme/global.styles";
 
 if (!firebase.apps.length) {

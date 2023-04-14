@@ -8,8 +8,8 @@ export enum BottomTabRouteNames {
 
 export enum RootStackRouteNames {
   RecipeScreen = "Recipe Screen",
-  AddRecipes = "Add Recipes",
-  EditRecipes = "Edit Recipes",
+  AddRecipe = "Add Recipe",
+  EditRecipe = "Edit Recipe",
   GroceriesScreen = "Groceries Screen",
   AddGroceries = "Add Groceries",
   EditGroceries = "Edit Groceries",

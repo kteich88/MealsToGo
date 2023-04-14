@@ -23,8 +23,8 @@ export type Tab = {
 
 export type RecipeStackParamList = {
   [RootStackRouteNames.RecipeScreen]: undefined;
-  [RootStackRouteNames.AddRecipes]: undefined;
-  [RootStackRouteNames.EditRecipes]: { id: string };
+  [RootStackRouteNames.AddRecipe]: undefined;
+  [RootStackRouteNames.EditRecipe]: { id: string };
 };
 
 export type GroceryStackParamList = {

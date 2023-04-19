@@ -14,7 +14,7 @@ const RecipeStack = () => {
     <Stack.Navigator screenOptions={stackScreenOptions}>
       <Stack.Screen
         options={stackHeaderOptions}
-        name={RootStackRouteNames.RecipeScreen}
+        name={RootStackRouteNames.RecipesScreen}
         component={RecipesScreen}
       />
       <Stack.Screen

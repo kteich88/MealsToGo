@@ -19,6 +19,7 @@ export enum FontSize {
   bodyText = 16,
   subheading = 20,
   heading = 24,
+  counter = 32,
 }
 
 export enum LineHeight {
@@ -36,12 +37,14 @@ export enum TextDecorationLine {
 export enum Colors {
   midnight = "#373944",
   turquoise = "#52858C",
+  skyBlue = "#7FB2C0",
   mintGreen = "#99B7AE",
   peach = "#E7775D",
   yellow = "#F2BB44",
   limeGreen = "#B7BE58",
   darkBrown = "#52433B",
   tan = "#9B8980",
+  cream = "#F9F4CE",
   khaki = "#DBC3B4",
   errorRed = "#AC2B33",
   black = "#000000",

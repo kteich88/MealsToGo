@@ -12,5 +12,6 @@ export const size: Size = {
   sm: 24,
   md: 48,
   lg: 75,
-  giant: 105,
+  xl: 100,
+  giant: 150,
 };

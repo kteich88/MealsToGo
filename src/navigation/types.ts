@@ -22,27 +22,27 @@ export type Tab = {
 };
 
 export type RecipeStackParamList = {
-  [RootStackRouteNames.RecipeScreen]: undefined;
+  [RootStackRouteNames.RecipesScreen]: undefined;
   [RootStackRouteNames.AddRecipe]: undefined;
   [RootStackRouteNames.EditRecipe]: { id: string };
 };
 
 export type GroceryStackParamList = {
   [RootStackRouteNames.GroceriesScreen]: undefined;
-  [RootStackRouteNames.AddGroceries]: undefined;
-  [RootStackRouteNames.EditGroceries]: { id: string };
+  [RootStackRouteNames.AddGrocery]: undefined;
+  [RootStackRouteNames.EditGrocery]: { id: string };
 };
 
 export type MealPlanStackParamList = {
   [RootStackRouteNames.MealPlanning]: undefined;
-  [RootStackRouteNames.AddMeals]: undefined;
-  [RootStackRouteNames.EditMeals]: { id: string };
+  [RootStackRouteNames.AddMeal]: undefined;
+  [RootStackRouteNames.EditMeal]: { id: string };
 };
 
 export type IngredientStackParamList = {
   [RootStackRouteNames.IngredientsScreen]: undefined;
-  [RootStackRouteNames.AddIngredients]: undefined;
-  [RootStackRouteNames.EditIngredients]: { id: string };
+  [RootStackRouteNames.AddIngredient]: undefined;
+  [RootStackRouteNames.EditIngredient]: { id: string };
 };
 
 export type LoginScreenNavigationProps = NativeStackScreenProps<
@@ -50,7 +50,8 @@ export type LoginScreenNavigationProps = NativeStackScreenProps<
   RootStackRouteNames.Login
 >;
 
-export type RegisterScreenNavigationProps = NativeStackScreenProps<
-  RootStackParamList,
-  RootStackRouteNames.Register
+// Ingredients
+export type AddIngredientScreenNavigationProps = NativeStackScreenProps<
+  IngredientStackParamList,
+  RootStackRouteNames.AddIngredient
 >;

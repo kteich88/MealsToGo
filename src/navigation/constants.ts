@@ -7,19 +7,19 @@ export enum BottomTabRouteNames {
 }
 
 export enum RootStackRouteNames {
-  RecipeScreen = "Recipe Screen",
+  RecipesScreen = "Recipes Screen",
   AddRecipe = "Add Recipe",
   EditRecipe = "Edit Recipe",
   GroceriesScreen = "Groceries Screen",
-  AddGroceries = "Add Groceries",
-  EditGroceries = "Edit Groceries",
+  AddGrocery = "Add Grocery",
+  EditGrocery = "Edit Grocery",
   MealPlanning = "Meal Planning",
-  AddMeals = "Add Meals",
-  EditMeals = "Edit Meals",
+  AddMeal = "Add Meal",
+  EditMeal = "Edit Meal",
   IngredientsScreen = "Ingredients Screen",
-  AddIngredients = "Add Ingredient",
-  EditIngredients = "Edit Ingredient",
-  ProfileScreen = "Profile",
+  AddIngredient = "Add Ingredient",
+  EditIngredient = "Edit Ingredient",
+  ProfileScreen = "Profile Screen",
   Login = "Login",
   Register = "Register",
 }

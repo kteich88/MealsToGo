@@ -47,5 +47,12 @@ export const fonts = (props?: TextProps): Fonts => {
       letterSpacing: 0,
       lineHeight: LineHeight.caption,
     },
+    counter: {
+      color,
+      fontFamily: FontFamily.default,
+      fontSize: FontSize.counter,
+      fontWeight,
+      letterSpacing: 0,
+    },
   };
 };

@@ -1,6 +1,6 @@
 import { AuthenticationContext } from "contexts/authentication/Authentication.context";
+import { HookErrorMessage } from "hooks/constants";
 import { useContext } from "react";
-import { HookErrorMessage } from "./constants";
 
 const useAuthentication = () => {
   const context = useContext(AuthenticationContext);

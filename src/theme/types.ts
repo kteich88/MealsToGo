@@ -18,6 +18,7 @@ export interface Fonts {
   heading: TextStyle;
   subheading: TextStyle;
   caption: TextStyle;
+  counter: TextStyle;
 }
 
 export interface Spacing {
@@ -30,6 +31,7 @@ export interface Spacing {
 }
 
 export interface Radius {
+  xs: number;
   sm: number;
   md: number;
   lg: number;
@@ -40,5 +42,6 @@ export interface Size {
   sm: number;
   md: number;
   lg: number;
+  xl: number;
   giant: number;
 }

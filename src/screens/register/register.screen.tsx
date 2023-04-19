@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, TextInput, View, Image } from "react-native";
 import { theme } from "theme/theme";
-import useAuthentication from "hooks/useAuthentication";
+import useAuthentication from "hooks/authentication/useAuthentication";
 import LottieAnimation from "components/LottieAnimation/LottieAnimation";
 import { globalStyles } from "theme/global.styles";
 import Button from "components/Button/Button";

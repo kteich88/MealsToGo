@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-native";
-import { HookErrorMessage } from "./constants";
+import { HookErrorMessage } from "../constants";
 import useAuthentication from "./useAuthentication";
 
 describe("useAuthentication Hook", () => {

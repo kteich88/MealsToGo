@@ -1,6 +1,5 @@
 import { theme } from "theme/theme";
 import { StyleSheet } from "react-native";
-import { FontSize } from "theme/constants";
 
 export const styles = StyleSheet.create({
   counter: {

@@ -51,7 +51,15 @@ export type LoginScreenNavigationProps = NativeStackScreenProps<
 >;
 
 // Ingredients
+export type IngredientsScreenNavigationProps = NativeStackScreenProps<
+  IngredientStackParamList,
+  RootStackRouteNames.IngredientsScreen
+>;
 export type AddIngredientScreenNavigationProps = NativeStackScreenProps<
   IngredientStackParamList,
   RootStackRouteNames.AddIngredient
+>;
+export type EditIngredientScreenNavigationProps = NativeStackScreenProps<
+  IngredientStackParamList,
+  RootStackRouteNames.EditIngredient
 >;

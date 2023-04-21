@@ -41,7 +41,7 @@ export enum Colors {
   mintGreen = "#99B7AE",
   peach = "#E7775D",
   yellow = "#F2BB44",
-  limeGreen = "#B7BE58",
+  limeGreen = "#B7DE58",
   darkBrown = "#52433B",
   tan = "#9B8980",
   cream = "#F9F4CE",

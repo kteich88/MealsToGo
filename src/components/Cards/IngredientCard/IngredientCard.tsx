@@ -7,16 +7,18 @@ import { theme } from "theme/theme";
 
 interface IngredientCardProps {
   name: string;
+  onPress: any;
 }
 
 const IngredientCard = ({ ...props }: IngredientCardProps) => {
-  const { name } = props;
+  const { name, onPress } = props;
+
   return (
     <View style={styles.card}>
       <Text style={styles.cardTitle}>{name}</Text>
       <Counter />
       <View style={styles.bottomIcons}>
-        <Pressable>
+        <Pressable onPress={() => onPress}>
           <Icon
             type={"Feather"}
             name={"edit"}
@@ -24,7 +26,7 @@ const IngredientCard = ({ ...props }: IngredientCardProps) => {
             style={styles.editIngredientIcon}
           />
         </Pressable>
-        <Pressable>
+        <Pressable onPress={() => onPress}>
           <Icon
             type={"FontAwesome"}
             name={"trash-o"}

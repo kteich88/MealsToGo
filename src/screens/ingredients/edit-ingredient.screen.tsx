@@ -1,5 +1,3 @@
-import "react-native-get-random-values";
-import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
 import { ScrollView, TextInput, View } from "react-native";
 import { theme } from "theme/theme";
@@ -9,17 +7,15 @@ import Button from "components/Button/Button";
 import { ButtonText } from "components/Button/constants";
 import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
-import { IngredientLocation } from "./constants";
 
-const AddIngredientScreen = () => {
+const EditIngredientScreen = () => {
   const [name, setName] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [units, setUnits] = useState<string>("");
 
   const { addIngredient, isLoading } = useIngredients();
-  const id = uuidv4();
-  const location = IngredientLocation.Freezer;
-  const ingredient = { id, name, amount, units, location };
+  const location = "freezer";
+  const ingredient = { name, amount, units, location };
 
   return (
     <ScrollView style={styles.modalContainer}>
@@ -66,4 +62,4 @@ const AddIngredientScreen = () => {
   );
 };
 
-export default AddIngredientScreen;
+export default EditIngredientScreen;

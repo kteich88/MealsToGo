@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
-import { FontWeight } from "theme/constants";
 import { theme } from "theme/theme";
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: theme.colors.white,
+  },
+  modalContainer: {
     flex: 1,
   },
   titles: {
@@ -13,15 +16,12 @@ export const styles = StyleSheet.create({
   },
   refrigerator: {
     height: "35%",
-    backgroundColor: theme.colors.skyBlue,
   },
   pantry: {
     height: "35%",
-    backgroundColor: theme.colors.cream,
   },
   freezer: {
     height: "35%",
-    backgroundColor: theme.colors.turquoise,
   },
   form: {
     marginTop: 300,

@@ -1,63 +1,89 @@
 import firebase from "firebase/compat";
-import { FieldValue, addDoc, collection, onSnapshot } from "firebase/firestore";
+import { FieldValue } from "firebase/firestore";
 import useAuthentication from "hooks/authentication/useAuthentication";
-import { useState } from "react";
-import { db } from "services/firebase/firebase.db";
-import { Ingredient } from "types/ingredients";
+import { useCallback, useEffect, useState } from "react";
+import { FirebaseIngredient, Ingredient } from "hooks/ingredients/types";
+import { addDataToFirebase, getAndSetIngredients } from "./helpers";
+import {
+  freezerCollectionRef,
+  pantryCollectionRef,
+  refrigeratorCollectionRef,
+} from "./constants";
+import { IngredientLocation } from "screens/ingredients/constants";
 
 const useIngredients = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [amount, setAmount] = useState<number>(0);
-
+  const [refrigeratorIngredients, setRefrigeratorIngredients] =
+    useState<Ingredient[]>();
+  const [pantryIngredients, setPantryIngredients] = useState<Ingredient[]>();
+  const [freezerIngredients, setFreezerIngredients] = useState<Ingredient[]>();
   const { user } = useAuthentication();
-  const firebaseCollectionRef = collection(db, "ingredients");
 
-  const loadIngredients = async () => {
+  const getIngredients = useCallback(async () => {
     setIsLoading(true);
-    onSnapshot(firebaseCollectionRef, (snapshot) => {
-      const ingredientsSnapshot = snapshot.docs.map((doc) => {
-        return {
-          ...doc.data(),
-        };
-      });
-
-      setIsLoading(false);
-    });
-  };
+    setRefrigeratorIngredients(
+      await getAndSetIngredients(
+        refrigeratorCollectionRef,
+        IngredientLocation.Refrigerator,
+      ),
+    );
+    setPantryIngredients(
+      await getAndSetIngredients(
+        pantryCollectionRef,
+        IngredientLocation.Pantry,
+      ),
+    );
+    setFreezerIngredients(
+      await getAndSetIngredients(
+        freezerCollectionRef,
+        IngredientLocation.Freezer,
+      ),
+    );
+    setIsLoading(false);
+  }, []);
 
   const addIngredient = async (ingredient: Ingredient) => {
-    const { name, amount, units } = ingredient;
-
-    setIsLoading(true);
+    const { id, name, amount, units, location } = ingredient;
 
     const timestamp: FieldValue =
       firebase.firestore.FieldValue.serverTimestamp();
 
-    const data = {
+    setIsLoading(true);
+
+    const data: FirebaseIngredient = {
+      id,
       name,
       amount,
       units,
-      createdBy: user?.uid,
       createdAt: timestamp,
+      createdBy: user?.uid,
     };
 
     try {
-      await addDoc(firebaseCollectionRef, data);
+      await addDataToFirebase(location, data);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       }
     }
+    setIsLoading(false);
   };
 
+  useEffect(() => {
+    getIngredients();
+  }, [getIngredients]);
+
   return {
-    loadIngredients,
     addIngredient,
     isLoading,
     error,
     amount,
     setAmount,
+    refrigeratorIngredients,
+    pantryIngredients,
+    freezerIngredients,
   };
 };
 

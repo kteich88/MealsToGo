@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
-import { Text, Pressable, View } from "react-native";
+import React from "react";
+import { Pressable, View } from "react-native";
 import Icon from "components/Icons/Icon";
 import { styles } from "./Counter.styles";
 import { theme } from "theme/theme";

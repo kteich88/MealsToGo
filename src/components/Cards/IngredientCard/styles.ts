@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     width: theme.size.giant,
     borderRadius: theme.spacing.md,
     marginHorizontal: theme.spacing.lg,
-    backgroundColor: theme.colors.lightGray,
+    backgroundColor: theme.colors.neutralGray,
     borderWidth: theme.radius.xs,
-    borderColor: theme.colors.midMediumGray,
+    borderColor: theme.colors.lightGray,
   },
   cardTitle: {
     alignSelf: "center",
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   addIngredientIcon: {
     alignSelf: "center",
     paddingVertical: theme.spacing.sm,
-    color: theme.colors.peach,
+    color: theme.colors.limeGreen,
   },
   bottomIcons: {
     flexDirection: "row",

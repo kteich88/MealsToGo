@@ -28,6 +28,7 @@ const IngredientSection = ({
             <IngredientCard
               key={ingredient.id}
               name={ingredient.name}
+              amount={ingredient.amount}
               onPress={() =>
                 navigation.navigate(RootStackRouteNames.EditIngredient, {
                   id: ingredient.id,

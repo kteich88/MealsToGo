@@ -12,13 +12,20 @@ import {
 import { IngredientLocation } from "screens/ingredients/constants";
 
 const useIngredients = () => {
+  const [name, setName] = useState<string>("");
+  const [amount, setAmount] = useState<string>("0");
+  const [units, setUnits] = useState<string>("");
+  const [ingredientLocation, setIngredientLocation] =
+    useState<IngredientLocation>();
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [amount, setAmount] = useState<number>(0);
+
   const [refrigeratorIngredients, setRefrigeratorIngredients] =
     useState<Ingredient[]>();
   const [pantryIngredients, setPantryIngredients] = useState<Ingredient[]>();
   const [freezerIngredients, setFreezerIngredients] = useState<Ingredient[]>();
+
   const { user } = useAuthentication();
 
   const getIngredients = useCallback(async () => {
@@ -76,11 +83,17 @@ const useIngredients = () => {
   }, [getIngredients]);
 
   return {
+    name,
+    setName,
+    amount,
+    setAmount,
+    units,
+    setUnits,
+    ingredientLocation,
+    setIngredientLocation,
     addIngredient,
     isLoading,
     error,
-    amount,
-    setAmount,
     refrigeratorIngredients,
     pantryIngredients,
     freezerIngredients,

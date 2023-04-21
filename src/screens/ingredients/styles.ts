@@ -8,6 +8,12 @@ export const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
+    marginTop: theme.spacing.lg,
+  },
+  selector: {
+    width: "80%",
+    marginVertical: theme.spacing.lg,
+    color: theme.colors.midGray,
   },
   titles: {
     alignSelf: "center",
@@ -24,12 +30,8 @@ export const styles = StyleSheet.create({
     height: "35%",
   },
   form: {
-    marginTop: 300,
     justifyContent: "flex-start",
     alignItems: "center",
-  },
-  image: {
-    margin: theme.spacing.giant,
   },
   textInput: {
     marginBottom: theme.spacing.lg,

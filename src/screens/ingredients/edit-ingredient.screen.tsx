@@ -9,11 +9,16 @@ import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
 
 const EditIngredientScreen = () => {
-  const [name, setName] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
-  const [units, setUnits] = useState<string>("");
-
-  const { addIngredient, isLoading } = useIngredients();
+  const {
+    name,
+    setName,
+    amount,
+    setAmount,
+    units,
+    setUnits,
+    addIngredient,
+    isLoading,
+  } = useIngredients();
   const location = "freezer";
   const ingredient = { name, amount, units, location };
 

@@ -10,15 +10,27 @@ import { ButtonText } from "components/Button/constants";
 import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
 import { IngredientLocation } from "./constants";
+import Dropdown from "components/Dropdown/Dropdown";
+import {
+  DropdownLabel,
+  ingredientLocationSelectOptions,
+} from "components/Dropdown/constants";
+import useDropdown from "hooks/useDropdown";
 
 const AddIngredientScreen = () => {
-  const [name, setName] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
-  const [units, setUnits] = useState<string>("");
-
-  const { addIngredient, isLoading } = useIngredients();
+  const {
+    name,
+    setName,
+    amount,
+    setAmount,
+    units,
+    setUnits,
+    addIngredient,
+    isLoading,
+  } = useIngredients();
+  const { selection } = useDropdown();
   const id = uuidv4();
-  const location = IngredientLocation.Freezer;
+  const location = selection;
   const ingredient = { id, name, amount, units, location };
 
   return (
@@ -30,6 +42,10 @@ const AddIngredientScreen = () => {
         />
       ) : (
         <View style={styles.form}>
+          {/* <Dropdown
+            data={ingredientLocationSelectOptions}
+            label={DropdownLabel.ingredientLocation}
+          /> */}
           <TextInput
             style={styles.textInput}
             placeholder="Ingredient Name"

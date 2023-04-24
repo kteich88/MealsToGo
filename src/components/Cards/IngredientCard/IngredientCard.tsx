@@ -8,14 +8,22 @@ import { theme } from "theme/theme";
 interface IngredientCardProps {
   name: string;
   amount: string;
+  units: string;
   onPress: () => void;
 }
 
-const IngredientCard = ({ name, amount, onPress }: IngredientCardProps) => {
+const IngredientCard = ({
+  name,
+  amount,
+  units,
+  onPress,
+}: IngredientCardProps) => {
   return (
     <View style={styles.card}>
+      <Text style={styles.cardTitle}>{amount}</Text>
+      <Text style={styles.cardTitle}>{units}</Text>
       <Text style={styles.cardTitle}>{name}</Text>
-      <Counter amount={amount} />
+
       <View style={styles.bottomIcons}>
         <Pressable onPress={onPress}>
           <Icon

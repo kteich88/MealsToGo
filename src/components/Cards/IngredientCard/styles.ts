@@ -22,6 +22,8 @@ export const styles = StyleSheet.create({
     color: theme.colors.limeGreen,
   },
   bottomIcons: {
+    position: "absolute",
+    bottom: theme.spacing.md,
     flexDirection: "row",
     alignSelf: "center",
   },

@@ -30,6 +30,7 @@ const IngredientSection = ({
               key={ingredient.id}
               name={ingredient.name}
               amount={ingredient.amount}
+              units={ingredient.units}
               onPress={() =>
                 navigation.navigate(RootStackRouteNames.EditIngredient, {
                   id: ingredient.id,

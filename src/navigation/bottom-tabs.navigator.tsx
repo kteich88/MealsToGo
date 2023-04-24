@@ -16,6 +16,7 @@ import BottomTabRecipesIcon from "assets/icons/bottom-tab-icons/recipes.png";
 import useAuthentication from "hooks/authentication/useAuthentication";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthenticationStack from "./stacks/authentication.stack";
+import IngredientsScreen from "screens/ingredients/ingredients.screen";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -63,7 +64,7 @@ const BottomTabsNavigator = () => {
         />
         <Tab.Screen
           name={BottomTabRouteNames.Ingredients}
-          component={IngredientStack}
+          component={IngredientsScreen}
           options={{
             tabBarLabel: ({ focused }) =>
               tabBarLabel(focused, BottomTabRouteNames.Ingredients),
@@ -88,6 +89,7 @@ const BottomTabsNavigator = () => {
       {/* ) : (
         <AuthenticationStack />
       )} */}
+      {/* <IngredientStack /> */}
     </NavigationContainer>
   );
 };

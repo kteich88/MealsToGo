@@ -50,15 +50,12 @@ export const addDataToFirebase = async (
   location: IngredientLocation,
   data: FirebaseIngredient,
 ) => {
-  console.log("WHAT IS THE LOCATION", location);
-
   switch (location) {
     case IngredientLocation.Refrigerator:
-      await addDoc(refrigeratorCollectionRef, data);
+      addDoc(refrigeratorCollectionRef, data);
     case IngredientLocation.Pantry:
-      await addDoc(pantryCollectionRef, data);
+      addDoc(pantryCollectionRef, data);
     case IngredientLocation.Freezer:
-      console.log("I AM HERE");
-      await addDoc(freezerCollectionRef, data);
+      addDoc(freezerCollectionRef, data);
   }
 };

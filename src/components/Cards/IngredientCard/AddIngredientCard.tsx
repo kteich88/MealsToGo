@@ -5,13 +5,24 @@ import { Text, Pressable } from "react-native";
 import { styles } from "./styles";
 import { theme } from "theme/theme";
 import { RootStackRouteNames } from "navigation/constants";
+import { IngredientLocation } from "screens/ingredients/constants";
+import { AddIngredientScreenNavigationProps } from "navigation/types";
+import { useNavigation } from "@react-navigation/native";
 
-const AddIngredientCard = ({ ...props }) => {
-  const { navigation } = props;
+interface AddIngredientCardProps {
+  ingredientLocation: IngredientLocation;
+}
+
+const AddIngredientCard = ({ ingredientLocation }: AddIngredientCardProps) => {
+  const navigation = useNavigation<AddIngredientScreenNavigationProps>();
   return (
     <Pressable
       style={styles.card}
-      onPress={() => navigation.navigate(RootStackRouteNames.AddIngredient)}
+      onPress={() =>
+        navigation.navigate(RootStackRouteNames.AddIngredient, {
+          location: ingredientLocation,
+        })
+      }
     >
       <Icon
         type={"FontAwesome5"}

@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     height: "35%",
   },
   form: {
+    marginTop: theme.spacing.giant,
     justifyContent: "flex-start",
     alignItems: "center",
   },

@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { IngredientLocation } from "screens/ingredients/constants";
 
 const useDropdown = () => {
   const [selected, setSelected] = useState(false);
-  const [selection, setSelection] = useState<string>("Make a selection");
+  const [selection, setSelection] = useState<string>(
+    IngredientLocation.Freezer,
+  );
 
   return {
     selected,

@@ -6,9 +6,10 @@ import useDropdown from "hooks/useDropdown";
 import { DropdownLabel } from "./constants";
 import { theme } from "theme/theme";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { IngredientLocation } from "screens/ingredients/constants";
 
 interface DropdownProps {
-  label: DropdownLabel;
+  label: IngredientLocation;
   data: string[];
 }
 

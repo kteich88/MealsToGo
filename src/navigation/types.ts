@@ -4,8 +4,12 @@
  * with React Navigation: https://reactnavigation.org/docs/typescript/
  */
 
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 import { BottomTabRouteNames, RootStackRouteNames } from "./constants";
+import { IngredientLocation } from "screens/ingredients/constants";
 
 export type RootStackParamList = {
   [BottomTabRouteNames.Recipes]: undefined;
@@ -39,9 +43,16 @@ export type MealPlanStackParamList = {
   [RootStackRouteNames.EditMeal]: { id: string };
 };
 
+export type AddIngredientStack = {
+  [RootStackRouteNames.EditIngredient]: { location: IngredientLocation };
+};
+export type EditIngredientStack = {
+  [RootStackRouteNames.EditIngredient]: { id: string };
+};
+
 export type IngredientStackParamList = {
   [RootStackRouteNames.IngredientsScreen]: undefined;
-  [RootStackRouteNames.AddIngredient]: undefined;
+  [RootStackRouteNames.AddIngredient]: { location: IngredientLocation };
   [RootStackRouteNames.EditIngredient]: { id: string };
 };
 
@@ -55,11 +66,7 @@ export type IngredientsScreenNavigationProps = NativeStackScreenProps<
   IngredientStackParamList,
   RootStackRouteNames.IngredientsScreen
 >;
-export type AddIngredientScreenNavigationProps = NativeStackScreenProps<
-  IngredientStackParamList,
-  RootStackRouteNames.AddIngredient
->;
-export type EditIngredientScreenNavigationProps = NativeStackScreenProps<
+export type EditIngredientNavigationProps = NativeStackNavigationProp<
   IngredientStackParamList,
   RootStackRouteNames.EditIngredient
 >;

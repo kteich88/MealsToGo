@@ -15,8 +15,6 @@ const useIngredients = () => {
   const [name, setName] = useState<string>("");
   const [amount, setAmount] = useState<string>("0");
   const [units, setUnits] = useState<string>("");
-  const [ingredientLocation, setIngredientLocation] =
-    useState<IngredientLocation>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +46,9 @@ const useIngredients = () => {
         IngredientLocation.Freezer,
       ),
     );
+
     setIsLoading(false);
+    return { refrigeratorIngredients, pantryIngredients, freezerIngredients };
   }, []);
 
   const addIngredient = async (ingredient: Ingredient) => {
@@ -68,6 +68,8 @@ const useIngredients = () => {
       createdBy: user?.uid,
     };
 
+    console.log("DATA", data);
+
     try {
       await addDataToFirebase(location, data);
     } catch (err) {
@@ -75,7 +77,7 @@ const useIngredients = () => {
         setError(err.message);
       }
     }
-    setIsLoading(false);
+    getIngredients();
   };
 
   useEffect(() => {
@@ -89,8 +91,6 @@ const useIngredients = () => {
     setAmount,
     units,
     setUnits,
-    ingredientLocation,
-    setIngredientLocation,
     addIngredient,
     isLoading,
     error,

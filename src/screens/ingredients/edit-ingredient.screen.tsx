@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, TextInput, View } from "react-native";
 import { theme } from "theme/theme";
 import LottieAnimation from "components/LottieAnimation/LottieAnimation";
@@ -7,20 +7,18 @@ import Button from "components/Button/Button";
 import { ButtonText } from "components/Button/constants";
 import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
+import Dropdown from "components/Dropdown/Dropdown";
+import { ingredientLocationSelectOptions } from "components/Dropdown/constants";
+import { IngredientLocation } from "./constants";
+import { EditIngredientStack } from "navigation/types";
+import { RouteProp } from "@react-navigation/native";
 
-const EditIngredientScreen = () => {
-  const {
-    name,
-    setName,
-    amount,
-    setAmount,
-    units,
-    setUnits,
-    addIngredient,
-    isLoading,
-  } = useIngredients();
-  const location = "freezer";
-  const ingredient = { name, amount, units, location };
+const EditIngredientScreen = (route: RouteProp<EditIngredientStack>) => {
+  const { isLoading } = useIngredients();
+  console.log(route);
+
+  const id = route.params?.id;
+  // find name, amount, units and location of ingredient with id
 
   return (
     <ScrollView style={styles.modalContainer}>
@@ -31,33 +29,34 @@ const EditIngredientScreen = () => {
         />
       ) : (
         <View style={styles.form}>
+          <Dropdown
+            data={ingredientLocationSelectOptions}
+            label={IngredientLocation.Freezer}
+          />
           <TextInput
             style={styles.textInput}
             placeholder="Ingredient Name"
             selectionColor={theme.colors.turquoise}
-            value={name}
+            // value={name}
             autoCapitalize="none"
-            onChangeText={(ingredient) => setName(ingredient)}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Amount"
             selectionColor={theme.colors.turquoise}
-            value={amount}
+            // value={amount}
             autoCapitalize="none"
-            onChangeText={(number) => setAmount(number)}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Units (oz, lbs, etc)"
             selectionColor={theme.colors.turquoise}
-            value={units}
+            // value={units}
             autoCapitalize="none"
-            onChangeText={(unit) => setUnits(unit)}
           />
           <Button
-            buttonText={ButtonText.AddIngredient}
-            onPress={() => addIngredient(ingredient)}
+            buttonText={ButtonText.EditIngredient}
+            onPress={() => {}}
             disabled={false}
             buttonStyle={styles.buttonStyle}
           />

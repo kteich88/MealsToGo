@@ -6,12 +6,9 @@ import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
 import { IngredientLocation } from "./constants";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { IngredientsScreenNavigationProps } from "navigation/types";
 import IngredientSection from "components/IngredientSection/IngredientSection";
 
-const IngredientsScreen = ({
-  navigation,
-}: IngredientsScreenNavigationProps) => {
+const IngredientsScreen = () => {
   const {
     isLoading,
     refrigeratorIngredients,
@@ -31,17 +28,14 @@ const IngredientsScreen = ({
           <IngredientSection
             ingredientLocation={IngredientLocation.Refrigerator}
             ingredients={refrigeratorIngredients}
-            navigation={navigation}
           />
           <IngredientSection
             ingredientLocation={IngredientLocation.Pantry}
             ingredients={pantryIngredients}
-            navigation={navigation}
           />
           <IngredientSection
             ingredientLocation={IngredientLocation.Freezer}
             ingredients={freezerIngredients}
-            navigation={navigation}
           />
         </View>
       )}

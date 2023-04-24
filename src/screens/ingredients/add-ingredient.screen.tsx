@@ -1,6 +1,6 @@
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, TextInput, View } from "react-native";
 import { theme } from "theme/theme";
 import LottieAnimation from "components/LottieAnimation/LottieAnimation";
@@ -9,15 +9,10 @@ import Button from "components/Button/Button";
 import { ButtonText } from "components/Button/constants";
 import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
-import { IngredientLocation } from "./constants";
-import Dropdown from "components/Dropdown/Dropdown";
-import {
-  DropdownLabel,
-  ingredientLocationSelectOptions,
-} from "components/Dropdown/constants";
-import useDropdown from "hooks/useDropdown";
+import { AddIngredientStack } from "navigation/types";
+import { RouteProp } from "@react-navigation/native";
 
-const AddIngredientScreen = () => {
+const AddIngredientScreen = (route: RouteProp<AddIngredientStack>) => {
   const {
     name,
     setName,
@@ -28,9 +23,8 @@ const AddIngredientScreen = () => {
     addIngredient,
     isLoading,
   } = useIngredients();
-  const { selection } = useDropdown();
   const id = uuidv4();
-  const location = selection;
+  const location = route.params?.location;
   const ingredient = { id, name, amount, units, location };
 
   return (
@@ -42,10 +36,6 @@ const AddIngredientScreen = () => {
         />
       ) : (
         <View style={styles.form}>
-          {/* <Dropdown
-            data={ingredientLocationSelectOptions}
-            label={DropdownLabel.ingredientLocation}
-          /> */}
           <TextInput
             style={styles.textInput}
             placeholder="Ingredient Name"

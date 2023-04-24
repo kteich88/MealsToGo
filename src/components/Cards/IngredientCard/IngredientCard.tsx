@@ -4,23 +4,20 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { styles } from "./styles";
 import { theme } from "theme/theme";
-import { Ingredient } from "hooks/ingredients/types";
 
 interface IngredientCardProps {
   name: string;
   amount: string;
-  onPress: any;
+  onPress: () => void;
 }
 
-const IngredientCard = ({ ...props }: IngredientCardProps) => {
-  const { name, amount, onPress } = props;
-
+const IngredientCard = ({ name, amount, onPress }: IngredientCardProps) => {
   return (
     <View style={styles.card}>
       <Text style={styles.cardTitle}>{name}</Text>
       <Counter amount={amount} />
       <View style={styles.bottomIcons}>
-        <Pressable onPress={() => onPress}>
+        <Pressable onPress={onPress}>
           <Icon
             type={"Feather"}
             name={"edit"}
@@ -28,7 +25,7 @@ const IngredientCard = ({ ...props }: IngredientCardProps) => {
             style={styles.editIngredientIcon}
           />
         </Pressable>
-        <Pressable onPress={() => onPress}>
+        <Pressable onPress={() => {}}>
           <Icon
             type={"FontAwesome"}
             name={"trash-o"}

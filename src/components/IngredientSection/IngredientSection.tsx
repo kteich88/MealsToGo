@@ -6,23 +6,24 @@ import { RootStackRouteNames } from "navigation/constants";
 import { Ingredient } from "hooks/ingredients/types";
 import { styles } from "./IngredientSection.styles";
 import { IngredientLocation } from "screens/ingredients/constants";
+import { EditIngredientNavigationProps } from "navigation/types";
+import { useNavigation } from "@react-navigation/native";
 
 interface IngredientSectionProps {
   ingredientLocation: IngredientLocation;
   ingredients: Ingredient[] | undefined;
-  navigation: any;
 }
 
 const IngredientSection = ({
   ingredientLocation,
   ingredients,
-  navigation,
 }: IngredientSectionProps) => {
+  const navigation = useNavigation<EditIngredientNavigationProps>();
   return (
     <View style={styles.section}>
       <Text style={styles.titles}>{ingredientLocation}</Text>
       <ScrollView horizontal={true}>
-        <AddIngredientCard navigation={navigation} />
+        <AddIngredientCard ingredientLocation={ingredientLocation} />
         {ingredients?.map((ingredient) => {
           return (
             <IngredientCard

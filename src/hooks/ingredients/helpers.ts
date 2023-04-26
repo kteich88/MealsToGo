@@ -1,18 +1,27 @@
 import {
   CollectionReference,
   DocumentData,
-  addDoc,
+  collection,
+  getDocs,
   onSnapshot,
+  query,
 } from "firebase/firestore";
 import { FirebaseIngredient, Ingredient } from "hooks/ingredients/types";
 import { IngredientLocation } from "screens/ingredients/constants";
 import {
+  collectionRef,
   freezerCollectionRef,
   pantryCollectionRef,
   refrigeratorCollectionRef,
 } from "./constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { db } from "services/firebase/firebase.db";
 
+/**
+ * Transforms Firebase DocumentData to Ingredient type to be used in the app
+ * @param ingredients DocumentData[] from Firebase
+ * @returns Ingredient[]
+ */
 export const transformIngredients = (ingredients: DocumentData[]) => {
   const transformedIngredients: Ingredient[] = ingredients.map((ingredient) => {
     return {
@@ -23,10 +32,14 @@ export const transformIngredients = (ingredients: DocumentData[]) => {
       location: ingredient.location,
     };
   });
-  return transformedIngredients;
 };
 
-export const getAndSetIngredients = async (
+/**
+ * Fetches Ingredients from Firebase and sets them in AsyncStorage
+ * @param collectionRef
+ * @returns Ingredient[]
+ */
+export const fetchIngredients = async (
   collectionRef: CollectionReference<DocumentData>,
   ingredientLocation: IngredientLocation,
 ): Promise<Ingredient[] | undefined> => {
@@ -43,19 +56,5 @@ export const getAndSetIngredients = async (
   const ingredients = await AsyncStorage.getItem(`@${ingredientLocation}`);
   if (ingredients) {
     return JSON.parse(ingredients);
-  }
-};
-
-export const addDataToFirebase = async (
-  location: IngredientLocation,
-  data: FirebaseIngredient,
-) => {
-  switch (location) {
-    case IngredientLocation.Refrigerator:
-      addDoc(refrigeratorCollectionRef, data);
-    case IngredientLocation.Pantry:
-      addDoc(pantryCollectionRef, data);
-    case IngredientLocation.Freezer:
-      addDoc(freezerCollectionRef, data);
   }
 };

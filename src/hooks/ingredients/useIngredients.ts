@@ -1,14 +1,16 @@
 import firebase from "firebase/compat";
-import { FieldValue } from "firebase/firestore";
+import {
+  FieldValue,
+  addDoc,
+  getDocs,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
 import useAuthentication from "hooks/authentication/useAuthentication";
 import { useCallback, useEffect, useState } from "react";
 import { FirebaseIngredient, Ingredient } from "hooks/ingredients/types";
-import { addDataToFirebase, getAndSetIngredients } from "./helpers";
-import {
-  freezerCollectionRef,
-  pantryCollectionRef,
-  refrigeratorCollectionRef,
-} from "./constants";
+import { fetchIngredients, transformIngredients } from "./helpers";
+import { collectionRef } from "./constants";
 import { IngredientLocation } from "screens/ingredients/constants";
 
 const useIngredients = () => {
@@ -29,24 +31,23 @@ const useIngredients = () => {
   const getIngredients = useCallback(async () => {
     setIsLoading(true);
     setRefrigeratorIngredients(
-      await getAndSetIngredients(
-        refrigeratorCollectionRef,
+      await fetchIngredients(
+        collectionRef(IngredientLocation.Refrigerator),
         IngredientLocation.Refrigerator,
       ),
     );
     setPantryIngredients(
-      await getAndSetIngredients(
-        pantryCollectionRef,
+      await fetchIngredients(
+        collectionRef(IngredientLocation.Pantry),
         IngredientLocation.Pantry,
       ),
     );
     setFreezerIngredients(
-      await getAndSetIngredients(
-        freezerCollectionRef,
+      await fetchIngredients(
+        collectionRef(IngredientLocation.Freezer),
         IngredientLocation.Freezer,
       ),
     );
-
     setIsLoading(false);
     return { refrigeratorIngredients, pantryIngredients, freezerIngredients };
   }, []);
@@ -71,13 +72,13 @@ const useIngredients = () => {
     console.log("DATA", data);
 
     try {
-      await addDataToFirebase(location, data);
+      await addDoc(collectionRef(location), data);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       }
     }
-    getIngredients();
+    // navigate to ingredients screen
   };
 
   useEffect(() => {

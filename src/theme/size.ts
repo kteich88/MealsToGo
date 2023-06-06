@@ -6,7 +6,7 @@ import { Size } from "./types";
  * sm: 24px;
  * md: 48px;
  * lg: 75px;
- * giant: 105px;
+ * giant: 150px;
  */
 export const size: Size = {
   sm: 24,

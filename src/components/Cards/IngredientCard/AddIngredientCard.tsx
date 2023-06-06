@@ -6,15 +6,14 @@ import { styles } from "./styles";
 import { theme } from "theme/theme";
 import { RootStackRouteNames } from "navigation/constants";
 import { IngredientLocation } from "screens/ingredients/constants";
-import { AddIngredientScreenNavigationProps } from "navigation/types";
 import { useNavigation } from "@react-navigation/native";
 
 interface AddIngredientCardProps {
   ingredientLocation: IngredientLocation;
 }
 
-const AddIngredientCard = ({ ingredientLocation }: AddIngredientCardProps) => {
-  const navigation = useNavigation<AddIngredientScreenNavigationProps>();
+const AddIngredientCard = (ingredientLocation: AddIngredientCardProps) => {
+  const navigation = useNavigation();
   return (
     <Pressable
       style={styles.card}

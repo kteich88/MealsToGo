@@ -22,7 +22,9 @@ import { db } from "services/firebase/firebase.db";
  * @param ingredients DocumentData[] from Firebase
  * @returns Ingredient[]
  */
-export const transformIngredients = (ingredients: DocumentData[]) => {
+export const transformIngredients = (
+  ingredients: DocumentData[],
+): Ingredient[] => {
   const transformedIngredients: Ingredient[] = ingredients.map((ingredient) => {
     return {
       id: ingredient.id,
@@ -32,6 +34,7 @@ export const transformIngredients = (ingredients: DocumentData[]) => {
       location: ingredient.location,
     };
   });
+  return transformedIngredients;
 };
 
 /**
@@ -39,22 +42,11 @@ export const transformIngredients = (ingredients: DocumentData[]) => {
  * @param collectionRef
  * @returns Ingredient[]
  */
-export const fetchIngredients = async (
-  collectionRef: CollectionReference<DocumentData>,
-  ingredientLocation: IngredientLocation,
-): Promise<Ingredient[] | undefined> => {
-  onSnapshot(collectionRef, async (snapshot) => {
-    const documentData = snapshot.docs.map((doc) => {
-      return doc.data();
-    });
-    const transformedIngredients = transformIngredients(documentData);
-    await AsyncStorage.setItem(
-      `@${ingredientLocation}`,
-      JSON.stringify(transformedIngredients),
-    );
+export const fetchIngredients = async (location: string) => {
+  const documentData: DocumentData[] = [];
+  const snapshot = await getDocs(collection(db, location));
+  snapshot.forEach((doc) => {
+    documentData.push(doc.data());
   });
-  const ingredients = await AsyncStorage.getItem(`@${ingredientLocation}`);
-  if (ingredients) {
-    return JSON.parse(ingredients);
-  }
+  return transformIngredients(documentData);
 };

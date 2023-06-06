@@ -10,7 +10,7 @@ import useAuthentication from "hooks/authentication/useAuthentication";
 import { useCallback, useEffect, useState } from "react";
 import { FirebaseIngredient, Ingredient } from "hooks/ingredients/types";
 import { fetchIngredients, transformIngredients } from "./helpers";
-import { collectionRef } from "./constants";
+import { collectionRef, refrigeratorCollectionRef } from "./constants";
 import { IngredientLocation } from "screens/ingredients/constants";
 
 const useIngredients = () => {
@@ -30,24 +30,9 @@ const useIngredients = () => {
 
   const getIngredients = useCallback(async () => {
     setIsLoading(true);
-    setRefrigeratorIngredients(
-      await fetchIngredients(
-        collectionRef(IngredientLocation.Refrigerator),
-        IngredientLocation.Refrigerator,
-      ),
-    );
-    setPantryIngredients(
-      await fetchIngredients(
-        collectionRef(IngredientLocation.Pantry),
-        IngredientLocation.Pantry,
-      ),
-    );
-    setFreezerIngredients(
-      await fetchIngredients(
-        collectionRef(IngredientLocation.Freezer),
-        IngredientLocation.Freezer,
-      ),
-    );
+    setRefrigeratorIngredients(await fetchIngredients("refrigerator"));
+    setPantryIngredients(await fetchIngredients("pantry"));
+    setFreezerIngredients(await fetchIngredients("freezer"));
     setIsLoading(false);
     return { refrigeratorIngredients, pantryIngredients, freezerIngredients };
   }, []);
@@ -66,10 +51,8 @@ const useIngredients = () => {
       amount,
       units,
       createdAt: timestamp,
-      createdBy: user?.uid,
+      createdBy: user?.uid ?? "eCp1PTFg4IOdUgIFm3u6H85X6wp2",
     };
-
-    console.log("DATA", data);
 
     try {
       await addDoc(collectionRef(location), data);

@@ -15,4 +15,10 @@ export const globalStyles = StyleSheet.create({
     height: theme.size.giant,
     width: theme.size.giant,
   },
+  inProgress: {
+    alignSelf: "center",
+    marginTop: 250,
+    height: 250,
+    width: 250,
+  },
 });

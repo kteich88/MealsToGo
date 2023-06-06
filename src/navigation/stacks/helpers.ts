@@ -2,7 +2,8 @@ import { TransitionPresets } from "@react-navigation/stack";
 
 export const stackScreenOptions = () => {
   return {
-    ...TransitionPresets.ModalPresentationIOS,
+    // ...TransitionPresets.ModalPresentationIOS,
+    presentation: "modal",
     headerShown: false,
   };
 };

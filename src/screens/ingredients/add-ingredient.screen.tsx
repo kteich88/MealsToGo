@@ -11,6 +11,8 @@ import useIngredients from "hooks/ingredients/useIngredients";
 import { styles } from "./styles";
 import { AddIngredientStack } from "navigation/types";
 import { RouteProp } from "@react-navigation/native";
+import Counter from "components/Counter/Counter";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const AddIngredientScreen = (route: RouteProp<AddIngredientStack>) => {
   const {
@@ -28,47 +30,50 @@ const AddIngredientScreen = (route: RouteProp<AddIngredientStack>) => {
   const ingredient = { id, name, amount, units, location };
 
   return (
-    <ScrollView style={styles.modalContainer}>
-      {isLoading ? (
-        <LottieAnimation
-          source={"assets/lottie/loading.json"}
-          styles={globalStyles.loading}
-        />
-      ) : (
-        <View style={styles.form}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Ingredient Name"
-            selectionColor={theme.colors.turquoise}
-            value={name}
-            autoCapitalize="none"
-            onChangeText={(ingredient) => setName(ingredient)}
+    <SafeAreaView>
+      <ScrollView style={styles.modalContainer}>
+        {isLoading ? (
+          <LottieAnimation
+            source={"assets/lottie/loading.json"}
+            styles={globalStyles.loading}
           />
-          <TextInput
+        ) : (
+          <View style={styles.form}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Ingredient Name"
+              selectionColor={theme.colors.turquoise}
+              value={name}
+              autoCapitalize="none"
+              onChangeText={(ingredient) => setName(ingredient)}
+            />
+            <Counter />
+            {/* <TextInput
             style={styles.textInput}
             placeholder="Amount"
             selectionColor={theme.colors.turquoise}
             value={amount}
             autoCapitalize="none"
             onChangeText={(number) => setAmount(number)}
-          />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Units (oz, lbs, etc)"
-            selectionColor={theme.colors.turquoise}
-            value={units}
-            autoCapitalize="none"
-            onChangeText={(unit) => setUnits(unit)}
-          />
-          <Button
-            buttonText={ButtonText.AddIngredient}
-            onPress={() => addIngredient(ingredient)}
-            disabled={false}
-            buttonStyle={styles.buttonStyle}
-          />
-        </View>
-      )}
-    </ScrollView>
+          /> */}
+            <TextInput
+              style={styles.textInput}
+              placeholder="Units (oz, lbs, etc)"
+              selectionColor={theme.colors.turquoise}
+              value={units}
+              autoCapitalize="none"
+              onChangeText={(unit) => setUnits(unit)}
+            />
+            <Button
+              buttonText={ButtonText.AddIngredient}
+              onPress={() => addIngredient(ingredient)}
+              disabled={false}
+              buttonStyle={styles.buttonStyle}
+            />
+          </View>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

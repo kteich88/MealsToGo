@@ -1,4 +1,3 @@
-import Counter from "components/Counter/Counter";
 import Icon from "components/Icons/Icon";
 import React from "react";
 import { View, Text, Pressable } from "react-native";

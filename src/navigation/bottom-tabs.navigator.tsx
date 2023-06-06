@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RootStackParamList } from "./types";
+import { BottomTabsParamList } from "./types";
 import { BottomTabRouteNames, RootStackRouteNames } from "./constants";
 import GroceryStack from "./stacks/grocery.stack";
 import RecipeStack from "./stacks/recipe.stack";
@@ -17,8 +17,13 @@ import useAuthentication from "hooks/authentication/useAuthentication";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthenticationStack from "./stacks/authentication.stack";
 import IngredientsScreen from "screens/ingredients/ingredients.screen";
+import { createStackNavigator } from "@react-navigation/stack";
+import AddIngredientScreen from "screens/ingredients/add-ingredient.screen";
+import EditIngredientScreen from "screens/ingredients/edit-ingredient.screen";
+import { stackHeaderOptions } from "./stacks/helpers";
 
-const Tab = createBottomTabNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<BottomTabsParamList>();
+const Stack = createStackNavigator<BottomTabsParamList>();
 
 const BottomTabsNavigator = () => {
   const { isAuthenticated } = useAuthentication();
@@ -27,7 +32,7 @@ const BottomTabsNavigator = () => {
     <NavigationContainer>
       {/* {isAuthenticated ? ( */}
       <Tab.Navigator
-        initialRouteName={RootStackRouteNames.Login}
+        initialRouteName={BottomTabRouteNames.Profile}
         screenOptions={{
           headerShown: false,
         }}
@@ -64,7 +69,7 @@ const BottomTabsNavigator = () => {
         />
         <Tab.Screen
           name={BottomTabRouteNames.Ingredients}
-          component={IngredientsScreen}
+          component={IngredientStack}
           options={{
             tabBarLabel: ({ focused }) =>
               tabBarLabel(focused, BottomTabRouteNames.Ingredients),
@@ -89,7 +94,6 @@ const BottomTabsNavigator = () => {
       {/* ) : (
         <AuthenticationStack />
       )} */}
-      {/* <IngredientStack /> */}
     </NavigationContainer>
   );
 };

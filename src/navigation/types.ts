@@ -11,14 +11,25 @@ import {
 import { BottomTabRouteNames, RootStackRouteNames } from "./constants";
 import { IngredientLocation } from "screens/ingredients/constants";
 
-export type RootStackParamList = {
+export type BottomTabsParamList = {
   [BottomTabRouteNames.Recipes]: undefined;
   [BottomTabRouteNames.Groceries]: undefined;
   [BottomTabRouteNames.MealPlans]: undefined;
   [BottomTabRouteNames.Ingredients]: undefined;
   [BottomTabRouteNames.Profile]: undefined;
+};
+
+export type RootStackParamList = {
   [RootStackRouteNames.Login]: undefined;
   [RootStackRouteNames.Register]: undefined;
+  [RootStackRouteNames.AddRecipe]: undefined;
+  [RootStackRouteNames.EditRecipe]: { id: string };
+  [RootStackRouteNames.AddGrocery]: undefined;
+  [RootStackRouteNames.EditGrocery]: { id: string };
+  [RootStackRouteNames.AddMeal]: undefined;
+  [RootStackRouteNames.EditMeal]: { id: string };
+  [RootStackRouteNames.AddIngredient]: { location: IngredientLocation };
+  [RootStackRouteNames.EditIngredient]: { id: string };
 };
 
 export type Tab = {
@@ -66,7 +77,7 @@ export type IngredientsScreenNavigationProps = NativeStackScreenProps<
   IngredientStackParamList,
   RootStackRouteNames.IngredientsScreen
 >;
-export type EditIngredientNavigationProps = NativeStackNavigationProp<
+export type EditIngredientNavigationProps = NativeStackScreenProps<
   IngredientStackParamList,
   RootStackRouteNames.EditIngredient
 >;

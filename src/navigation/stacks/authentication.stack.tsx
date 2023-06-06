@@ -4,9 +4,9 @@ import { authenticationStackScreenOptions } from "./helpers";
 import LoginScreen from "screens/login/login.screen";
 import RegisterScreen from "screens/register/register.screen";
 import { RootStackRouteNames } from "navigation/constants";
-import { RootStackParamList } from "navigation/types";
+import { BottomTabsParamList } from "navigation/types";
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<BottomTabsParamList>();
 
 const AuthenticationStack = () => (
   <Stack.Navigator screenOptions={authenticationStackScreenOptions}>

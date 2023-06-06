@@ -1,8 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { Image } from "react-native";
+import { globalStyles } from "theme/global.styles";
 
 const GroceriesScreen = () => {
-  return <Text>Groceries Screen</Text>;
+  return (
+    <Image
+      style={globalStyles.inProgress}
+      source={require("assets/images/wok-in-progress.png")}
+    />
+  );
 };
 
 export default GroceriesScreen;

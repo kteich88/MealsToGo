@@ -10,13 +10,14 @@ import { styles } from "./styles";
 import Dropdown from "components/Dropdown/Dropdown";
 import { ingredientLocationSelectOptions } from "components/Dropdown/constants";
 import { IngredientLocation } from "./constants";
-import { EditIngredientStack } from "navigation/types";
+import {
+  EditIngredientNavigationProps,
+  EditIngredientStack,
+} from "navigation/types";
 import { RouteProp } from "@react-navigation/native";
 
-const EditIngredientScreen = (route: RouteProp<EditIngredientStack>) => {
+const EditIngredientScreen = ({ route }: EditIngredientNavigationProps) => {
   const { isLoading } = useIngredients();
-  console.log(route);
-
   const id = route.params?.id;
   // find name, amount, units and location of ingredient with id
 

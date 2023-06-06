@@ -1,8 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { Image } from "react-native";
+import { globalStyles } from "theme/global.styles";
 
 const MealPlanningScreen = () => {
-  return <Text>Meal Planning Screen</Text>;
+  return (
+    <Image
+      style={globalStyles.inProgress}
+      source={require("assets/images/wok-in-progress.png")}
+    />
+  );
 };
 
 export default MealPlanningScreen;
